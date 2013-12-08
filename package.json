@@ -1,0 +1,12 @@
+{
+  "name": "chrly",
+  "version": "0.1.0",
+  "homepage": "",
+  "author": {
+    "name": "Charles Lirsac"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+  },
+  "dependencies": {}
+}

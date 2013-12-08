@@ -1,3 +1,15 @@
-name: Your New Jekyll Site
-markdown: redcarpet
+destination: _site/
+production: false
+
+permalink: /blog/:title
+paginate: 8
+paginate_path: page/:num
+
+name: chrly
 pygments: true
+
+# google_analytics_id:
+
+url: http://localhost:9000/
+
+exclude: ['node_modules', '.gitignore', 'Gruntfile.js', 'config.rb', 'package.json', 'favicon.psd', '.sass-cache', 'package.json', 'bower.json', '.bowerrc', 'bower_components', '_assets', '.jekyll']
