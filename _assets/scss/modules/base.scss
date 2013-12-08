@@ -1,5 +1,8 @@
-//  GENERIC STYLES
-//  ---------------------------------
+//  ===============================================
+//
+//  Base module
+//
+//  ===============================================
 
 * {
     -webkit-font-smoothing: antialiased;
@@ -23,24 +26,24 @@ a {
 
 html {
     height: 100%;
-    font-size: $font_base#{px};
+    font-size: $font-base#{px};
 }
 
 body {
     position: relative;
     min-height: 100%;
-
+    @include rems(padding-bottom, $footer-height);
     background: $bg;
     color: $gray;
 }
 
 .content{
     @extend %center;
-    padding: 0 2.5%;
+    padding: 0 2%;
     height: auto;
-    font-family: $font_family_serif;
-    @include font-size($main_font_size);
-    @include line-height($baseline, $main_font_size);
+    font-family: $font-family-serif;
+    @include font-size($main-font-size);
+    @include line-height($baseline, $main-font-size);
 }
 
 h1, h2{
@@ -48,5 +51,5 @@ h1, h2{
 }
 
 h1, h2, h3{
-    font-family: $font_family_sans;
+    font-family: $font-family-sans;
 }

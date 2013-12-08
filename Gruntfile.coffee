@@ -61,11 +61,11 @@ module.exports = (grunt) ->
             options:
                 debounceDelay: 250
             style:
-                files: ["<%= cfg.assets_src %>/scss{*,**/*}.scss"]
+                files: ["<%= cfg.assets_src %>/scss/**/*.scss"]
                 tasks: ["sass:dev"]
             jekyll:
                 files: ["_posts/{*,**}.{md,markdown}",
-                        "{_layouts,_includes}/{*,**}.html",
+                        "{_layouts,_includes}/*.html",
                         "_plugins/{*,**}.rb",
                         "assets/{*,**}"]
                 tasks: ["jekyll:dev", ]

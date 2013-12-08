@@ -1,0 +1,17 @@
+//  ===============================================
+//
+//  Footer module
+//
+//  ===============================================
+
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  @include rems(height, $footer-height);
+  @include rems(padding-top, $footer-height/4)
+}
+
+.footer-inner{
+  @extend %center;
+}

@@ -1,0 +1,26 @@
+//  ===============================================
+//
+//  Header module
+//
+//  ===============================================
+
+header {
+    background: $gray;
+    color: $bg;
+    height: auto;
+}
+
+.header__inner{
+    @extend %center;
+    text-align: justify;
+    letter-spacing: 1px;
+    @include block-height($header-height);
+}
+
+.header__name, .header__nav {
+    display: inline-block;
+}
+
+.header__name {
+    margin: 0;
+}
