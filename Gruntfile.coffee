@@ -15,7 +15,9 @@ module.exports = (grunt) ->
         pkg: grunt.file.readJSON "package.json"
         banner: "/*! [<%= pkg.author.name %>] : <%= pkg.name %> - v<%= pkg.version %>:<%= grunt.template.today('yyyy-mm-dd') %> */"
 
-        clean: ["<%= cfg.jekyll_target %>", "<%= cfg.tmp %>", "<%= cfg.assets_target %>"]
+        clean:
+            build: ["<%= cfg.jekyll_target %>", "<%= cfg.tmp %>", "<%= cfg.assets_target %>"]
+            dependencies: ["<%= cfg.bower %>", "node_modules", ".sass-cache"]
 
         sass:
             dev:
@@ -112,8 +114,12 @@ module.exports = (grunt) ->
                 options:
                     logConcurrentOutput: true
 
+        bump:
+            options:
+                tabSize: 4
+            files: ["bower.json", "package.json"]
 
-    grunt.registerTask "dev", ["clean", "sass:dev", "copy:assets", "jekyll:dev"]
-    grunt.registerTask "build", ["clean", "sass:build", "copy:assets", "jekyll:build"]
+    grunt.registerTask "dev", ["clean:build", "sass:dev", "copy:assets", "jekyll:dev"]
+    grunt.registerTask "build", ["clean:build", "sass:build", "copy:assets", "jekyll:build"]
 
     grunt.registerTask "default", ["dev", "concurrent:dev"]
