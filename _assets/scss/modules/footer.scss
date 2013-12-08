@@ -9,9 +9,51 @@ footer{
   bottom: 0;
   width: 100%;
   @include rems(height, $footer-height);
-  @include rems(padding-top, $footer-height/4)
+  @include rems(padding-top, $footer-height/4);
+
+  background: $gray;
 }
 
-.footer-inner{
+.footer__inner {
   @extend %center;
+  padding: 0 2%;
+}
+
+.footer__credits {
+    float: left;
+    font-weight: 400;
+    color: $bg;
+    @include font-size(15)
+}
+.footer__links {
+    float: right;
+}
+
+.footer__link {
+    @include font-size(18);
+    @include rems(padding-right, 12);
+    &:last-of-type {
+        padding-right: 0;
+    }
+    @include link-color($bg);
+    text-decoration: none;
+    &:before {
+        @include icon;
+    }
+    &.github {
+        &:hover { color: $github-color; }
+        @include icon-content("\e000");
+    }
+    &.linkedin {
+        &:hover { color: $linkedin-color; }
+        @include icon-content("\e004");
+    }
+    &.twitter {
+        &:hover { color: $twitter-color; }
+        @include icon-content("\e002");
+    }
+    &.rss {
+        &:hover { color: $rss-color; }
+        @include icon-content("\e007");
+    }
 }

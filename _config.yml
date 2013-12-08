@@ -8,6 +8,10 @@ paginate_path: page/:num
 name: chrly
 pygments: true
 
+social_github: CharlesLirsac
+social_twitter: lirsacc
+social_linkedin: charleslirsac
+
 # google_analytics_id:
 
 url: http://localhost:9090/
