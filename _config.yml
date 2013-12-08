@@ -10,6 +10,6 @@ pygments: true
 
 # google_analytics_id:
 
-url: http://localhost:9000/
+url: http://localhost:9090/
 
-exclude: ['node_modules', '.gitignore', 'Gruntfile.js', 'config.rb', 'package.json', 'favicon.psd', '.sass-cache', 'package.json', 'bower.json', '.bowerrc', 'bower_components', '_assets', '.jekyll']
+exclude: ['node_modules', '.gitignore', 'Gruntfile.js', 'Gruntfile.coffee', 'config.rb', 'package.json', 'favicon.psd', '.sass-cache', 'package.json', 'bower.json', '.bowerrc', 'bower_components', '_assets', '.jekyll']

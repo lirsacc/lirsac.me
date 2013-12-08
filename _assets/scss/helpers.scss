@@ -1,0 +1,142 @@
+//  ===============================================
+//
+//  General helpers used throughout all modules
+//  and components
+//
+//  ===============================================
+
+//  FUNCTIONS
+//  ---------------------------------
+
+//  Colors
+
+@function black($opacity) {
+    @return rgba(0, 0, 0, $opacity);
+}
+
+@function white($opacity) {
+    @return rgba(255, 255, 255, $opacity);
+}
+
+//  Dimensions
+
+@function rems($target) {
+    @return ($target/$font-base)#{rem};
+}
+
+@function ems($target, $context: $font-base) {
+    @return ($target/$context)#{em};
+}
+
+@function pxs($px) {
+    @return ($px)#{px};
+}
+
+@function breakpoint($px, $context : 16) {
+    @return ($px/$context)#{em};
+}
+
+//  MIXINS
+//  ---------------------------------
+
+@mixin vendor($property, $value) {
+    -webkit-#{$property}: $value;
+    -moz-#{$property}: $value;
+    -ms-#{$property}: $value;
+    -o-#{$property}: $value;
+    #{$property}: $value;
+}
+
+// Embossing mixins taken from : http://sachagreif.com/useful-sass-mixins/
+
+@mixin letterpress($opacity) {
+    text-shadow: white($opacity) 0 1px 0;
+}
+
+@mixin box-emboss($opacity, $opacity2) {
+    box-shadow: white($opacity) 0 1px 0, inset black($opacity2) 0 1px 0;
+}
+
+// Adapted rem/em fallback from : http://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/
+
+@mixin rems($property, $values...) {
+    $px-values: null;
+    $rem-values: null;
+
+    @each $value in $values {
+        $px-values: append($px-values, unquote(pxs($value)), space);
+        $rem-values: append($rem-values, unquote(rems($value)), space);
+    }
+
+    #{$property}: $px-values;
+    #{$property}: $rem-values;
+}
+
+@mixin ems($property, $context, $values...) {
+    $px-values: null;
+    $em-values: null;
+
+    @each $value in $values {
+        $px-values: append($px-values, unquote(pxs($value)), space);
+        $em-values: append($em-values, unquote(ems($value, $context)), space);
+    }
+
+    #{$property}: $px-values;
+    #{$property}: $em-values;
+}
+
+// Shapes and size
+
+@mixin block-height($h) {
+    @include rems(height, $h);
+    @include rems(line-height, $h);
+}
+
+@mixin square($s) {
+    @include rems(width, $s);
+    @include block-height($s);
+}
+
+//  Typography
+
+@mixin font-size($f) {
+    font-size: $f#{px};
+    font-size: rems($f);
+}
+
+@mixin line-height($height, $context : $font-base) {
+    @include ems(line-height, $context, $height)
+}
+
+@mixin icon() {
+    font-family: "icons" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+}
+
+// SILENT CLASSES
+// ---------------------------------
+
+%clearfix {
+    *zoom: 1;
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+%border-box {
+    @include vendor(box-sizing, border-box)
+}
+
+%center {
+    margin: 0 auto;
+    max-width: rems($main_width);
+    width: 100%;
+}

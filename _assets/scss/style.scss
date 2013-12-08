@@ -1,0 +1,20 @@
+//  ===============================================
+//
+//  Main file which will be compiled,
+//  only use imports here
+//
+//  ===============================================
+
+
+//  Bower imports
+@import "../../bower_components/normalize-scss/_normalize.scss";
+@import "../../bower_components/bourbon/app/assets/stylesheets/_bourbon.scss";
+
+//  Shared files
+@import "variables.scss";
+@import "helpers.scss";
+
+//  Components
+
+//  Modules
+@import "modules/base.scss";

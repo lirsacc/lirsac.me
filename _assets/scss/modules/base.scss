@@ -1,0 +1,52 @@
+//  GENERIC STYLES
+//  ---------------------------------
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    @extend %border-box;
+
+    &:after,
+    &:before {
+        margin: 0;
+        padding: 0;
+        @extend %border-box;
+    }
+}
+
+a {
+    @include transition(color 0.4s ease-in-out,
+                        opacity 0.4s ease-in-out,
+                        background 0.4s ease-in-out);
+}
+
+html {
+    height: 100%;
+    font-size: $font_base#{px};
+}
+
+body {
+    position: relative;
+    min-height: 100%;
+
+    background: $bg;
+    color: $gray;
+}
+
+.content{
+    @extend %center;
+    padding: 0 2.5%;
+    height: auto;
+    font-family: $font_family_serif;
+    @include font-size($main_font_size);
+    @include line-height($baseline, $main_font_size);
+}
+
+h1, h2{
+    font-weight: 900;
+}
+
+h1, h2, h3{
+    font-family: $font_family_sans;
+}
