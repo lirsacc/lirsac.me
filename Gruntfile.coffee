@@ -47,6 +47,13 @@ module.exports = (grunt) ->
             options:
               reporterOutput: null
 
+        copy:
+            assets:
+                cwd: "<%= cfg.assets_src %>"
+                expand: true
+                src: "fonts/**"
+                dest: "<%= cfg.assets_target %>"
+
         jekyll:
             options:
                 dest: "<%= cfg.jekyll_target %>"
@@ -60,6 +67,9 @@ module.exports = (grunt) ->
         watch:
             options:
                 debounceDelay: 250
+            assets:
+                files: ["<%= cfg.assets_src %>/{fonts}/**"]
+                tasks: ["copy:assets"]
             style:
                 files: ["<%= cfg.assets_src %>/scss/**/*.scss"]
                 tasks: ["sass:dev"]
@@ -103,7 +113,7 @@ module.exports = (grunt) ->
                     logConcurrentOutput: true
 
 
-    grunt.registerTask "dev", ["clean", "sass:dev", "jekyll:dev"]
-    grunt.registerTask "build", ["clean", "sass:build", "jekyll:build"]
+    grunt.registerTask "dev", ["clean", "sass:dev", "copy:assets", "jekyll:dev"]
+    grunt.registerTask "build", ["clean", "sass:build", "copy:assets", "jekyll:build"]
 
     grunt.registerTask "default", ["dev", "concurrent:dev"]
