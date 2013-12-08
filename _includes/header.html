@@ -1,5 +1,11 @@
+{% if page.cover %}
+<header class="cover" style="background-image: url({{ page.cover }});">
+    <div class="header__cover-mask"></div>
+    <div class="header__inner cover">
+{% else %}
 <header>
     <div class="header__inner">
+{% endif %}
         <h1 class="header__name">Chrly</h1>
         <nav class="header__nav">
             <a class="header__nav-item" href="#">Home</a>

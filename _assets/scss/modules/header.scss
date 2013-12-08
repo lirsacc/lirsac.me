@@ -5,22 +5,80 @@
 //  ===============================================
 
 header {
-    background: $gray;
-    color: $bg;
     height: auto;
 }
 
-.header__inner{
+.header__inner {
     @extend %center;
+    padding: 0 2%;
     text-align: justify;
-    letter-spacing: 1px;
-    @include block-height($header-height);
+
+    &::after {
+        content: '';
+        display: inline-block;
+        width: 100%;
+    }
 }
 
 .header__name, .header__nav {
     display: inline-block;
+    @include block-height($header-height);
+    margin: 0;
+    padding: 0;
+    letter-spacing: -1px;
 }
 
 .header__name {
-    margin: 0;
+    font-weight: 900;
+    text-transform: uppercase;
+    @include font-size(20);
+}
+
+.header__nav-item{
+    font-weight: 900;
+    text-decoration: none;
+    text-transform: uppercase;
+    @include font-size(15);
+
+    @include rems(padding-right, 14);
+    &:last-of-type {
+        padding-right: 0;
+    }
+
+    @include link-color($gray);
+    &:hover {
+        color: $accent;
+    }
+}
+
+header.cover {
+    position: relative;
+    background: url(attr(data-cover));
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    @include rems(height, $header-height-with-cover);
+}
+
+.header__cover-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 15;
+    background: black(.3);
+    height: 100%;
+    width: 100%;
+}
+
+.header__inner.cover {
+    position: relative;
+    z-index: 30;
+    color: $bg;
+}
+
+.header__inner.cover .header__nav-item {
+    @include link-color($bg);
+    &:hover {
+        color: $accent;
+    }
 }
