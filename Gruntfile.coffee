@@ -61,7 +61,7 @@ module.exports = (grunt) ->
             options:
                 debounceDelay: 250
             style:
-                files: ["<%= cfg.assets_src %>/scss/{*,**}.scss"]
+                files: ["<%= cfg.assets_src %>/scss{*,**/*}.scss"]
                 tasks: ["sass:dev"]
             jekyll:
                 files: ["_posts/{*,**}.{md,markdown}",
@@ -92,7 +92,7 @@ module.exports = (grunt) ->
 
         concurrent:
             dev:
-                tasks: ["watch:jekyll", "connect:debug"]
+                tasks: ["watch:jekyll", "watch:style", "connect:debug"]
                 options:
                     logConcurrentOutput: true
 
