@@ -68,9 +68,15 @@ module.exports = (grunt) ->
                         "{_layouts,_includes}/*.html",
                         "_plugins/{*,**}.rb",
                         "assets/{*,**}"]
-                tasks: ["jekyll:dev", ]
+                tasks: ["jekyll:dev", "notify:jekyll"]
                 options:
                     livereload: 1337
+
+        notify:
+            jekyll:
+                options:
+                    title: "Jekyll build"
+                    message: "Jekyll has just finished building the site. Open pages have been reloaded through port 1337."
 
         connect:
             serve:
