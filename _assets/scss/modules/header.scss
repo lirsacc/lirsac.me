@@ -38,12 +38,12 @@ header {
     font-weight: 900;
     text-decoration: none;
     text-transform: uppercase;
+    display: inline-block;
+    @include vendor(border-radius, 2px);
+    @include line-height(32, 15);
+    @include rems(padding, 0, 10);
+    @include rems(margin, 0, 4);
     @include font-size(15);
-
-    @include rems(padding-right, 14);
-    &:last-of-type {
-        padding-right: 0;
-    }
 
     @include link-color($gray);
     &:hover {
@@ -53,7 +53,6 @@ header {
 
 header.cover {
     position: relative;
-    background: url(attr(data-cover));
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -73,6 +72,7 @@ header.cover {
 
 .header__inner.cover {
     position: relative;
+    max-width: 100%;
     z-index: 30;
     color: $bg;
 }
@@ -80,6 +80,6 @@ header.cover {
 .header__inner.cover .header__nav-item {
     @include link-color($bg);
     &:hover {
-        color: $accent;
+        background: black(.35)
     }
 }

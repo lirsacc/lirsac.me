@@ -29,6 +29,12 @@ html {
     font-size: $font-base#{px};
 }
 
+@media screen and (max-width: breakpoint(480)) {
+    html {
+        font-size: .9*$font-base#{px};
+    }
+}
+
 body {
     position: relative;
     min-height: 100%;
@@ -40,11 +46,12 @@ body {
 
 .content{
     @extend %center;
+    @include rems(margin-top, 42);
     padding: 0 2%;
     height: auto;
-    font-family: $font-family-serif;
     @include font-size($main-font-size);
     @include line-height($baseline, $main-font-size);
+    position: relative;
 }
 
 h1, h2{

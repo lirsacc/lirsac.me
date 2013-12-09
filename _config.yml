@@ -1,6 +1,8 @@
 destination: _site/
 production: false
 
+excerpt_separator: "\n\n"
+
 permalink: /blog/:title
 paginate: 8
 paginate_path: page/:num

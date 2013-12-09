@@ -1,13 +1,16 @@
 ---
 layout: default
-title: Your New Jekyll Site
+title: Chrly
+body_class: home
+cover: http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528b276e41166_1.JPG
 ---
 
-<div id="home">
-  <h1>Blog Posts</h1>
-  <ul class="posts">
+<div id="post-list" class="post-list">
     {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+        <a href="{{ post.url }}" class="post-list__item">
+            <div class="post-date">{{ post.date | date_to_string }}</div>
+            <h2 class="post-title">{{ post.title }}</h2>
+            <div class="post-preview">{{ post.excerpt }}</div>
+        </a>
     {% endfor %}
-  </ul>
 </div>
