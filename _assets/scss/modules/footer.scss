@@ -11,22 +11,26 @@ footer{
   @include rems(height, $footer-height);
   @include rems(padding-top, $footer-height/4);
 
-  background: $gray;
+  background: transparent;
 }
 
 .footer__inner {
   @extend %center;
-  padding: 0 2%;
+  @include rems(padding, 8, 0)
+}
+
+.footer__links, .footer__credits {
+  @include rems(padding, 8, 0);
 }
 
 .footer__credits {
-    float: left;
     font-weight: 400;
-    color: $bg;
-    @include font-size(15)
+    color: $clear;
+    text-align: center;
+    @include font-size(15);
 }
 .footer__links {
-    float: right;
+  text-align: center;
 }
 
 .footer__link {
@@ -35,7 +39,7 @@ footer{
     &:last-of-type {
         padding-right: 0;
     }
-    @include link-color($bg);
+    @include link-color($clear);
     text-decoration: none;
     &:before {
         @include icon;
@@ -51,9 +55,5 @@ footer{
     &.twitter {
         &:hover { color: $twitter-color; }
         @include icon-content("\e002");
-    }
-    &.rss {
-        &:hover { color: $rss-color; }
-        @include icon-content("\e007");
     }
 }

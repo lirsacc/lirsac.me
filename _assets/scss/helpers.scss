@@ -153,6 +153,6 @@
 
 %center {
     margin: 0 auto;
-    max-width: rems($main_width);
+    @include rems(max-width, $main_width);
     width: 100%;
 }
