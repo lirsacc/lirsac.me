@@ -8,7 +8,7 @@ footer{
   position: absolute;
   bottom: 0;
   width: 100%;
-  @include rems(height, $footer-height);
+  @include block-height($footer-height);
   @include rems(padding-top, $footer-height/4);
   background: $bg;
 }
@@ -25,19 +25,19 @@ footer{
 .footer__credits {
     font-weight: 400;
     color: $clear;
-    text-align: center;
+    float: left;
     @include font-size(15);
 }
 .footer__links {
-  text-align: center;
+  float: right;
 }
 
 .footer__link {
-    @include font-size(24);
-    @include rems(padding-right, 16);
-    &:last-of-type {
-        padding-right: 0;
-    }
+    @include font-size(20);
+    @include rems(padding-right, 10);
+    position: relative;
+    display: inline-block;
+    &:last-of-type { padding-right: 0; }
     @include link-color($clear);
     text-decoration: none;
     &:before {
@@ -54,5 +54,38 @@ footer{
     &.twitter {
         &:hover { color: $twitter-color; }
         @include icon-content("\e002");
+    }
+    &.google-plus {
+        &:hover { color: $google-plus-color; }
+        @include icon-content("\e01a");
+    }
+    &.email {
+        &:hover { color: $email-color; }
+        @include icon-content("\e012");
+    }
+    &::after {
+      position: absolute;
+      content: attr(data-tooltip);
+      @include font-size(11);
+      font-weight: 700;
+      display: block;
+      @include rems(padding, 0, 6);
+      @include block-height(28);
+      background: black(.6);
+      @include rems(width, 180);
+      text-align: center;
+      @include vendor(border-radius, 3px);
+      @include rems(top, -96);
+      opacity: 0;
+      @include rems(left, -80);
+      @include transition(top .4s ease-in-out, opacity .4s ease-in-out);
+      color: $bg;
+    }
+    &:hover {
+      &::after {
+        @include rems(top, -36);
+        opacity: 1;
+        color: $bg;
+      }
     }
 }
