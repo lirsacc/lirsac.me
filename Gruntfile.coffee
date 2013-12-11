@@ -79,7 +79,8 @@ module.exports = (grunt) ->
                 files: ["_posts/{*,**}.{md,markdown}",
                         "{_layouts,_includes}/*.html",
                         "_plugins/{*,**}.rb",
-                        "assets/{*,**}"]
+                        "assets/{*,**}",
+                        "_config.yml"]
                 tasks: ["jekyll:dev", "notify:jekyll"]
                 options:
                     livereload: 1337
