@@ -10,7 +10,7 @@
 }
 
 .post-list__item {
-    @include rems(margin, 48, 0);
+    @include rems(margin, 36, 0);
     display: block;
     // &:hover {
     //     @include rems(padding-left, 24);
@@ -24,7 +24,7 @@ a.post-list__item {
 }
 
 .post-title, .post-preview, .post-date {
-    @include rems(margin, 2, 0);
+    margin: 0;
 }
 
 .post-title {
@@ -34,7 +34,8 @@ a.post-list__item {
 
 .post-preview {
     font-weight: 300;
-    @include rems(margin, 8, 0);
+    @include rems(margin, 3, 0);
+    font-family: $font-family-serif;
     p {
         margin: 0;
         padding: 0;
@@ -42,8 +43,8 @@ a.post-list__item {
 }
 
 .post-date {
-    font-weight: 700;
-    @include font-size(14);
+    font-weight: 900;
+    @include font-size(13);
     text-transform: uppercase;
     color: $clear;
 }
