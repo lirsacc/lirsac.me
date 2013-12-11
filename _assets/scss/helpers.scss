@@ -155,4 +155,8 @@
     margin: 0 auto;
     @include rems(max-width, $main_width);
     width: 100%;
+    padding: 0 2%;
+    @media screen and (min-width: breakpoint($main-width)){
+        padding: 0;
+    }
 }

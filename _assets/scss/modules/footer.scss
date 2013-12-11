@@ -15,7 +15,6 @@ footer{
 
 .footer__inner {
   @extend %center;
-  @include rems(padding, 8, 0)
 }
 
 .footer__links, .footer__credits {
@@ -26,7 +25,7 @@ footer{
     font-weight: 400;
     color: $clear;
     float: left;
-    @include font-size(15);
+    @include font-size(16);
 }
 .footer__links {
   float: right;
@@ -49,7 +48,7 @@ footer{
     }
     &.linkedin {
         &:hover { color: $linkedin-color; }
-        @include icon-content("\e004");
+        @include icon-content("\e01d");
     }
     &.twitter {
         &:hover { color: $twitter-color; }
@@ -71,7 +70,7 @@ footer{
       display: block;
       @include rems(padding, 0, 6);
       @include block-height(28);
-      background: black(.6);
+      background: black(.4);
       @include rems(width, 180);
       text-align: center;
       @include vendor(border-radius, 3px);
@@ -79,7 +78,8 @@ footer{
       opacity: 0;
       visibility: hidden;
       @include rems(left, -80);
-      @include transition(top .4s ease-in-out, opacity .4s ease-in-out);
+      @include transition(top .4s ease-in-out,
+                          opacity .4s ease-in-out);
       color: $bg;
     }
     &:hover {

@@ -47,7 +47,6 @@ body {
 .content{
     @extend %center;
     @include rems(margin-top, 42);
-    padding: 0 2%;
     height: auto;
     @include font-size($main-font-size);
     @include line-height($baseline, $main-font-size);
