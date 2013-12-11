@@ -77,14 +77,16 @@ footer{
       @include vendor(border-radius, 3px);
       @include rems(top, -96);
       opacity: 0;
+      visibility: hidden;
       @include rems(left, -80);
       @include transition(top .4s ease-in-out, opacity .4s ease-in-out);
       color: $bg;
     }
     &:hover {
       &::after {
-        @include rems(top, -36);
+        @include rems(top, -26);
         opacity: 1;
+        visibility: visible;
         color: $bg;
       }
     }
