@@ -16,6 +16,7 @@ module.exports = (grunt) ->
         banner: "/*! [<%= pkg.author.name %>] : <%= pkg.name %> - v<%= pkg.version %>:<%= grunt.template.today('yyyy-mm-dd') %> */"
 
         clean:
+            tmp: ["<%= cfg.tmp %>", "<%= cfg.assets_target %>"]
             build: ["<%= cfg.jekyll_target %>", "<%= cfg.tmp %>", "<%= cfg.assets_target %>"]
             dependencies: ["<%= cfg.bower %>", "node_modules", ".sass-cache"]
 
@@ -40,7 +41,6 @@ module.exports = (grunt) ->
                     precision: 4
                     style: "compressed"
                     unixNewlines: true
-                    sourcemap: true
                 files:
                     "<%= cfg.assets_target %>/css/style.css": "<%= cfg.assets_src %>/scss/style.scss"
 
@@ -48,6 +48,45 @@ module.exports = (grunt) ->
             allFiles: ['<%= cfg.assets_src %>/scss/{*,**}.scss']
             options:
               reporterOutput: null
+
+        coffee:
+            dev:
+                options:
+                    join: true
+                    sourceMap: true
+                files: "<%= cfg.assets_target %>/js/app.js": ["<%= cfg.assets_src %>/coffee/{*,**}.coffee"]
+            build:
+                options:
+                    join: true
+                    sourceMap: false
+                files: "<%= cfg.assets_target %>/js/app.js": ["<%= cfg.assets_src %>/coffee/{*,**}.coffee"]
+
+        coffeelint:
+            app: ["<%= cfg.assets_src %>/coffee/{*,**}.coffee"]
+            options:
+                arrow_spacing:
+                    level: "warn"
+                camel_case_classes:
+                    level: "warn"
+                no_tabs:
+                    level: "error"
+                coffeescipt_error:
+                    level: "error"
+                no_trailing_semicolons:
+                    level: "error"
+                indentation:
+                    value: 4
+                    level: "error"
+                max_line_length:
+                    level: "warn"
+                    value: 80
+
+        uglify:
+            build:
+                options:
+                    banner: "<%= cfg.banner %>"
+                    preserveComments: false
+                files: "<%= cfg.assets_target %>/js/app.js": "<%= cfg.assets_target %>/js/app.js"
 
         copy:
             assets:
@@ -75,6 +114,9 @@ module.exports = (grunt) ->
             style:
                 files: ["<%= cfg.assets_src %>/scss/**/*.scss"]
                 tasks: ["sass:dev"]
+            js:
+                files: ["<%= cfg.assets_src %>/coffee/{*,**}.coffee"]
+                tasks: ["coffelint", "coffee:dev"]
             jekyll:
                 files: ["_posts/{*,**}.{md,markdown}",
                         "{_layouts,_includes}/*.html",
@@ -111,7 +153,7 @@ module.exports = (grunt) ->
 
         concurrent:
             dev:
-                tasks: ["watch:jekyll", "watch:style", "connect:debug"]
+                tasks: ["watch:jekyll", "watch:style", "watch:js", "connect:debug"]
                 options:
                     logConcurrentOutput: true
 
@@ -120,7 +162,17 @@ module.exports = (grunt) ->
                 tabSize: 4
             files: ["bower.json", "package.json"]
 
-    grunt.registerTask "dev", ["clean:build", "sass:dev", "copy:assets", "jekyll:dev"]
-    grunt.registerTask "build", ["clean:build", "sass:build", "copy:assets", "jekyll:build"]
+    grunt.registerTask "dev", ["clean:build",
+                               "scsslint", "sass:dev",
+                               "coffeelint", "coffee:dev",
+                               "copy:assets",
+                               "jekyll:dev"]
+
+    grunt.registerTask "build", ["clean:build",
+                                 "scsslint", "sass:build",
+                                 "coffeelint", "coffee:build", "uglify:build",
+                                 "copy:assets",
+                                 "jekyll:build"
+                                 "clean:tmp"]
 
     grunt.registerTask "default", ["dev", "concurrent:dev"]
