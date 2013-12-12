@@ -3,21 +3,21 @@
 }
 
 .highlight {
-    @extend %border-box;
-    @include rems(padding, 4, 12);
-    margin: 0 auto;
-    @include vendor(border-radius, 3px);
+    @extend %center;
+    @include rems(padding-top, 6);
+    @include rems(padding-bottom, 6);
+    padding-right: 1.5%;
+    padding-left: 1.5%;
+    @media screen and (min-width: breakpoint($main-width)) {
+        @include vendor(border-radius, 3px);
+    }
 }
 
-.highlight pre{
-    margin: 0;
-}
-
+.highlight pre{ margin: 0; }
 .highlight .lineno {
     color: #8b8d8b;
     padding-right: 4px;
 }
-
 .highlight .hll { background-color: #373b41 }
 .highlight  { background: #1d1f21; color: #ffffff }
 .highlight .c { color: #969896 } /* Comment */

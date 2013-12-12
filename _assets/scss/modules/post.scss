@@ -8,7 +8,6 @@
 // Post listing on front page
 
 .post-list {
-    font-family: $font-family-sans;
 }
 
 .post-list__item {
@@ -23,32 +22,28 @@ a.post-list__item {
 
 // Post items
 
-.post-title, .post-preview, .post-date {
-    margin: 0;
+.post-title, .post-content > p {
+    @extend %center;
 }
 
 .post-title {
-    font-weight: 900;
-    @include font-size(30);
+    @extend %center;
+    @include font-size(36);
+    font-weight: 700;
+    @include line-height(42, 36);
+    @include rems(margin-top, 24);
+    @include rems(margin-top, 24);
+    // border-bottom: solid 2px $light;
 }
 
-.post-preview, .post-content {
-    font-weight: 400;
-    @include rems(margin, 3, 0);
-    font-family: $font-family-serif;
-}
-
-.post-preview {
-    @include font-size(17);
-    p {
-        @include rems(margin, 8, 0);
-        padding: 0;
-    }
+.post-content > p {
+    @include rems(margin-top, 15);
+    @include rems(margin-bottom, 15);
 }
 
 .post-date {
     font-weight: 900;
-    @include font-size(16);
+    @include font-size(15);
     text-transform: uppercase;
     color: $clear;
     @include icon;
@@ -59,17 +54,25 @@ a.post-list__item {
     }
 }
 
-.post img{
-    max-width: 100%;
-    @include vendor(border-radius, 3px);
-
-    @media screen and (min-width: breakpoint($main-width)){
-        max-width: 130%;
-        position: relative;
-        left: -15%;
+.post-content > .img  {
+    @include rems(margin-top, 8);
+    @include rems(margin-bottom, 8);
+    text-align: center;
+    img{
+        margin: 0 auto;
+        width: 100%;
+        &.small {
+            @include rems(max-width, $main-width);
+            @media screen and (min-width: breakpoint($main-width)) {
+                @include vendor(border-radius, 3px);
+            }
+        }
+        &.big {
+            @include rems(max-width, $large-width);
+            @media screen and (min-width: breakpoint($large-width)) {
+                @include vendor(border-radius, 3px);
+            }
+        }
+        &.huge {}
     }
-}
-
-.post-meta {
-    @include rems(margin-top, 22);
 }

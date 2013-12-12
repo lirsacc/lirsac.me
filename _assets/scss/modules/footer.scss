@@ -28,8 +28,8 @@ footer{
 
 .footer__link {
     @include font-size(20);
-    @include rems(padding-right, 10);
     position: relative;
+    @include rems(padding-right, 10);
     display: inline-block;
     &:last-of-type { padding-right: 0; }
     @include link-color($clear);
@@ -58,8 +58,8 @@ footer{
     &::after {
       position: absolute;
       content: attr(data-tooltip);
-      @include font-size(11);
-      font-weight: 700;
+      @include font-size(13);
+      font-weight: 300;
       display: block;
       @include rems(padding, 0, 6);
       @include block-height(28);

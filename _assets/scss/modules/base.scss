@@ -5,7 +5,7 @@
 //  ===============================================
 
 * {
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: subpixel-antialiased;
     -moz-osx-font-smoothing: grayscale;
 
     @extend %border-box;
@@ -24,7 +24,7 @@ a {
                         background 0.4s ease-in-out);
     text-decoration: none;
     @include link-color($accent);
-    font-weight: bold;
+    font-weight: 400;
     &:hover {
         color: $accent-2;
     }
@@ -45,17 +45,17 @@ body {
     position: relative;
     min-height: 100%;
     @include rems(padding-bottom, $footer-height);
+    @include rems(padding-top, $header-height);
     background: $bg;
     font-family: $font-family-sans;
+    font-weight: $main-font-weight;
     color: $gray;
 }
 
 .content{
-    @extend %center;
     height: auto;
     @include font-size($main-font-size);
     @include line-height($baseline, $main-font-size);
-    position: relative;
 }
 
 h1, h2{

@@ -80,13 +80,23 @@ module.exports = (grunt) ->
                 max_line_length:
                     level: "warn"
                     value: 80
+        concat:
+            options:
+                banner: "<%= banner %>"
+                stripBanners: true
+            jsdev:
+                src: ["<%= cfg.bower %>/headroom.js/dist/headroom.js",
+                      "<%= cfg.assets_target %>/js/app.js"]
+                dest: "<%= cfg.assets_target %>/js/app.js"
+
 
         uglify:
             build:
                 options:
                     banner: "<%= cfg.banner %>"
                     preserveComments: false
-                files: "<%= cfg.assets_target %>/js/app.js": "<%= cfg.assets_target %>/js/app.js"
+                files: "<%= cfg.assets_target %>/js/app.js": ["<%= cfg.bower %>/headroom.js/dist/headroom.js",
+                                                              "<%= cfg.assets_target %>/js/app.js"]
 
         copy:
             assets:
@@ -113,10 +123,10 @@ module.exports = (grunt) ->
                 tasks: ["copy:assets"]
             style:
                 files: ["<%= cfg.assets_src %>/scss/**/*.scss"]
-                tasks: ["sass:dev"]
+                tasks: ["scsslint", "sass:dev"]
             js:
                 files: ["<%= cfg.assets_src %>/coffee/{*,**}.coffee"]
-                tasks: ["coffelint", "coffee:dev"]
+                tasks: ["coffeelint", "coffee:dev", "concat:jsdev"]
             jekyll:
                 files: ["_posts/{*,**}.{md,markdown}",
                         "{_layouts,_includes}/*.html",
@@ -164,7 +174,7 @@ module.exports = (grunt) ->
 
     grunt.registerTask "dev", ["clean:build",
                                "scsslint", "sass:dev",
-                               "coffeelint", "coffee:dev",
+                               "coffeelint", "coffee:dev", "concat:jsdev",
                                "copy:assets",
                                "jekyll:dev"]
 
