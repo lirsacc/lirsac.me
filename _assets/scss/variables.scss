@@ -17,6 +17,7 @@ $clear: #c8ccd2;
 $light: #eaeef0;
 
 $accent: #2a94d6;
+$accent-2: #ac4449;
 
 $linkedin-color: #0e76a8;
 $twitter-color: #00acee;
@@ -28,10 +29,11 @@ $rss-color: #ee802f;
 // DIMENSIONS
 // ---------------------------------
 
-$main-width: 640;
+$main-width: 720;
 
 $header-height: 64;
 $header-height-with-cover: 256;
+$header-height-with-huge-cover: 512;
 
 $footer-height: 64;
 
@@ -43,6 +45,7 @@ $main-font-size: 18;
 $baseline: 28;
 $font-family-sans: 'Source Sans Pro', 'Open Sans', Arial, sans-serif;
 $font-family-serif: 'Merriweather', Georgia, serif;
+$font-family-code: 'Inconsolata', monospace;
 
 @font-face {
   font-family: "icons";

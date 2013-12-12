@@ -8,7 +8,7 @@ cover: http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rack
 <div id="post-list" class="post-list">
     {% for post in site.posts %}
         <a href="{{ post.url }}" class="post-list__item">
-            <div class="post-date">{{ post.date | date_to_string }}</div>
+            <div class="post-date">{{ post.date | date: "%d %B %Y" }}</div>
             <h2 class="post-title">{{ post.title }}</h2>
             <div class="post-preview">{{ post.excerpt }}</div>
         </a>

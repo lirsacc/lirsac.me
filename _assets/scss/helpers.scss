@@ -109,15 +109,17 @@
 }
 
 @mixin icon() {
-    font-family: "icons" !important;
-    font-style: normal !important;
-    font-weight: normal !important;
-    font-variant: normal !important;
-    text-transform: none !important;
-    speak: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    &:before {
+        font-family: "icons" !important;
+        font-style: normal !important;
+        font-weight: normal !important;
+        font-variant: normal !important;
+        text-transform: none !important;
+        speak: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
 }
 
 @mixin icon-content($string) {
@@ -155,7 +157,7 @@
     margin: 0 auto;
     @include rems(max-width, $main_width);
     width: 100%;
-    padding: 0 2%;
+    padding: 0 3%;
     @media screen and (min-width: breakpoint($main-width)){
         padding: 0;
     }

@@ -9,16 +9,11 @@ footer{
   bottom: 0;
   width: 100%;
   @include block-height($footer-height);
-  @include rems(padding-top, $footer-height/4);
   background: $bg;
 }
 
 .footer__inner {
   @extend %center;
-}
-
-.footer__links, .footer__credits {
-  @include rems(padding, 8, 0);
 }
 
 .footer__credits {
@@ -39,9 +34,7 @@ footer{
     &:last-of-type { padding-right: 0; }
     @include link-color($clear);
     text-decoration: none;
-    &:before {
-        @include icon;
-    }
+    @include icon;
     &.github {
         &:hover { color: $github-color; }
         @include icon-content("\e000");

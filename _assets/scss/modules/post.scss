@@ -1,0 +1,75 @@
+//  ===============================================
+//
+//  Post module
+//
+//  ===============================================
+
+
+// Post listing on front page
+
+.post-list {
+    font-family: $font-family-sans;
+}
+
+.post-list__item {
+    @include rems(margin, 36, 0);
+    display: block;
+}
+
+a.post-list__item {
+    @include link-color($gray);
+    text-decoration: none;
+}
+
+// Post items
+
+.post-title, .post-preview, .post-date {
+    margin: 0;
+}
+
+.post-title {
+    font-weight: 900;
+    @include font-size(30);
+}
+
+.post-preview, .post-content {
+    font-weight: 400;
+    @include rems(margin, 3, 0);
+    font-family: $font-family-serif;
+}
+
+.post-preview {
+    @include font-size(17);
+    p {
+        @include rems(margin, 8, 0);
+        padding: 0;
+    }
+}
+
+.post-date {
+    font-weight: 900;
+    @include font-size(16);
+    text-transform: uppercase;
+    color: $clear;
+    @include icon;
+    @include icon-content("\e024");
+    &:before {
+        @include font-size(14);
+        @include rems(padding-right, 8);
+    }
+}
+
+.post img{
+    max-width: 100%;
+    @include vendor(border-radius, 3px);
+
+    @media screen and (min-width: breakpoint($main-width)){
+        max-width: 130%;
+        position: relative;
+        left: -15%;
+    }
+}
+
+.post-meta {
+    @include rems(margin-top, 22);
+}

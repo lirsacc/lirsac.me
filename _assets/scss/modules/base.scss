@@ -22,6 +22,12 @@ a {
     @include transition(color 0.4s ease-in-out,
                         opacity 0.4s ease-in-out,
                         background 0.4s ease-in-out);
+    text-decoration: none;
+    @include link-color($accent);
+    font-weight: bold;
+    &:hover {
+        color: $accent-2;
+    }
 }
 
 html {
@@ -31,7 +37,7 @@ html {
 
 @media screen and (max-width: breakpoint(480)) {
     html {
-        font-size: .9*$font-base#{px};
+        font-size: .95*$font-base#{px};
     }
 }
 
@@ -46,7 +52,6 @@ body {
 
 .content{
     @extend %center;
-    @include rems(margin-top, 42);
     height: auto;
     @include font-size($main-font-size);
     @include line-height($baseline, $main-font-size);
