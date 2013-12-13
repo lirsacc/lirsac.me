@@ -10,6 +10,11 @@ module.exports = (grunt) ->
         bower: "bower_components"
         tmp: ".tmp"
 
+    javascriptSources = [   "<%= cfg.bower %>/headroom.js/dist/headroom.js",
+                            "<%= cfg.bower %>/headroom.js/dist/jQuery.headroom.js",
+                            "<%= cfg.bower %>/unveil/jquery.unveil.js",
+                            "<%= cfg.assets_target %>/js/app.js"]
+
     grunt.initConfig
         cfg: cfg,
         pkg: grunt.file.readJSON "package.json"
@@ -53,7 +58,7 @@ module.exports = (grunt) ->
             dev:
                 options:
                     join: true
-                    sourceMap: true
+                    # sourceMap: true
                 files: "<%= cfg.assets_target %>/js/app.js": ["<%= cfg.assets_src %>/coffee/{*,**}.coffee"]
             build:
                 options:
@@ -85,8 +90,7 @@ module.exports = (grunt) ->
                 banner: "<%= banner %>"
                 stripBanners: true
             jsdev:
-                src: ["<%= cfg.bower %>/headroom.js/dist/headroom.js",
-                      "<%= cfg.assets_target %>/js/app.js"]
+                src: javascriptSources
                 dest: "<%= cfg.assets_target %>/js/app.js"
 
 
@@ -95,8 +99,7 @@ module.exports = (grunt) ->
                 options:
                     banner: "<%= cfg.banner %>"
                     preserveComments: false
-                files: "<%= cfg.assets_target %>/js/app.js": ["<%= cfg.bower %>/headroom.js/dist/headroom.js",
-                                                              "<%= cfg.assets_target %>/js/app.js"]
+                files: "<%= cfg.assets_target %>/js/app.js": javascriptSources
 
         copy:
             assets:
@@ -146,18 +149,18 @@ module.exports = (grunt) ->
         connect:
             serve:
                 options:
-                    port: 8080
+                    port: 9090
                     keepalive: true
                     hostname: "localhost"
                     base: "<%= cfg.jekyll_target %>"
-                    open: true
+                    # open: true
             debug:
                 options:
                     port: 9090
                     keepalive: true
                     hostname: "localhost"
                     base: "_site"
-                    open: true
+                    # open: true
                     debug: true
                     livereload: 1337
 

@@ -30,21 +30,21 @@ header {
     padding: 0;
 }
 
-.header__name {
-    @include font-size(20);
-    font-weight: 900;
+.header__name, .header__nav-item {
     @include link-color($accent-2);
     text-decoration: none;
     border: none;
+    font-weight: 900;
+}
+
+.header__name {
+    @include font-size(20);
 }
 
 .header__nav-item{
-    text-decoration: none;
     @include font-size(13);
     text-transform: uppercase;
-    font-weight: 900;
     display: inline-block;
-    @include vendor(border-radius, 2px);
     @include rems(padding, 0, 10);
     @include rems(margin, 0, 4);
 

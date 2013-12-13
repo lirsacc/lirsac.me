@@ -9,15 +9,15 @@ You'll find this post in your `_posts` directory - edit this post and re-build (
 To add new posts, simply add a file in the `_posts` directory that follows the convention: YYYY-MM-DD-name-of-post.ext.
 
 <div class="img">
-    <img class="small" src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528c8f581f45e_1.JPG" alt="">
+    <img class="small" data-src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528c8f581f45e_1.JPG" alt="">
 </div>
 
 <div class="img">
-    <img class="huge" src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528c8f581f45e_1.JPG" alt="">
+    <img class="huge" data-src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528cba6de78e5_1.JPG" alt="">
 </div>
 
 <div class="img">
-    <img class="big" src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528c8f581f45e_1.JPG" alt="">
+    <img class="big" data-src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528aedf6ec3df_1.JPG" alt="">
 </div>
 
 Jekyll also offers powerful support for code snippets:

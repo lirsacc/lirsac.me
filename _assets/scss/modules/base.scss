@@ -35,11 +35,11 @@ html {
     font-size: $font-base#{px};
 }
 
-@media screen and (max-width: breakpoint(480)) {
-    html {
-        font-size: .95*$font-base#{px};
-    }
-}
+// @media screen and (max-width: breakpoint(480)) {
+//     html {
+//         font-size: .95*$font-base#{px};
+//     }
+// }
 
 body {
     position: relative;
