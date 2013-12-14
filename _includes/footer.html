@@ -1,32 +1,7 @@
 <footer>
     <div class="footer__inner">
-        <div class="footer__credits">Charles Lirsac - 2013</div>
-        <div class="footer__links">
-            {% if site.social_github %}
-                <a href="https://github.com/{{ site.social_github }}/"
-                   class="footer__link github"
-                   data-tooltip="See my code on Github..."></a>
-            {% endif %}
-            {% if site.social_linkedin %}
-                <a href="http://www.linkedin.com/in/{{ site.social_linkedin }}"
-                   class="footer__link linkedin"
-                   data-tooltip="Connect on Linkedin..."></a>
-            {% endif %}
-            {% if site.social_twitter %}
-                <a href="https://twitter.com/@{{ site.social_twitter }}"
-                   class="footer__link twitter"
-                   data-tooltip="Give me a shout on Twitter..."></a>
-            {% endif %}
-            {% if site.social_google-plus %}
-                <a href="https://plus.google.com/+{{ site.social_google-plus }}/"
-                   class="footer__link google-plus"
-                   data-tooltip="Connect on Google+..."></a>
-            {% endif %}
-            {% if site.social_email %}
-                <a href="mailto:{{ site.social_email }}/"
-                   class="footer__link email"
-                   data-tooltip="Send an e-mail..."></a>
-            {% endif %}
-        </div>
+        Built by Charles with these great tools.
+        <br>
+        {% include social.html %}
     </div>
 </footer>

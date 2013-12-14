@@ -4,83 +4,25 @@
 //
 //  ===============================================
 
-footer{
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  @include block-height($footer-height);
-  background: $bg;
-}
-
 .footer__inner {
-  @extend %center;
-}
-
-.footer__credits {
-    font-weight: 400;
-    color: $clear;
-    float: left;
-    @include font-size(16);
-}
-.footer__links {
-  float: right;
-}
-
-.footer__link {
-    @include font-size(20);
-    position: relative;
-    @include rems(padding-right, 10);
-    display: inline-block;
-    &:last-of-type { padding-right: 0; }
-    @include link-color($clear);
-    text-decoration: none;
-    @include icon;
-    &.github {
-        &:hover { color: $github-color; }
-        @include icon-content("\e000");
+    margin-top: 1.5em;
+    text-align: left;
+    @media screen and (min-width: breakpoint($w-main)){
+        margin-top: 2em;
     }
-    &.linkedin {
-        &:hover { color: $linkedin-color; }
-        @include icon-content("\e01d");
+    @media screen and (min-width: breakpoint($w-large)){
+        margin-top: 3em;
     }
-    &.twitter {
-        &:hover { color: $twitter-color; }
-        @include icon-content("\e002");
-    }
-    &.google-plus {
-        &:hover { color: $google-plus-color; }
-        @include icon-content("\e01a");
-    }
-    &.email {
-        &:hover { color: $email-color; }
-        @include icon-content("\e012");
-    }
-    &::after {
-      position: absolute;
-      content: attr(data-tooltip);
-      @include font-size(13);
-      font-weight: 300;
-      display: block;
-      @include rems(padding, 0, 6);
-      @include block-height(28);
-      background: black(.4);
-      @include rems(width, 180);
-      text-align: center;
-      @include vendor(border-radius, 3px);
-      @include rems(top, -96);
-      opacity: 0;
-      visibility: hidden;
-      @include rems(left, -80);
-      @include transition(top .4s ease-in-out,
-                          opacity .4s ease-in-out);
-      color: $bg;
-    }
-    &:hover {
-      &::after {
-        @include rems(top, -26);
-        opacity: 1;
-        visibility: visible;
-        color: $bg;
-      }
+    padding-top: .6em;
+    @extend %center;
+    font-weight: 700;
+    color: $c-fg-clear;
+    font-size: .85em;
+    line-height: 2.5em;
+    a.social {
+      color: $c-fg-clear;
+      font-size: 1.5em;
+      margin-right: .3em;
+      &:last-of-type { margin-right: 0; }
     }
 }

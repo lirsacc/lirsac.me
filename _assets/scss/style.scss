@@ -1,25 +1,178 @@
-//  ===============================================
-//
-//  Main file which will be compiled,
-//  only use imports here
-//
+//  BOWER IMPORTS
 //  ===============================================
 
+@import "../../bower_components/normalize-scss/_normalize";
 
-//  Bower imports
-@import "../../bower_components/normalize-scss/_normalize.scss";
-@import "../../bower_components/bourbon/app/assets/stylesheets/_bourbon.scss";
+// COLORS
 
-//  Shared files
-@import "variables.scss";
-@import "helpers.scss";
+$c-bg: #fff;
+$c-fg: #0c1b21;
+$c-fg-clear: #c8ccd2;
+$c-fg-light: #eaeef0;
+
+$c-accent: #55aeea;
+$c-accent-2: #f15501;
+
+$c-linkedin: #0e76a8;
+$c-twitter: #00acee;
+$c-github: #171515;
+$google-plus-color: #dd4b39;
+$c-email: #5ba525;
+$c-rss: #ee802f;
+
+// DIMENSIONS
+
+$w-small: 370;
+$w-main: 640;
+$w-large: 900;
+
+$h-header-link: 28;
+$h-header: 36;
+
+$h-footer: 96;
+
+// TYPOGRAPHY
+
+$fs-base: 10;
+
+$fs-main: 16;
+
+$baseline: 28;
+$fw-main: 400;
+
+$ff-sans: 'Open Sans', 'Source Sans Pro', sans-serif;
+$ff-mono: 'Source Code Pro', monospace;
+
+@font-face {
+    font-family: "icons";
+    src: url("../fonts/icons.eot");
+    src: url("../fonts/icons.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/icons.woff") format("woff"),
+        url("../fonts/icons.ttf") format("truetype"),
+        url("../fonts/icons.svg#icons") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+//  HELPERS
+//  ===============================================
+
+@function black($opacity) {
+    @return rgba(0, 0, 0, $opacity);
+}
+
+@function white($opacity) {
+    @return rgba(255, 255, 255, $opacity);
+}
+
+@function ems($target, $context: $fs-base) {
+    @return ($target/$context)#{em};
+}
+
+@function rems($target) {
+    @return ($target/$fs-base)#{rem};
+}
+
+@function breakpoint($px, $context : 16) {
+    @return ($px/$context)#{em};
+}
+
+//  MIXINS
+//  ===============================================
+
+// Adapted rem/em fallback from : http://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/
+
+@mixin rems($property, $values...) {
+    $px-values: null;
+    $rem-values: null;
+
+    @each $value in $values {
+        $px-values: append($px-values, unquote(pxs($value)), space);
+        $rem-values: append($rem-values, unquote(rems($value)), space);
+    }
+
+    #{$property}: $px-values;
+    #{$property}: $rem-values;
+}
+
+@mixin ems($property, $context, $values...) {
+    $px-values: null;
+    $em-values: null;
+
+    @each $value in $values {
+        $px-values: append($px-values, unquote(pxs($value)), space);
+        $em-values: append($em-values, unquote(ems($value, $context)), space);
+    }
+
+    #{$property}: $px-values;
+    #{$property}: $em-values;
+}
+
+@mixin font-size($size, $context: 0) {
+    font-size: $size#{px};
+    @if $context == 0 {
+        font-size: rems($size);
+    } @else {
+        font-size: ems($size, $context);
+    }
+}
+
+@mixin line-height($height, $context : $fs-base) {
+    @include ems(line-height, $context, $height)
+}
+
+@mixin icon() {
+    &:before {
+        font-family: "icons" !important;
+        font-style: normal !important;
+        font-weight: normal !important;
+        font-variant: normal !important;
+        text-transform: none !important;
+        speak: none;
+        line-height: 1;
+    }
+}
+
+.icon { @include icon(); }
+
+@mixin centered($width) {
+    margin-left: auto;
+    margin-right: auto;
+    @include rems(max-width, $width);
+    width: 100%;
+    padding-left: 3%;
+    padding-right: 3%;
+    @media screen and (min-width: breakpoint($width)) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+//  SILENT CLASSES
+//  ===============================================
+
+%clearfix {
+    *zoom: 1;
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after { clear: both; }
+}
+
+%center { @include centered($w-main); }
+%small-center { @include centered($w-small); }
+%large-center { @include centered($w-large); }
 
 //  Components
+@import "components/social_links";
 
 //  Modules
-@import "modules/base.scss";
-@import "modules/header.scss";
-@import "modules/footer.scss";
-@import "modules/post.scss";
+@import "modules/base";
+@import "modules/header";
+@import "modules/footer";
 
-@import "modules/pygments.scss";
+@import "modules/post";
+
+@import "modules/pygments";

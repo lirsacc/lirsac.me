@@ -1,0 +1,16 @@
+---
+layout: default
+body_class: blog
+title: Posts
+---
+
+<ul class="posts">
+    {% for post in site.posts %}
+    <li class="post">
+        <a href="{{ post.url }}">
+            <h3>{{ post.title }}</h3>
+            <span class="meta">{{ post.date | date_to_long_string }}</span>
+        </a>
+    </li>
+    {% endfor %}
+</ul>

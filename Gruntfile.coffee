@@ -10,12 +10,14 @@ module.exports = (grunt) ->
         bower: "bower_components"
         tmp: ".tmp"
 
-    javascriptSources = [   "<%= cfg.bower %>/headroom.js/dist/headroom.js",
-                            "<%= cfg.bower %>/headroom.js/dist/jQuery.headroom.js",
-                            "<%= cfg.bower %>/unveil/jquery.unveil.js",
+        host: "localhost"
+        port: 9090
+
+    javascriptSources = [   "<%= cfg.bower %>/unveil/jquery.unveil.js",
                             "<%= cfg.assets_target %>/js/app.js"]
 
     grunt.initConfig
+
         cfg: cfg,
         pkg: grunt.file.readJSON "package.json"
         banner: "/*! [<%= pkg.author.name %>] : <%= pkg.name %> - v<%= pkg.version %>:<%= grunt.template.today('yyyy-mm-dd') %> */"
@@ -85,20 +87,29 @@ module.exports = (grunt) ->
                 max_line_length:
                     level: "warn"
                     value: 80
+
+        autoprefixer:
+            options:
+                browsers: ['last 2 version', '> 5%']
+            simple:
+                src: "<%= cfg.assets_target %>/css/style.css"
+                dest: "<%= cfg.assets_target %>/css/style.css"
+            build:
+                src: "<%= cfg.assets_target %>/css/style.css"
+                dest: "<%= cfg.assets_target %>/css/style.css"
+
         concat:
             options:
                 banner: "<%= banner %>"
                 stripBanners: true
-            jsdev:
+            js:
                 src: javascriptSources
                 dest: "<%= cfg.assets_target %>/js/app.js"
 
-
         uglify:
-            build:
-                options:
+            options:
                     banner: "<%= cfg.banner %>"
-                    preserveComments: false
+            build:
                 files: "<%= cfg.assets_target %>/js/app.js": javascriptSources
 
         copy:
@@ -112,11 +123,15 @@ module.exports = (grunt) ->
             options:
                 dest: "<%= cfg.jekyll_target %>"
             build:
-                drafts: false
-                future: false
+                options:
+                    config: "_config.yml"
+                    drafts: false
+                    future: false
             dev:
-                drafts: true
-                future: true
+                options:
+                    config: "_config.dev.yml"
+                    drafts: true
+                    future: true
 
         watch:
             options:
@@ -126,16 +141,18 @@ module.exports = (grunt) ->
                 tasks: ["copy:assets"]
             style:
                 files: ["<%= cfg.assets_src %>/scss/**/*.scss"]
-                tasks: ["scsslint", "sass:dev"]
+                tasks: ["scsslint", "sass:dev", "autoprefixer:simple"]
             js:
                 files: ["<%= cfg.assets_src %>/coffee/{*,**}.coffee"]
-                tasks: ["coffeelint", "coffee:dev", "concat:jsdev"]
+                tasks: ["coffeelint", "coffee:dev", "concat:js"]
             jekyll:
                 files: ["_posts/{*,**}.{md,markdown}",
                         "{_layouts,_includes}/*.html",
+                        "{blog,404}/{*.html,*.md,*.markdown}",
                         "_plugins/{*,**}.rb",
                         "assets/{*,**}",
-                        "_config.yml"]
+                        "_data/*.yml",
+                        "_config.yml", "index.{html,md,markdown}"]
                 tasks: ["jekyll:dev", "notify:jekyll"]
                 options:
                     livereload: 1337
@@ -149,17 +166,17 @@ module.exports = (grunt) ->
         connect:
             serve:
                 options:
-                    port: 9090
+                    port: "<%= cfg.port %>"
                     keepalive: true
-                    hostname: "localhost"
+                    hostname: "<%= cfg.hostname %>"
                     base: "<%= cfg.jekyll_target %>"
                     # open: true
             debug:
                 options:
-                    port: 9090
+                    port: "<%= cfg.port %>"
                     keepalive: true
-                    hostname: "localhost"
-                    base: "_site"
+                    hostname: "<%= cfg.hostname %>"
+                    base: "<%= cfg.jekyll_target %>"
                     # open: true
                     debug: true
                     livereload: 1337
@@ -175,14 +192,15 @@ module.exports = (grunt) ->
                 tabSize: 4
             files: ["bower.json", "package.json"]
 
+
     grunt.registerTask "dev", ["clean:build",
-                               "scsslint", "sass:dev",
-                               "coffeelint", "coffee:dev", "concat:jsdev",
+                               "scsslint", "sass:dev", "autoprefixer:simple"
+                               "coffeelint", "coffee:dev", "concat:js",
                                "copy:assets",
                                "jekyll:dev"]
 
     grunt.registerTask "build", ["clean:build",
-                                 "scsslint", "sass:build",
+                                 "scsslint", "sass:build", "autoprefixer:build"
                                  "coffeelint", "coffee:build", "uglify:build",
                                  "copy:assets",
                                  "jekyll:build"

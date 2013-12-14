@@ -1,0 +1,7 @@
+- slug: blog
+  text: Blog
+  class: blog
+
+- slug: resume
+  text: Resume
+  class: resume

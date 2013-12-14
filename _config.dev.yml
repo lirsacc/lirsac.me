@@ -1,5 +1,5 @@
 destination: _site/
-production: true
+production: false
 
 permalink: /blog/:title/
 excerpt_separator: "\n\n"
@@ -9,8 +9,6 @@ title: Chrly
 
 pygments: true
 
-# google_analytics_id:
-
-url: http://lirsac.me/
+url: http://localhost:9090/
 
 exclude: ['readme.md', 'Gemfile', 'node_modules', '.gitignore', 'Gruntfile.js', 'Gruntfile.coffee', 'config.rb', 'package.json', 'favicon.psd', '.sass-cache', 'package.json', 'bower.json', '.bowerrc', 'bower_components', '_assets', '.jekyll']

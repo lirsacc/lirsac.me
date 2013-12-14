@@ -4,60 +4,153 @@
 //
 //  ===============================================
 
-* {
-    -webkit-font-smoothing: subpixel-antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
-    @extend %border-box;
-
-    &:after,
-    &:before {
-        margin: 0;
-        padding: 0;
-        @extend %border-box;
+html {
+    &, * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        box-sizing: border-box;
     }
+    font-size: $fs-base#{px};
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: $c-bg;
+    color: $c-fg;
+    font-family: $ff-sans;
+    font-weight: $fw-main;
+    @include font-size($fs-main);
+    @include line-height($baseline, $fs-main);
+    border-top: 8px solid $c-fg-light;
+    padding-top: 1em;
+    @media screen and (min-width: breakpoint($w-small)){
+        padding-top: 2em;
+    }
+    @media screen and (min-width: breakpoint($w-main)){
+        padding-top: 2.5em;
+    }
+    @media screen and (min-width: breakpoint($w-large)){
+        padding-top: 3em;
+    }
+}
+
+.main {
+    height: auto;
+    @include font-size($fs-main);
+    @include line-height($baseline, $fs-main);
 }
 
 a {
-    @include transition(color 0.4s ease-in-out,
-                        opacity 0.4s ease-in-out,
-                        background 0.4s ease-in-out);
+    &, * { transition: 0.1s ease-in-out; }
     text-decoration: none;
-    @include link-color($accent);
-    font-weight: 400;
+    font-weight: 700;
+    color: $c-accent;
     &:hover {
-        color: $accent-2;
+        color: $c-accent-2;
     }
 }
 
-html {
-    height: 100%;
-    font-size: $font-base#{px};
+hr {
+    border: 0;
+    border-top: 1px solid $c-fg-light;
+    border-bottom: 1px solid white;
 }
 
-// @media screen and (max-width: breakpoint(480)) {
-//     html {
-//         font-size: .95*$font-base#{px};
-//     }
-// }
-
-body {
-    position: relative;
-    min-height: 100%;
-    @include rems(padding-bottom, $footer-height);
-    @include rems(padding-top, $header-height);
-    background: $bg;
-    font-family: $font-family-sans;
-    font-weight: $main-font-weight;
-    color: $gray;
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
 }
 
-.content{
-    height: auto;
-    @include font-size($main-font-size);
-    @include line-height($baseline, $main-font-size);
+h3, h4, h5, h6 {
+    font-size: 1em;
 }
 
-h1, h2{
-    font-weight: 900;
+h1 {
+    font-size: ems(21, $fs-main);
+}
+
+h2 {
+    font-size: ems(18, $fs-main)
+}
+
+p > code {
+    display: inline;
+    background: $c-fg-light;
+    border: $c-fg-clear 1px solid;
+    border-radius: 2px;
+    padding: 1px 8px;
+}
+
+.meta {
+    color: $c-fg-clear;
+    font-size: .95em;
+    font-weight: 600;
+}
+
+blockquote {
+    p {
+        margin: 0;
+        padding-top: .4em;
+        padding-bottom: .4em;
+        padding-right: .6em;
+        padding-left: .6em;
+        opacity: .6;
+        font-style: italic;
+        font-size: 1.25em;
+        &.author {
+            font-size: 1em;
+            font-weight: bold;
+            padding-top: 0;
+            padding-botom: 0;
+        }
+    }
+    border-left: 8px solid $c-fg-light;
+    @media screen and (min-width: breakpoint($w-main)){
+        border-left: 8px solid $c-fg-light;
+    }
+}
+
+.content {
+
+    hr,
+    h1, h2, h3, h4, h5, h6,
+    > p, > ul, > ol, > blockquote {
+        @extend %center;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+        margin-bottom: .6em;
+        @media screen and (min-width: breakpoint($w-main)){
+            margin-bottom: .8em;
+        }
+    }
+
+    > p, > ul, > ol, > blockquote, > .highlight {
+        margin-top: 0;
+        margin-bottom: .75em;
+        @media screen and (min-width: breakpoint($w-main)){
+            margin-bottom: 1em;
+        }
+    }
+
+    ul, ol { list-style-position: inside; }
+
+    > .highlight {
+        @extend %center;
+        @media screen and (min-width: breakpoint($w-main)) {
+            border-radius: 2px;
+        }
+        code, pre {
+            margin: 0;
+            padding: 0;
+        }
+        pre {
+            @include rems(padding, 8, 14);
+        }
+    }
+
 }

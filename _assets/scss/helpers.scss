@@ -3,12 +3,13 @@
 //  General helpers used throughout all modules
 //  and components
 //
+//  Some depends on default values set in
+//  variables.scss
+//
 //  ===============================================
 
 //  FUNCTIONS
 //  ---------------------------------
-
-//  Colors
 
 @function black($opacity) {
     @return rgba(0, 0, 0, $opacity);
@@ -21,10 +22,10 @@
 //  Dimensions
 
 @function rems($target) {
-    @return ($target/$font-base)#{rem};
+    @return ($target/$fs-base)#{rem};
 }
 
-@function ems($target, $context: $font-base) {
+@function ems($target, $context: $fs-base) {
     @return ($target/$context)#{em};
 }
 
@@ -36,16 +37,38 @@
     @return ($px/$context)#{em};
 }
 
+@function modular-scale($ratio, $base, $up) {
+    $r: $base;
+    @if $up >= 0 {
+        @for $i from 1 through $up {
+            $r: $r * $ratio;
+        }
+    } @else {
+        @for $i from $up to 0 {
+            $r: $r / $ratio;
+        }
+    }
+    @return $r;
+}
+
+@function ms-m($up) {
+    @return modular-scale($ratio, $fs-main, $up);
+}
+
+@function ms-i($up) {
+    @return modular-scale($ratio, $fs-important, $up);
+}
+
+@function ms-b($up) {
+    @return modular-scale($ratio, $baseline, $up);
+}
+
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+}
+
 //  MIXINS
 //  ---------------------------------
-
-@mixin vendor($property, $value) {
-    -webkit-#{$property}: $value;
-    -moz-#{$property}: $value;
-    -ms-#{$property}: $value;
-    -o-#{$property}: $value;
-    #{$property}: $value;
-}
 
 // Embossing mixins taken from : http://sachagreif.com/useful-sass-mixins/
 
@@ -99,12 +122,16 @@
 
 //  Typography
 
-@mixin font-size($f) {
-    font-size: $f#{px};
-    font-size: rems($f);
+@mixin font-size($size, $context: 0) {
+    font-size: $size#{px};
+    @if $context == 0 {
+        font-size: rems($size);
+    } @else {
+        font-size: ems($size, $context);
+    }
 }
 
-@mixin line-height($height, $context : $font-base) {
+@mixin line-height($height, $context : $fs-base) {
     @include ems(line-height, $context, $height)
 }
 
@@ -122,15 +149,38 @@
     }
 }
 
-@mixin icon-content($string) {
-    &:before { content: $string; }
+@mixin icon-content($string, $size: 0, $right: 0) {
+    &:before {
+        content: $string;
+        @if $size > 0 {
+            @include font-size($size);
+        }
+        @if $right > 0 {
+            @include rems(padding-right, $right);
+        }
+    }
+
 }
 
-
-@mixin link-color($color) {
+@mixin force-link-color($color) {
     color: $color;
     &:visited {
         color: $color;
+    }
+}
+
+// Positionning
+
+@mixin centered($width) {
+    margin-left: auto;
+    margin-right: auto;
+    @include rems(max-width, $width);
+    width: 100%;
+    padding-left: 3%;
+    padding-right: 3%;
+    @media screen and (min-width: breakpoint($width)) {
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
@@ -150,15 +200,21 @@
 }
 
 %border-box {
-    @include vendor(box-sizing, border-box)
+    box-sizing: border-box;
 }
 
 %center {
-    margin: 0 auto;
-    @include rems(max-width, $main-width);
-    width: 100%;
-    padding: 0 3%;
-    @media screen and (min-width: breakpoint($main-width)) {
-        padding: 0;
-    }
+    @include centered($w-main);
+}
+
+%small-center {
+    @include centered($w-small);
+}
+
+%large-center {
+    @include centered($w-large);
+}
+
+%wide-center {
+    @include centered($w-wide);
 }

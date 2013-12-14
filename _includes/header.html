@@ -1,9 +1,9 @@
-<header>
-    <div class="header__inner">
-        <a class="header__name" href="{{ site.url }}">{{ site.title }}</a>
-        <nav class="header__nav">
-            <a class="header__nav-item home" href="{{ site.url }}">Home</a>
-            <a class="header__nav-item about" href="{{ site.url }}about/">About</a>
-        </nav>
-    </div>
+<header class="main-header">
+    <nav class="header__inner">
+        <a href="{{ site.url }}" class="name">Charles Lirsac</a>
+        {% for link in site.data.header %}
+        <a href="{{ site.url }}{% if link.slug != nil %}{{ link.slug }}/{% endif %}"
+           class="{{ link.class }}{% if link.class == page.body_class %} header__link--active{% endif %}">{{ link.text }}</a>
+        {% endfor %}
+    </nav>
 </header>

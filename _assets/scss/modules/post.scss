@@ -4,75 +4,70 @@
 //
 //  ===============================================
 
-
-// Post listing on front page
-
-.post-list {
-}
-
-.post-list__item {
-    @include rems(margin, 36, 0);
-    display: block;
-}
-
-a.post-list__item {
-    @include link-color($gray);
-    text-decoration: none;
-}
-
-// Post items
-
-.post-title, .post-content > p {
+.post-header {
     @extend %center;
-}
-
-.post-title {
-    @extend %center;
-    @include font-size(36);
-    font-weight: 700;
-    @include line-height(42, 36);
-    @include rems(margin-top, 24);
-    @include rems(margin-top, 24);
-    // border-bottom: solid 2px $light;
-}
-
-.post-content > p {
-    @include rems(margin-top, 15);
-    @include rems(margin-bottom, 15);
-}
-
-.post-date {
-    font-weight: 900;
-    @include font-size(15);
-    text-transform: uppercase;
-    color: $clear;
-    @include icon;
-    @include icon-content("\e024");
-    &:before {
-        @include font-size(14);
-        @include rems(padding-right, 8);
+    margin-bottom: .75em;
+    @media screen and (min-width: breakpoint($w-main)){
+        margin-bottom: 1em;
     }
 }
 
-.post-content > .img  {
-    @include rems(margin-top, 8);
-    @include rems(margin-bottom, 8);
+.posts {
+    @extend %center;
+    list-style-type: none;
+}
+
+li.post {
+    color: $c-fg;
+    margin-bottom: .75em;
+    @media screen and (min-width: breakpoint($w-main)){
+        margin-bottom: 1em;
+    }
+    h3 {
+        color: $c-fg;
+    }
+    &:hover h3 {
+        color: $c-accent;
+    }
+}
+
+.post-img {
+    display: block;
+    position: relative;
+
+    padding: 0;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    @media screen and (min-width: breakpoint($w-main)){
+        margin-top: 3em;
+        margin-bottom: 3em;
+    }
+    cursor: pointer;
+
     text-align: center;
-    img{
+
+    img {
         margin: 0 auto;
+        padding: 0;
         width: 100%;
         &.small {
-            @include rems(max-width, $main-width);
-            @media screen and (min-width: breakpoint($main-width)) {
-                @include vendor(border-radius, 3px);
+            @include rems(max-width, $w-main);
+            @media screen and (min-width: breakpoint($w-main)) {
+                border-radius: 3px;
             }
         }
         &.big {
-            @include rems(max-width, $large-width);
-            @media screen and (min-width: breakpoint($large-width)) {
-                @include vendor(border-radius, 3px);
+            @include rems(max-width, $w-large);
+            @media screen and (min-width: breakpoint($w-large)) {
+                border-radius: 3px;
             }
         }
         &.huge {}
     }
+
+    .legend {
+        font-size: .85em;
+        opacity: .65;
+    }
+
 }
