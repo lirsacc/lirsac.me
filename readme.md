@@ -3,15 +3,14 @@ Jekyll based personnal blog/site.
 
 Theme currently in development.
 
-Roadmap
--------
+Left to do
+----------
 
-+ Fix margins
-+ Write home/about
-+ 404 page
-+ Back to top link
-+ Images, captions (and custom plugin ?)
-  + Add captions styling
+In no particular order:
+
++ Better readme
++ Image zooming & caption
+  + Add styling
+  + Add interaction
   + Add custom plugin to generate markup
-+ Simpleform ajax system
-+ Grunt task to push to gh-page branch OR deploy to s3
++ Refactor scss to make it lighter
