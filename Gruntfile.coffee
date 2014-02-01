@@ -27,6 +27,19 @@ module.exports = (grunt) ->
             build: ["<%= cfg.jekyll_target %>", "<%= cfg.tmp %>", "<%= cfg.assets_target %>"]
             dependencies: ["<%= cfg.bower %>", "node_modules", ".sass-cache"]
 
+        bump:
+            options:
+                files: ['package.json', 'bower.json']
+                commit: true,
+                commitMessage: 'Release v%VERSION%'
+                commitFiles: ['package.json', 'bower.json'] # '-a' for all files
+                createTag: true
+                tagName: 'v%VERSION%'
+                tagMessage: 'Version %VERSION%'
+                push: false
+                pushTo: 'origin'
+                gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d' # options to use with '$ git describe'
+
         sass:
             dev:
                 options:
@@ -186,11 +199,6 @@ module.exports = (grunt) ->
                 tasks: ["watch:jekyll", "watch:style", "watch:js", "connect:debug"]
                 options:
                     logConcurrentOutput: true
-
-        bump:
-            options:
-                tabSize: 4
-            files: ["bower.json", "package.json"]
 
 
     grunt.registerTask "dev", ["clean:build",

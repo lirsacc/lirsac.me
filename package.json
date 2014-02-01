@@ -1,6 +1,6 @@
 {
   "name": "chrly",
-  "version": "0.2.0",
+  "version": "2.0.0",
   "homepage": "",
   "author": {
     "name": "Charles Lirsac"
@@ -18,12 +18,12 @@
     "grunt-scss-lint": "0.0.3",
     "grunt-notify": "~0.2.16",
     "grunt-contrib-copy": "~0.4.1",
-    "grunt-bumpx": "~0.1.5",
     "grunt-coffeelint": "0.0.8",
     "grunt-contrib-coffee": "~0.7.0",
     "grunt-contrib-uglify": "~0.2.7",
     "grunt-contrib-concat": "~0.3.0",
-    "grunt-autoprefixer": "~0.6.4"
+    "grunt-autoprefixer": "~0.6.4",
+    "grunt-bump": "0.0.13"
   },
   "dependencies": {}
 }
