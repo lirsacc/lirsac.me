@@ -155,13 +155,14 @@ module.exports = (grunt) ->
                 files: ["<%= cfg.assets_src %>/coffee/{*,**}.coffee"]
                 tasks: ["coffeelint", "coffee:dev", "concat:js"]
             jekyll:
-                files: ["_posts/{*,**}.{md,markdown}",
+                files: ["{_posts,_drafts}/{*,**}.{html,md,markdown}",
                         "{_layouts,_includes}/*.html",
-                        "{blog,404}/{*.html,*.md,*.markdown}",
+                        "{blog,404}/*.{html,md,markdown}",
+                        "index.{html,md,markdown}",
                         "_plugins/{*,**}.rb",
                         "assets/{*,**}",
                         "_data/*.yml",
-                        "_config.yml", "index.{html,md,markdown}"]
+                        "_config.yml"]
                 tasks: ["jekyll:dev", "notify:jekyll"]
                 options:
                     livereload: 1337
