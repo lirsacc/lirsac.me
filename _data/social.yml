@@ -1,11 +1,11 @@
 - name: github
-  url: https://github.com/CharlesLirsac
+  url: https://github.com/lirsacc
 
 - name: twitter
   url: https://twitter.com/@lirsacc
 
 - name: linkedin
-  url: http://www.linkedin.com/in/
+  url: http://www.linkedin.com/in/lirsacc
 
 - name: email
   url: mailto:charles@lirsac.me
