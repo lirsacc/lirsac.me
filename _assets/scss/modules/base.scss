@@ -134,9 +134,6 @@ blockquote {
         @media screen and (min-width: breakpoint($w-main)){
             margin-top: 1.5em;
         }
-        &:first-of-type {
-            margin-top: 0;
-        }
     }
 
     > p, > ul, > ol, > blockquote, > .highlight {
