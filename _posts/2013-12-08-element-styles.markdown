@@ -34,13 +34,13 @@ Corned beef tri-tip pig fatback meatball brisket. Filet mignon tenderloin flank 
 
 ### Simple
 
-> This town deserves a better class of criminal and I'm gonna give it to them. Tell your men they work for me now. This is my city.
+> Salami rump tongue, meatloaf beef ribs turkey pastrami chuck. Fatback flank shankle ground round pork chop beef tail sausage pig venison spare ribs.
 
 ### With author name
 
 <blockquote>
-    <p>This town deserves a better class of criminal and I'm gonna give it to them. Tell your men they work for me now. This is my city.</p>
-    <p class="author">Marc Jacobs</p>
+    <p>Pork chop biltong pig, jerky fatback sirloin corned beef pork drumstick andouille jowl rump prosciutto sausage beef ribs landjaeger.</p>
+    <p class="author">Bacon doner boudin</p>
 </blockquote>
 
 ## Headings (this is h2)
