@@ -9,13 +9,13 @@ So... I am updating my personal site, though I hate introductory posts, so I'll 
 The name is Charles and I am currently taking a gap year from my Master's at [Centrale Lyon Engineering School][ecl] in France. I am a Backend Engineering Intern at [Stylight][stylight].
 
 This update was prompted by 2 things :
-+ I want to write again, I think last time I wrote for myself and not for school or internship search was a short story when I was 14. More generally, I'll try to share more and be less of an online introvert.
-+ I started experimenting with Jekyll and static only.
++ I want to start writing again. I think last time I wrote for myself and not for school or internship search was a short story when I was 14... time to catch up. It's also an effort to share more and be less of an online introvert.
++ I started experimenting with Jekyll and static only and want to experiment with it for a blog.
 
 ## About the site
 
 This site is built with [Jekyll][jekyll] and the build is managed with [Grunt][grunt], currently hosted on Amazon S3 (with Cloudfront and Route 53), the source is on [Github](https://github.com/lirsacc/lirsac.me).
-I am still uploading manually while I tinker with [Travis][travis] and [s3_website](https://github.com/laurilehmijoki/s3_website "s3_website") to get *deploy on push* functionnality.
+I am still uploading manually while I tinker with [Travis][travis] and [s3_website](https://github.com/laurilehmijoki/s3_website "s3_website") to get *deploy on push*.
 
 [ecl]: http://www.ec-lyon.fr/ "Ecole Centrale Lyon"
 [travis]: https://travis-ci.org/ "Travis-CI"
