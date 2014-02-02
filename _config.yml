@@ -1,7 +1,5 @@
 destination: _site/
 production: true
-drafts: false
-future: false
 
 permalink: /blog/:title/
 excerpt_separator: "\n\n"

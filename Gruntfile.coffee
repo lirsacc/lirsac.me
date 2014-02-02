@@ -138,9 +138,13 @@ module.exports = (grunt) ->
             build:
                 options:
                     config: "_config.yml"
+                    drafts: false
+                    future: false
             dev:
                 options:
                     config: "_config.dev.yml"
+                    drafts: true
+                    future: true
 
         watch:
             options:
