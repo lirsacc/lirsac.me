@@ -129,7 +129,7 @@ module.exports = (grunt) ->
             assets:
                 cwd: "<%= cfg.assets_src %>"
                 expand: true
-                src: "fonts/**"
+                src: "{fonts,icons}/**"
                 dest: "<%= cfg.assets_target %>"
 
         jekyll:
@@ -138,13 +138,9 @@ module.exports = (grunt) ->
             build:
                 options:
                     config: "_config.yml"
-                    drafts: false
-                    future: false
             dev:
                 options:
                     config: "_config.dev.yml"
-                    drafts: true
-                    future: true
 
         watch:
             options:
@@ -183,14 +179,12 @@ module.exports = (grunt) ->
                     keepalive: true
                     hostname: "<%= cfg.hostname %>"
                     base: "<%= cfg.jekyll_target %>"
-                    # open: true
             debug:
                 options:
                     port: "<%= cfg.port %>"
                     keepalive: true
                     hostname: "<%= cfg.hostname %>"
                     base: "<%= cfg.jekyll_target %>"
-                    # open: true
                     debug: true
                     livereload: 1337
 

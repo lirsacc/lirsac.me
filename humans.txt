@@ -1,0 +1,17 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    name: Charles Lirsac
+    twitter: @lirsacc
+    site: lirsac.me
+
+# TECHNOLOGY COLOPHON
+
+    Jekyll
+    AWS: S3, Route 53
+    HTML5, CSS3 (SCSS), jQuery
+    Grunt, Bower
+    Github
+    Travis CI
