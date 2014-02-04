@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="419px" height="202px" viewBox="0 0 419 202" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <title>logo</title>
+    <description>Created with Sketch (http://www.bohemiancoding.com/sketch)</description>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <path d="M411.992775,0.999999316 C415.310458,0.999999304 417.999972,3.69471331 417.999972,6.99920289 L417.999972,195.000796 C417.999972,198.314064 415.318525,200.999999 411.992775,200.999999 L44.0071992,200.999999 C40.6895159,200.999999 38.0000021,198.311579 38.000002,194.990681 L37.9999997,141.999999 L5.44561112,109.482788 C0.755339682,104.797873 0.796265904,97.254874 5.54539402,92.6268698 L38.000001,60.9999993 L38.0000021,7.0000388 C38.0000022,3.68630922 40.6814485,1.00000063 44.0071992,1.00000061 L411.992775,0.999999316 Z" id="Path-2" stroke="#2891D4" stroke-width="2" fill="#2891D4" sketch:type="MSShapeGroup"></path>
+        <text id="CHRLY" sketch:type="MSTextLayer" font-family="Cubano" font-size="110" font-weight="normal" fill="#DFE1E8">
+            <tspan x="74" y="139">CHRLY</tspan>
+        </text>
+    </g>
+</svg>
