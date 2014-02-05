@@ -3,3 +3,4 @@ assets
 node_modules
 bower_components
 .sass-cache
+Gemfile.lock
