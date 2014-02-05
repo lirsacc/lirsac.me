@@ -24,5 +24,7 @@
     "grunt-autoprefixer": "~0.6.4",
     "grunt-bump": "0.0.13"
   },
-  "dependencies": {}
+  "dependencies": {
+    "bower": "~1.2.8"
+  }
 }
