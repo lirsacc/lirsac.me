@@ -137,9 +137,10 @@ module.exports = (grunt) ->
                     future: false
             dev:
                 options:
-                    config: "_config.dev.yml"
+                    config: "_config.yml"
                     drafts: true
                     future: true
+                    raw: 'url: http://localhost:9090/\n'
 
         watch:
             options:
