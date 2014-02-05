@@ -64,11 +64,6 @@ module.exports = (grunt) ->
                 files:
                     "<%= cfg.assets_target %>/css/style.css": "<%= cfg.assets_src %>/scss/style.scss"
 
-        scsslint:
-            allFiles: ['<%= cfg.assets_src %>/scss/{*,**}.scss']
-            options:
-              reporterOutput: null
-
         coffee:
             dev:
                 options:
@@ -201,13 +196,13 @@ module.exports = (grunt) ->
 
 
     grunt.registerTask "dev", ["clean:build",
-                               "scsslint", "sass:dev", "autoprefixer:simple"
+                               "sass:dev", "autoprefixer:simple"
                                "coffeelint", "coffee:dev", "concat:js",
                                "copy:assets",
                                "jekyll:dev"]
 
     grunt.registerTask "build", ["clean:build",
-                                 "scsslint", "sass:build", "autoprefixer:build"
+                                 "sass:build", "autoprefixer:build"
                                  "coffeelint", "coffee:build", "uglify:build",
                                  "copy:assets",
                                  "jekyll:build"
