@@ -2,12 +2,11 @@ language: ruby
 rvm:
   - 2.0.0
 install:
+  - npm install -g grunt-cli
+  - npm install -g bower
   - bundle install
   - npm install
   - bower install
-before_script:
-  - npm install -g grunt-cli
-  - npm install -g bower
 script:
   - grunt build
 after_success: bundle exec s3_website push --headless
