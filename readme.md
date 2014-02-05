@@ -1,19 +1,21 @@
 Jekyll based personnal blog/site.
 =================================
 
-Theme currently in development.
+[Personal site](www.lirsac.me), build by [Travis CI](https://travis-ci.org) :
+
+[![Build Status](https://travis-ci.org/lirsacc/lirsac.me.png?branch=master)](https://travis-ci.org/lirsacc/lirsac.me)
 
 Left to do
 ----------
 
 In no particular order:
 
++ RSS & Sitemap
 + Better readme
 + Image zooming & caption
-  + Add styling
-  + Add interaction
-  + Add custom plugin to generate markup
+  + Style and js
+  + Custom plugin to generate markup
 + Refactor scss to make it lighter
 + Retina images
-+ Jekyll tag plugins for specific markup
++ Jekyll plugins for specific markup
 + Footnotes styling
