@@ -150,7 +150,7 @@ module.exports = (grunt) ->
                 tasks: ["copy:assets"]
             style:
                 files: ["<%= cfg.assets_src %>/scss/**/*.scss"]
-                tasks: ["scsslint", "sass:dev", "autoprefixer:simple"]
+                tasks: ["sass:dev", "autoprefixer:simple"]
             js:
                 files: ["<%= cfg.assets_src %>/coffee/{*,**}.coffee"]
                 tasks: ["coffeelint", "coffee:dev", "concat:js"]
