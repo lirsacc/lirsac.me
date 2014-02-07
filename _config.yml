@@ -15,3 +15,21 @@ clicky_tracking_id: 100700187
 url: http://lirsac.me/
 
 exclude: ['.travis.yml', 'readme.md', 'Gemfile', 'Gemfile.lock', 'node_modules', '.gitignore', 'Gruntfile.js', 'Gruntfile.coffee', 'config.rb', 'package.json', 'favicon.psd', '.sass-cache', 'package.json', 'bower.json', '.bowerrc', 'bower_components', '_assets', '.jekyll', 's3_website.yml']
+
+headers:
+    - slug: blog
+      text: Blog
+      class: blog
+
+social:
+    - name: github
+      url: https://github.com/lirsacc
+
+    - name: twitter
+      url: https://twitter.com/@lirsacc
+
+    - name: linkedin
+      url: http://www.linkedin.com/in/lirsacc
+
+    - name: email
+      url: mailto:charles@lirsac.me
