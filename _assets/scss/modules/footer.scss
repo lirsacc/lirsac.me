@@ -17,12 +17,12 @@
     @extend %center;
     font-weight: 700;
     color: $c-fg-clear;
-    font-size: .85em;
-    line-height: 2.5em;
+    font-size: 1em;
+    line-height: 2em;
     a.social {
       color: $c-fg-clear;
       font-size: 1.5em;
-      margin-right: .3em;
+      margin-right: .5em;
       &:last-of-type { margin-right: 0; }
     }
 }
