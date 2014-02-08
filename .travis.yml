@@ -14,3 +14,7 @@ env:
   global:
   - secure: YzXcqU9FcOenY3BIOu1U1LjlWn5tLqpCIhoSA8GOOLPdD3m2bXAyGTau7ou49f/CJ0PuVBNdQCs9pt405GzLhLcgnDy2YKGEB5h+slusX3u1k7SU3VPsDfJ2oWV8A/cNiWELYf40hRiEduz8bEt2zI0ZkLRMsu+GM/VU3WYHq4I=
   - secure: uNPUARiMIo/Q4vkGSMcnRw0Si4qTkAIJAquvEu3cTtb6XHFGtxUVFThGtTFy0QNFylHnpMoWZ0aQi/2l7iqU5l3CIzYm415S89Ga9T3/5/SOtVg+9EJhf58fYXb33nAjFTcx2kEUvXLz5eAKLD0ZngcKFTR/SnoAe4y7pI6yxhQ=
+branches:
+  except:
+    - posts
+    - theme
