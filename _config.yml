@@ -8,6 +8,9 @@ name: chrly
 title: Chrly
 
 pygments: true
+markdown: redcarpet
+redcarpet:
+  extensions: ["strikethrough"]
 
 google_analytics_id: UA-36424269-1
 clicky_tracking_id: 100700187
