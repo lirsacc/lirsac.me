@@ -14,11 +14,10 @@ Previously I had one page bio site, and 2 things prompted me to update :
 
 ## About the site
 
-This site is built with [Jekyll][jekyll] and the build is managed with [Grunt][grunt], currently hosted on Amazon S3, the source is on [Github](https://github.com/lirsacc/lirsac.me).
-I am still uploading manually while I tinker with [Travis][travis] and [s3_website](https://github.com/laurilehmijoki/s3_website "s3_website") to get *deploy on push*.
+This site is built with [Jekyll][jekyll] and the build is managed with [Grunt][grunt], currently hosted on Amazon S3, the source is on [Github](https://github.com/lirsacc/lirsac.me). ~~I am still uploading manually while I tinker with [Travis][travis] and [s3_website](https://github.com/laurilehmijoki/s3_website "s3_website") to get *deploy on push*.~~ Push and deploy is now done through git commit hooks and Travis CI.
 
 [ecl]: http://www.ec-lyon.fr/ "Ecole Centrale Lyon"
 [travis]: https://travis-ci.org/ "Travis-CI"
 [stylight]: http://www.stylight.com/ "Stylight"
-[jekyll]: http://jekyllrb.com/
-[grunt]: http://gruntjs.com/
+[jekyll]: http://jekyllrb.com/ "Jekyll"
+[grunt]: http://gruntjs.com/ "Grunt"
