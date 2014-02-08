@@ -6,12 +6,12 @@
 // COLORS
 
 $c-bg: #fff;
-$c-fg: #0c1b21;
+$c-fg: #333332;
 $c-fg-clear: #c8ccd2;
 $c-fg-light: #eaeef0;
 
-$c-accent: #55aeea;
-$c-accent-2: #b10dc9;
+$c-accent: #74bee1;
+$c-accent-2: #e88985;
 
 $c-linkedin: #0e76a8;
 $c-twitter: #00acee;
@@ -35,12 +35,12 @@ $h-footer: 96;
 
 $fs-base: 10;
 
-$fs-main: 16;
+$fs-main: 18;
 
-$baseline: 28;
+$baseline: 30;
 $fw-main: 400;
 
-$ff-sans: 'Open Sans', 'Source Sans Pro', sans-serif;
+$ff-sans: 'Source Sans Pro', 'Source Sans Pro', sans-serif;
 $ff-mono: 'Source Code Pro', monospace;
 
 @font-face {
@@ -140,8 +140,8 @@ $ff-mono: 'Source Code Pro', monospace;
     margin-right: auto;
     @include rems(max-width, $width);
     width: 100%;
-    padding-left: 3%;
-    padding-right: 3%;
+    padding-left: 4%;
+    padding-right: 4%;
     @media screen and (min-width: breakpoint($width)) {
         padding-left: 0;
         padding-right: 0;

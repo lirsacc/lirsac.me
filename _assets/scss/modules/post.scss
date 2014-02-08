@@ -26,8 +26,12 @@ li.post {
     h3 {
         color: $c-fg;
     }
-    &:hover h3 {
-        color: $c-accent;
+    transition: padding-left .25s ease-in-out;
+    &:hover {
+        padding-left: 4%;
+        h3 {
+            color: $c-accent;
+        }
     }
 }
 
