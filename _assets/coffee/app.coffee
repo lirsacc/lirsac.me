@@ -1,6 +1,6 @@
 "use strict"
 
-$(document).ready () ->
+initScripts = () ->
+    if window.Lazy? then Lazy.init tolerance: 200, throttle: 150
 
-    # unveil.js, loads image only when user scrolls towards them
-    $('.post-img img').unveil 100
+document.addEventListener 'DOMContentLoaded', initScripts

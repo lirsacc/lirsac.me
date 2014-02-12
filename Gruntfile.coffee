@@ -13,8 +13,7 @@ module.exports = (grunt) ->
         host: "localhost"
         port: 9090
 
-    javascriptSources = [   "<%= cfg.bower %>/unveil/jquery.unveil.js",
-                            "<%= cfg.assets_target %>/js/app.js"]
+    javascriptSources = [   "<%= cfg.assets_target %>/js/app.js"]
 
     grunt.initConfig
 
@@ -68,12 +67,14 @@ module.exports = (grunt) ->
             dev:
                 options:
                     join: true
-                    # sourceMap: true
+                    sourceMap: true
+                    # bare: true
                 files: "<%= cfg.assets_target %>/js/app.js": ["<%= cfg.assets_src %>/coffee/{*,**}.coffee"]
             build:
                 options:
                     join: true
                     sourceMap: false
+                    bare: true
                 files: "<%= cfg.assets_target %>/js/app.js": ["<%= cfg.assets_src %>/coffee/{*,**}.coffee"]
 
         coffeelint:
