@@ -18,3 +18,4 @@ branches:
   except:
     - posts
     - theme
+    - no-jquery
