@@ -10,7 +10,7 @@ html {
         -moz-osx-font-smoothing: grayscale;
         box-sizing: border-box;
     }
-    font-size: $fs-base#{px};
+    font-size: $fs-base * 1px;
     height: 100%;
     margin: 0;
     padding: 0;

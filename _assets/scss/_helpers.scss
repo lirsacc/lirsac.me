@@ -11,15 +11,15 @@
 }
 
 @function ems($target, $context: $fs-base) {
-    @return ($target/$context)#{em};
+    @return ($target/$context) * 1em;
 }
 
 @function rems($target) {
-    @return ($target/$fs-base)#{rem};
+    @return ($target/$fs-base) * 1rem;
 }
 
 @function breakpoint($px, $context : 16) {
-    @return ($px/$context)#{em};
+    @return ($px/$context) * 1em;
 }
 
 //  MIXINS
@@ -32,7 +32,7 @@
     $rem-values: null;
 
     @each $value in $values {
-        $px-values: append($px-values, unquote(pxs($value)), space);
+        $px-values: append($px-values, unquote($value * 1px), space);
         $rem-values: append($rem-values, unquote(rems($value)), space);
     }
 
@@ -45,7 +45,7 @@
     $em-values: null;
 
     @each $value in $values {
-        $px-values: append($px-values, unquote(pxs($value)), space);
+        $px-values: append($px-values, unquote($value * 1px), space);
         $em-values: append($em-values, unquote(ems($value, $context)), space);
     }
 
@@ -54,7 +54,7 @@
 }
 
 @mixin font-size($size, $context: 0) {
-    font-size: $size#{px};
+    font-size: $size * 1px;
     @if $context == 0 {
         font-size: rems($size);
     } @else {
