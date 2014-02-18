@@ -20,7 +20,7 @@ module.exports = (grunt) ->
 
         cfg: cfg,
         pkg: grunt.file.readJSON "package.json"
-        banner: "/*! [<%= pkg.author.name %>] : <%= pkg.name %> - v<%= pkg.version %>:<%= grunt.template.today('yyyy-mm-dd') %> */"
+        banner: "/*! [<%= pkg.author.name %>] : <%= pkg.name %> - v<%= pkg.version %>:<%= grunt.template.today('yyyy-mm-dd') %> */\n"
 
         clean:
             tmp: ["<%= cfg.tmp %>", "<%= cfg.assets_target %>"]
