@@ -123,7 +123,7 @@ module.exports = (grunt) ->
             assets:
                 cwd: "<%= cfg.assets_src %>"
                 expand: true
-                src: "{fonts,icons}/**"
+                src: "{fonts,icons,img}/**"
                 dest: "<%= cfg.assets_target %>"
 
         htmlmin:
