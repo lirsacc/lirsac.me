@@ -13,7 +13,8 @@ module.exports = (grunt) ->
         host: "localhost"
         port: 9090
 
-    javascriptSources = [   "<%= cfg.assets_target %>/js/app.js"]
+    javascriptSources = [   "<%= cfg.bower %>/unveil/jquery.unveil.js",
+                            "<%= cfg.assets_target %>/js/app.js"]
 
     grunt.initConfig
 
@@ -67,14 +68,12 @@ module.exports = (grunt) ->
             dev:
                 options:
                     join: true
-                    sourceMap: true
-                    # bare: true
+                    # sourceMap: true
                 files: "<%= cfg.assets_target %>/js/app.js": ["<%= cfg.assets_src %>/coffee/{*,**}.coffee"]
             build:
                 options:
                     join: true
                     sourceMap: false
-                    bare: true
                 files: "<%= cfg.assets_target %>/js/app.js": ["<%= cfg.assets_src %>/coffee/{*,**}.coffee"]
 
         coffeelint:
@@ -127,6 +126,19 @@ module.exports = (grunt) ->
                 expand: true
                 src: "{fonts,icons}/**"
                 dest: "<%= cfg.assets_target %>"
+
+        htmlmin:
+           build:
+                options:
+                    collapseWhitespace: true
+                    removeEmptyAttributes: true
+                    useShortDoctype: true
+                    removeRedundantAttributes: true
+                    collapseBooleanAttributes: true
+                expand: true,
+                cwd: "_site"
+                src: ["**/*.html"]
+                dest: "_site/"
 
         jekyll:
             options:
@@ -207,7 +219,8 @@ module.exports = (grunt) ->
                                  "sass:build", "autoprefixer:build"
                                  "coffeelint", "coffee:build", "uglify:build",
                                  "copy:assets",
-                                 "jekyll:build"
+                                 "jekyll:build",
+                                 "htmlmin:build",
                                  "clean:tmp"]
 
     grunt.registerTask "default", ["dev", "concurrent:dev"]
