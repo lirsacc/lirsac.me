@@ -22,7 +22,8 @@
     "grunt-contrib-uglify": "~0.2.7",
     "grunt-contrib-concat": "~0.3.0",
     "grunt-autoprefixer": "~0.6.4",
-    "grunt-bump": "0.0.13"
+    "grunt-bump": "0.0.13",
+    "grunt-contrib-htmlmin": "~0.2.0"
   },
   "dependencies": {
     "bower": "~1.2.8"
