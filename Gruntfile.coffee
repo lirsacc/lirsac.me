@@ -13,8 +13,7 @@ module.exports = (grunt) ->
         host: "localhost"
         port: 9090
 
-    javascriptSources = [   "<%= cfg.bower %>/unveil/jquery.unveil.js",
-                            "<%= cfg.assets_target %>/js/app.js"]
+    javascriptSources = ["<%= cfg.assets_target %>/js/app.js"]
 
     grunt.initConfig
 
