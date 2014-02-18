@@ -92,7 +92,11 @@ console.log "Options :\n\t#{rounds} rounds of #{tables} tables (max #{maxPerTabl
 ### Simple image with caption
 
 <div class="post-img">
-    <img class="small" data-src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528c8f581f45e_1.JPG" data-src-high="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528c8f581f45e_1.JPG" alt="" title="">
+    <img class="small"
+         src="http://spiffygif.com/?rotate=55&color=000&lines=10&trail=44&length=8&radius=10&width=4&halo=false"
+         data-src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528c8f581f45e_1.JPG" data-src-high="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528c8f581f45e_1.JPG"
+         data-src-retina="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528c8f581f45e_1.JPG" data-src-high="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528c8f581f45e_1.JPG"
+         alt="" title="">
     <p class="legend">Pretty photo from <a href="unsplash">unsplash</a></p>
 </div>
 
@@ -100,14 +104,18 @@ console.log "Options :\n\t#{rounds} rounds of #{tables} tables (max #{maxPerTabl
 
 <div class="post-img">
     <img class="huge"
+         src="http://spiffygif.com/?rotate=55&color=000&lines=10&trail=44&length=8&radius=10&width=4&halo=false"
          data-src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528cba6de78e5_1.JPG"
-         alt="">
+         data-src-retina="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528cba6de78e5_1.JPG"
+         alt="" title="">
 </div>
 
 ### Big image
 
 <div class="post-img">
     <img class="big"
+         src="http://spiffygif.com/?rotate=55&color=000&lines=10&trail=44&length=8&radius=10&width=4&halo=false"
          data-src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528aedf6ec3df_1.JPG"
+         data-src-retina="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528aedf6ec3df_1.JPG"
          alt="">
 </div>

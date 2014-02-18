@@ -1,4 +1,6 @@
 window.Lazy = ((global, document, undefined_) ->
+# Coffeescript version of https://github.com/toddmotto/echo
+# All credits go to respective author
 
     "use strict"
 
@@ -14,24 +16,23 @@ window.Lazy = ((global, document, undefined_) ->
         top = coords.top
         left = coords.left
 
-        console.log top, left, (window.innerHeight or document.documentElement.clientHeight) + tolerance
-
         top >= 0 and left >= 0 and top <= (window.innerHeight or document.documentElement.clientHeight) + tolerance
 
     # Loop trough images and switch src or remove event listeners
     # if there's no more images
     _load = () ->
+
         if store.length > 0
             for elem in store
                 if elem? and _inView elem
                     elem.src = elem.getAttribute selector
-                    store.splice store.indexOf elem, 1
+                    addClass(elem, "loaded")
+                    store.splice store.indexOf(elem), 1
         else
-            if document.removeEventListener then global.removeEventListener "scroll", _throttle
+            if document.removeEventListener
+                global.removeEventListener "scroll", _throttle
             else detachEvent "onscroll", _throttle
             clearTimeout poller
-
-        console.log store
 
         poller = setTimeout () ->
             poller = null
@@ -49,6 +50,8 @@ window.Lazy = ((global, document, undefined_) ->
             tolerance = parseInt options.tolerance or 0
             throttle = parseInt options.throttle or 0
             selector = options.selector or "data-src"
+        isRetina = window.devicePixelRatio > 1
+        if isRetina then selector = "#{selector}-retina"
 
         elements = document.querySelectorAll "img[#{selector}]"
 
