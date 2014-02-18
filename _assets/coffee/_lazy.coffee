@@ -12,11 +12,24 @@ window.Lazy = ((global, document, undefined_) ->
 
     # Is element scrolled into view
     _inView = (elem) ->
-        coords = elem.getBoundingClientRect()
-        top = coords.top
-        left = coords.left
 
-        top >= 0 and left >= 0 and top <= (window.innerHeight or document.documentElement.clientHeight) + tolerance
+        reachedBottom = window.pageYOffset + window.innerHeight >= document.body.offsetHeight
+        if reachedBottom then return true
+
+        bounds = elem.getBoundingClientRect()
+        top = bounds.top
+        left = bounds.left
+
+        verticalLimit = (window.innerHeight or document.documentElement.clientHeight) + tolerance
+        horizontalLimit = (window.innerHeight or document.documentElement.clientHeight)
+
+        top >= 0 and left >= 0 and top <= verticalLimit and left <= horizontalLimit
+
+
+    _loadImage = (elem) ->
+        elem.src = elem.getAttribute selector
+        addClass elem, "loaded"
+        store.splice store.indexOf(elem), 1
 
     # Loop trough images and switch src or remove event listeners
     # if there's no more images
@@ -25,9 +38,7 @@ window.Lazy = ((global, document, undefined_) ->
         if store.length > 0
             for elem in store
                 if elem? and _inView elem
-                    elem.src = elem.getAttribute selector
-                    addClass(elem, "loaded")
-                    store.splice store.indexOf(elem), 1
+                    _loadImage elem
         else
             if document.removeEventListener
                 global.removeEventListener "scroll", _throttle
@@ -42,8 +53,8 @@ window.Lazy = ((global, document, undefined_) ->
         if not poller?
             _load()
         else
-            clearTimeout finalPoller
-            finalePoller = setTimeout _load, throttle
+            clearTimeout mainPoller
+            mainPoller = setTimeout _load, throttle
 
     init = (options) ->
         if options?
