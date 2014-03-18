@@ -60,7 +60,7 @@ hr {
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
-    font-weight: 700;
+    font-weight: bold;
     font-family: $ff-slab;
 }
 
@@ -70,14 +70,19 @@ h3, h4, h5, h6 {
 
 h1 {
     font-size: ems(32, $fs-main);
-    line-height: ems(42, 36);
-    font-weight: 900;
+    font-weight: bold;
 }
 
 h2 {
-    font-size: 1em;
-    // text-transform: uppercase;
-    font-weight: 900;
+    font-size: 1.25em;
+}
+
+h3 {
+    text-transform: uppercase;
+}
+
+h4 {
+    font-size: .9em;
 }
 
 p > code {
