@@ -139,3 +139,13 @@
 @import "modules/post";
 
 @import "modules/pygments";
+
+
+// Hack to fix transitions firing on page load
+// class is removed through javascript on load
+.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}

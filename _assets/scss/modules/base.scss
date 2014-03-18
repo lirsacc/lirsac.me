@@ -49,10 +49,6 @@ a {
     }
     text-decoration: none;
     font-weight: 700;
-    color: $c-accent;
-    &:hover {
-        color: $c-accent-2;
-    }
 }
 
 hr {
@@ -150,6 +146,14 @@ blockquote {
         margin-bottom: .75em;
         @media screen and (min-width: breakpoint($w-main)){
             margin-bottom: 1em;
+        }
+        a {
+            &, &:visited {
+                color: $c-accent;
+            }
+            &:hover {
+                color: $c-accent-2;
+            }
         }
     }
 
