@@ -8,11 +8,13 @@ title: Posts
     {% for post in site.posts %}
     <li class="post">
         <a href="{{ post.url }}">
-            <h3>
-                <span class="meta">{{ post.date | date_to_string }}</span>
-                &nbsp;&nbsp;&nbsp;
+            <h2>
+                <span class="meta">
+                    {{ post.date | date_to_string }}
+                    <span class="separator">·</span>
+                </span>
                 {{ post.title }}
-            </h3>
+            </h2>
         </a>
     </li>
     {% endfor %}

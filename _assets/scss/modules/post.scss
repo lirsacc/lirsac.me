@@ -23,13 +23,12 @@ li.post {
     @media screen and (min-width: breakpoint($w-main)){
         margin-bottom: 1em;
     }
-    h3 {
+    h2 {
         color: $c-fg;
     }
     transition: padding-left .25s ease-in-out;
     &:hover {
-        // padding-left: 4%;
-        h3 {
+        h2 {
             color: $c-accent;
         }
     }
