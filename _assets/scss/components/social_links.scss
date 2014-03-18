@@ -27,6 +27,6 @@ a.social {
     }
     &.email {
         &:hover { color: $c-email; }
-        &:before { content: "\e005"; };
+        &:before { content: "\e006"; };
     }
 }
