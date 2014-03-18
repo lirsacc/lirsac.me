@@ -6,6 +6,6 @@
     "name": "Charles Lirsac"
   },
   "dependencies": {
-    "normalize-scss": "~2.1.3"
+    "normalize-scss": "~3.0.0"
   }
 }
