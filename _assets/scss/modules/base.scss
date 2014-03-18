@@ -152,13 +152,14 @@ blockquote {
         @media screen and (min-width: breakpoint($w-main)){
             margin-bottom: 1em;
         }
-        a {
-            &, &:visited {
-                color: $c-accent;
-            }
-            &:hover {
-                color: $c-accent-2;
-            }
+    }
+
+    a {
+        &, &:visited {
+            color: $c-accent;
+        }
+        &:hover {
+            color: $c-accent-2;
         }
     }
 
