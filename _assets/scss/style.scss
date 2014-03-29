@@ -72,20 +72,6 @@
     @include ems(line-height, $context, $height)
 }
 
-@mixin icon() {
-    &:before {
-        font-family: "icons" !important;
-        font-style: normal !important;
-        font-weight: normal !important;
-        font-variant: normal !important;
-        text-transform: none !important;
-        speak: none;
-        line-height: 1;
-    }
-}
-
-.icon { @include icon(); }
-
 @mixin centered($width) {
     margin-left: auto;
     margin-right: auto;
@@ -129,6 +115,7 @@
 }
 
 //  Components
+@import "components/icons.scss";
 @import "components/social_links";
 
 //  Modules
