@@ -203,6 +203,45 @@ ol {
     margin-bottom: .75em;
 }
 
+.image-wrapper {
+    display: block;
+    margin-bottom: .75em;
+    margin-top: 0;
+    padding: 0;
+    position: relative;
+    text-align: center;
+
+    @media screen and (min-width: breakpoint($w-main)) {
+        margin-bottom: 1em;
+    }
+
+    img {
+        cursor: zoom-in;
+        margin: 0 auto;
+        padding: 0;
+        width: 100%;
+
+        &.no-zoom {
+            cursor: initial;
+        }
+
+        &.small {
+            @include rems(max-width, $w-main);
+            @media screen and (min-width: breakpoint($w-main)) {
+                border-radius: 3px;
+            }
+        }
+
+        &.big {
+            @include rems(max-width, $w-large);
+            @media screen and (min-width: breakpoint($w-large)) {
+                border-radius: 3px;
+            }
+        }
+
+        // &.huge = {}
+    }
+}
 
 $img-class: 'zoomed-image';
 

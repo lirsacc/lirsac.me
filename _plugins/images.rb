@@ -30,6 +30,7 @@ module Jekyll
             main_class = "image-wrapper"
 
             classes = []
+            classes.push (@args.has_key?("size") ? @args["size"] : "big")
 
             if @args.has_key?("no_lazy")
                 s = "<div class='#{main_class}'><img src='#{@args['src']}' no-lazy "
@@ -41,7 +42,7 @@ module Jekyll
             retina = @args.has_key?("retina") ? @args["retina"] : @args["src"]
             s+= "data-src-retina='#{retina}' "
 
-            if !@args.has_key?("no_zoom")
+            if !@args.has_key?("no_zoom") and classes[0] != "huge"
                 zoom = @args.has_key?("zoom") ? @args["zoom"] : retina
                 s+= "data-zoom='#{zoom}' "
 
@@ -52,7 +53,6 @@ module Jekyll
                 classes.push "no-zoom"
             end
 
-            classes.push (@args.has_key?("size") ? @args["size"] : "big")
             s += "class='#{classes.join(' ')}'"
 
             s +=  "/></div>"
