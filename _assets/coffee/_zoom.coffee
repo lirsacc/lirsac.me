@@ -28,7 +28,8 @@ window.Zoom = ((global, document, undefined_) ->
     _selector = undefined
     _active = false
 
-    _calcDimensions = (img) ->
+    _calcDimensions = (img, force) ->
+        unless force? then force = false
         screenWidth = _w.innerWidth
         screenHeight = _w.innerHeight
         screenRatio = screenWidth / screenHeight
@@ -37,7 +38,7 @@ window.Zoom = ((global, document, undefined_) ->
         imgHeight = img.height
         imgRatio = imgWidth / imgHeight
 
-        if imgWidth > _scale * screenWidth or imgHeight > _scale * screenHeight
+        if imgWidth > _scale * screenWidth or imgHeight > _scale * screenHeight or force
             if imgRatio > screenRatio
                 imgWidth = _scale * screenWidth
                 imgHeight = imgWidth / imgRatio
@@ -57,6 +58,10 @@ window.Zoom = ((global, document, undefined_) ->
             _image.src = newImg.src
             _calcDimensions _image
             _activate()
+
+    _updateActive = () ->
+        unless (_active and _image?) then return
+        _calcDimensions _image, true
 
 
     _valid = (elem) ->
@@ -98,6 +103,9 @@ window.Zoom = ((global, document, undefined_) ->
         for el in targets when _valid el
             addEvent el, "click", () ->
                 _set el
+
+        window.onresize = _updateActive
+        addEvent window, "orientationchange", _updateActive
 
         addEvent _overlay, "click", () ->
             _deactivate()
