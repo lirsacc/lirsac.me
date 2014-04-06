@@ -314,3 +314,12 @@ $img-class: 'zoomed-image';
         transform: scale(1);
     }
 }
+
+.hero-icon {
+    @extend %icon;
+    @extend %center;
+    height: auto;
+    text-align: center;
+    @include font-size(128, $fs-0);
+    @include line-height(140, 128);
+}
