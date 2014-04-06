@@ -1,7 +1,6 @@
 source "http://rubygems.org"
 
-gem "jekyll", "~> 1.2"
-gem "redcarpet", "~>2.2"
-gem "sass", "~> 3.3.0.rc.2"
-gem "scss-lint", "~> 0.1"
+gem "jekyll", "~> 1.5.1"
+gem "sass", "~> 3.3"
+gem "scss-lint", "~> 0.21"
 gem "s3_website"

@@ -1,18 +1,27 @@
 ---
 layout: post
-title: "Element styles"
+title: Elements style guides
 date: 2013-12-08 14:08:00
 ---
 
-## A paragraph
-
-This is a paragraph, you can have links, like [this one](http://baconipsum.com/) which will be used in this exemple page. You can have *italic* and **bold** text.
+## Main styles
 
 Corned beef tri-tip pig fatback meatball brisket. Filet mignon tenderloin flank kielbasa venison. Tail prosciutto shoulder, turkey cow hamburger flank pork swine beef ribs pig tri-tip short loin meatloaf beef. Brisket turducken boudin, frankfurter jowl chuck flank shank ham hock pork chop meatloaf.
 
-## List styles
+You can use different text formats: *italic*, **bold**, _underline_, and  ~~strikethrough~~, `code` and [links](http://google.com).
 
-### Unordered
+Basic quotes :
+
+> Salami rump tongue, meatloaf beef ribs turkey pastrami chuck. Fatback flank shankle ground round pork chop beef tail sausage pig venison spare ribs.
+
+or with author :
+
+<blockquote>
+    <p>Pork chop biltong pig, jerky fatback sirloin corned beef pork drumstick andouille jowl rump prosciutto sausage beef ribs landjaeger.</p>
+    <p class="author">Bacon doner boudin</p>
+</blockquote>
+
+## List styles
 
 + Chicken flank
 + leberkas
@@ -21,8 +30,6 @@ Corned beef tri-tip pig fatback meatball brisket. Filet mignon tenderloin flank 
 + andouille
 + pastrami
 
-### Ordered
-
 1. Chicken flank
 1. leberkas
 1. bresaola
@@ -30,24 +37,17 @@ Corned beef tri-tip pig fatback meatball brisket. Filet mignon tenderloin flank 
 1. andouille
 1. pastrami
 
-## Quote styles
-
-### Simple
-
-> Salami rump tongue, meatloaf beef ribs turkey pastrami chuck. Fatback flank shankle ground round pork chop beef tail sausage pig venison spare ribs.
-
-### With author name
-
-<blockquote>
-    <p>Pork chop biltong pig, jerky fatback sirloin corned beef pork drumstick andouille jowl rump prosciutto sausage beef ribs landjaeger.</p>
-    <p class="author">Bacon doner boudin</p>
-</blockquote>
-
 ## Headings (this is h2)
 ### Heading 3
 #### Heading 4
-##### Heading 5
-###### Heading 6
+
+## Images
+
+{% image src=http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528aedf6ec3df_1.JPG %}
+
+{% image src=http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528aedf6ec3df_1.JPG size=small %}
+
+{% image src=http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528aedf6ec3df_1.JPG size=huge %}
 
 ## Code blocks through pygments
 
@@ -86,36 +86,3 @@ while i <= args.length - 1
 
 console.log "Options :\n\t#{rounds} rounds of #{tables} tables (max #{maxPerTable} people).
 {% endhighlight %}
-
-## Types of images
-
-### Simple image with caption
-
-<div class="post-img">
-    <img class="small"
-         src="http://spiffygif.com/?rotate=55&color=000&lines=10&trail=44&length=8&radius=10&width=4&halo=false"
-         data-src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528c8f581f45e_1.JPG" data-src-high="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528c8f581f45e_1.JPG"
-         data-src-retina="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528c8f581f45e_1.JPG" data-src-high="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528c8f581f45e_1.JPG"
-         alt="" title="">
-    <p class="legend">Pretty photo from <a href="unsplash">unsplash</a></p>
-</div>
-
-### Huge image
-
-<div class="post-img">
-    <img class="huge"
-         src="http://spiffygif.com/?rotate=55&color=000&lines=10&trail=44&length=8&radius=10&width=4&halo=false"
-         data-src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528cba6de78e5_1.JPG"
-         data-src-retina="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528cba6de78e5_1.JPG"
-         alt="" title="">
-</div>
-
-### Big image
-
-<div class="post-img">
-    <img class="big"
-         src="http://spiffygif.com/?rotate=55&color=000&lines=10&trail=44&length=8&radius=10&width=4&halo=false"
-         data-src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528aedf6ec3df_1.JPG"
-         data-src-retina="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528aedf6ec3df_1.JPG"
-         alt="">
-</div>

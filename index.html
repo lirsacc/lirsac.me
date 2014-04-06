@@ -1,25 +1,17 @@
 ---
 layout: page
-title: Chrly
 body_class: home
+title: Chrly
 ---
-
-<p class="hero">
-    Hey there ! <br>
-    I am Charles, which means a French <a href="http://en.ec-lyon.fr/76957584/1/fiche___pagelibre/">Master's student</a> and currently a Backend Developer intern at <a href="http://stylight.com">Stylight</a>.
+<h2>Hey there !</h2>
+<p>
+I am Charles, which at the moment means a French <a href="http://en.ec-lyon.fr/76957584/1/fiche___pagelibre/">engineering student</a> and currently Backend Developer intern at <a href="http://stylight.com">Stylight</a>. I have recently been trying to write regularly again, hence the new site, you can see recent articles below.
 </p>
 
-<hr>
-
 <ul class="posts">
-    {% for post in site.posts %}
+    {% for post in site.posts limit:2 %}
     <li class="post">
-        <a href="{{ post.url }}" class="post-link">
-            {{ post.title }}
-            <span class="meta">
-                - {{ post.date | date_to_string }}
-            </span>
-        </a>
+        <span class="post-meta">{{ post.date | date_to_string }} - </span><a href="{{ post.url }}" class="post-link">{{ post.title }}</a>
     </li>
     {% endfor %}
 </ul>

@@ -39,6 +39,11 @@ module.exports = (grunt) ->
                 pushTo: 'origin'
                 gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d' # options to use with '$ git describe'
 
+        scsslint:
+            allFiles: ['<%= cfg.assets_src %>/scss/**/*.scss']
+            options:
+                config: '.scss-lint.yml'
+
         sass:
             dev:
                 options:
@@ -67,7 +72,7 @@ module.exports = (grunt) ->
             dev:
                 options:
                     join: true
-                    # sourceMap: true
+                    sourceMap: true
                 files: "<%= cfg.assets_target %>/js/app.js": ["<%= cfg.assets_src %>/coffee/{*,**}.coffee"]
             build:
                 options:
@@ -127,7 +132,7 @@ module.exports = (grunt) ->
                 dest: "<%= cfg.assets_target %>"
 
         htmlmin:
-           build:
+            build:
                 options:
                     collapseWhitespace: true
                     removeEmptyAttributes: true
@@ -219,7 +224,7 @@ module.exports = (grunt) ->
                                  "coffeelint", "coffee:build", "uglify:build",
                                  "copy:assets",
                                  "jekyll:build",
-                                 "htmlin:build",
+                                 "htmlmin:build",
                                  "clean:tmp"]
 
     grunt.registerTask "default", ["dev", "concurrent:dev"]

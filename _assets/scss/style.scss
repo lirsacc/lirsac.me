@@ -1,139 +1,31 @@
 //  BOWER IMPORTS
 //  ===============================================
 
-@import "../../bower_components/normalize-scss/_normalize";
+@import '../../bower_components/normalize-scss/_normalize';
+@import '../../bower_components/modular-scale/stylesheets/_modular-scale';
 
-@import "_variables";
-
-//  HELPERS
-//  ===============================================
-
-@function black($opacity) {
-    @return rgba(0, 0, 0, $opacity);
-}
-
-@function white($opacity) {
-    @return rgba(255, 255, 255, $opacity);
-}
-
-@function ems($target, $context: $fs-base) {
-    @return ($target/$context)#{em};
-}
-
-@function rems($target) {
-    @return ($target/$fs-base)#{rem};
-}
-
-@function breakpoint($px, $context : 16) {
-    @return ($px/$context)#{em};
-}
-
-//  MIXINS
-//  ===============================================
-
-// Adapted rem/em fallback from : http://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/
-
-@mixin rems($property, $values...) {
-    $px-values: null;
-    $rem-values: null;
-
-    @each $value in $values {
-        $px-values: append($px-values, unquote(pxs($value)), space);
-        $rem-values: append($rem-values, unquote(rems($value)), space);
-    }
-
-    #{$property}: $px-values;
-    #{$property}: $rem-values;
-}
-
-@mixin ems($property, $context, $values...) {
-    $px-values: null;
-    $em-values: null;
-
-    @each $value in $values {
-        $px-values: append($px-values, unquote(pxs($value)), space);
-        $em-values: append($em-values, unquote(ems($value, $context)), space);
-    }
-
-    #{$property}: $px-values;
-    #{$property}: $em-values;
-}
-
-@mixin font-size($size, $context: 0) {
-    font-size: $size#{px};
-    @if $context == 0 {
-        font-size: rems($size);
-    } @else {
-        font-size: ems($size, $context);
-    }
-}
-
-@mixin line-height($height, $context : $fs-base) {
-    @include ems(line-height, $context, $height)
-}
-
-@mixin centered($width) {
-    margin-left: auto;
-    margin-right: auto;
-    @include rems(max-width, $width);
-    width: 100%;
-    padding-left: 4%;
-    padding-right: 4%;
-    @media screen and (min-width: breakpoint($width)) {
-        padding-left: 0;
-        padding-right: 0;
-    }
-}
-
-//  SILENT CLASSES
-//  ===============================================
-
-%clearfix {
-    *zoom: 1;
-
-    &:before,
-    &:after {
-        content: "";
-        display: table;
-    }
-
-    &:after {
-        clear: both;
-    }
-}
-
-%center {
-    @include centered($w-main);
-}
-
-%small-center {
-    @include centered($w-small);
-}
-
-%large-center {
-    @include centered($w-large);
-}
+@import '_variables';
+@import '_helpers';
 
 //  Components
-@import "components/icons.scss";
-@import "components/social_links";
-@import "components/hero";
+@import 'components/icons.scss';
+@import 'components/social_links';
 
 //  Modules
-@import "modules/base";
-@import "modules/header";
-@import "modules/footer";
+@import 'modules/base';
+@import 'modules/header';
+@import 'modules/footer';
 
-@import "modules/post";
+@import 'modules/post';
 
-@import "modules/pygments";
-
+@import 'modules/pygments';
 
 // Hack to fix transitions firing on page load
 // class is removed through javascript on load
 .preload * {
-  -webkit-transition: none !important;
-  -moz-transition: none !important;
-  -ms-transition: none !important;
-  -o-transition: none !important;
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
+    -webkit-transition: none !important;
+    transition: none !important;
 }

@@ -1,0 +1,10 @@
+<!-- Google Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic|Source+Code+Pro:300,400,500,700|Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+<!-- One compiled stylesheet -->
+<link href='/assets/css/style.css' rel='stylesheet'>
+
+{% if page.stylesheet %}
+<!-- Custom stylesheet for current page -->
+<link href='/assets/css/custom/{{ page.stylesheet }}' rel='stylesheet'>
+{% endif %}

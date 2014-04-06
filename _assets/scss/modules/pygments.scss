@@ -1,41 +1,41 @@
 //  ===============================================
 //
-//  Header module
+//  header module
 //
 //  ===============================================
 
-// Pygments variables
+// pygments variables
 // -------------------------
 
-$pygments_BACKGROUND: #fefefe;
-$pygments_FOREGROUND: $c-fg;
-$pygments_COMMENT: #999988;
+$py-background: #fefefe;
+$py-foreground: $c-fg;
+$py-comment: #998;
 
-$pygments_RED:          #f92683;
-$pygments_ORANGE:       #d88200;
-$pygments_YELLOW:       #fdca81;
-$pygments_GREEN:        #75af2f;
-$pygments_AQUA:         #75c5ba;
-$pygments_BLUE:         #3ea8c8;
-$pygments_PURPLE:       #c282ae;
-$pygments_BROWN:        #a9643f;
+$py-red:          #f92683;
+$py-orange:       #d88200;
+$py-yellow:       #fdca81;
+$py-green:        #75af2f;
+$py-aqua:         #75c5ba;
+$py-blue:         #3ea8c8;
+$py-purple:       #c282ae;
+$py-brown:        #a9643f;
 
-// Pygments blocks styles
+// pygments blocks styles
 // -------------------------
 
-.highlight, code, pre {
+.highlight,
+code,
+pre {
     font-family: $ff-mono;
     @include font-size(13);
     line-height: 1.5;
-    white-space: pre;
     overflow: auto;
+    white-space: pre;
 }
 
- .highlight {
-    border: 1px solid #d9d9d9;
-}
+.highlight { border: 1px solid #d9d9d9; }
 
-// Pygments colors
+// pygments colors
 // -------------------------
 
 .highlight .lineno {
@@ -43,80 +43,161 @@ $pygments_BROWN:        #a9643f;
     padding-right: 4px;
 }
 
-.highlight  {
+.highlight {
 
-    background: $pygments_BACKGROUND;
-    color: $pygments_FOREGROUND;
+    background: $py-background;
+    color: $py-foreground;
 
-    // Punctuation
-    .p { color: $pygments_FOREGROUND; }
+    // punctuation
+    .p { color: $py-foreground; }
 
-    // Whitespace, Other
-    .w, .x {}
+    // whitespace, other
+    // .w,
+    // .x {}
 
-    // Comment, Comment.Multiline, Comment.Preproc, Comment.Single, Comment.Special
-    .c, .cm, .cp, .c1, .cs { color: $pygments_COMMENT; }
+    // comment, comment.multiline, comment.preproc, comment.single, comment.special
+    .c,
+    .cm,
+    .cp,
+    .c1,
+    .cs {
+        color: $py-comment;
+    }
 
-    // Error
-    .err { color: $pygments_RED; }
+    // error
+    .err { color: $py-red; }
 
-    // Keyword, Keyword.Constant, Keyword.Declaration, Keyword.Pseudo, Keyword.Reserved
-    .k, .kc, .kd, .kp, .kr { color: $pygments_PURPLE; }
-    // Keyword.Namespace
-    .kn { color: $pygments_AQUA; }
-    // Keyword.Type
-    .kt { color: $pygments_YELLOW; }
+    // keyword, keyword.constant, keyword.declaration, keyword.pseudo, keyword.reserved
+    .k,
+    .kc,
+    .kd,
+    .kp,
+    .kr {
+        color: $py-purple;
+    }
 
-    // Name, Name.Builtin, Name.Builtin.Pseudo, Name.Entity, Name.Property, Name.Label
-    .n, .nb, .bp, .ni, .py, .nl { color: $pygments_FOREGROUND; }
-    // Name.Attribute, Name.Function, Name.Other
-    .na, .nf, .nx { color: $pygments_BLUE; }
-    // Name.Class, Name.Namespace
-    .nv, .nn { color: $pygments_YELLOW; }
-    // Name.Decorator, Name.Tag
-    .nd, .nt { color: $pygments_AQUA; }
-    // Name.Constant, Name.Exception
-    .no, .ne { color: $pygments_RED; }
-    // Name.Variabl, Name.Variable.Class, Name.Variable.Global, Name.Variable.Instance
-    .nv, .vc, .vg, .vi { color: $pygments_RED; }
+    // keyword.namespace
+    .kn { color: $py-aqua; }
 
-    // Number, Number.Float, Number.Hex, Number.Integer, Number.Integer.Long, Number.Oct
-    .m, .mf, .mh, .mi, .il, .mo { color: $pygments_ORANGE; }
+    // keyword.type
+    .kt { color: $py-yellow; }
 
-    // Operator, Operator.Word
-    .o, .ow { color: $pygments_AQUA; }
+    // name, name.builtin, name.builtin.pseudo, name.entity, name.property, name.label
+    .n,
+    .nb,
+    .bp,
+    .ni,
+    .py,
+    .nl {
+        color: $py-foreground;
+    }
 
-    // Literal
-    .l { color: $pygments_ORANGE; }
-    // Literal.Date
-    .ld { color: $pygments_GREEN; }
+    // name.attribute, name.function, name.other
+    .na,
+    .nf,
+    .nx {
+        color: $py-blue;
+    }
 
-    // String, String.Backtick, String.Double, String.Heredoc, String.Other, String.Regex, String.Single, String.Symbol
-    .s, .sb, .s2, .sh, .sx, .sr, .s1, .ss { color: $pygments_GREEN; }
-    // String.Char
-    .sc { color: $pygments_FOREGROUND; }
-    // String.Doc
-    .sd { color: $pygments_COMMENT; }
-    // String.Escape, String.Interpol
-    .se, .si { color: $pygments_ORANGE; }
+    // name.class, name.namespace
+    .nv,
+    .nn {
+        color: $py-yellow;
+    }
 
-    // Generic
-    .g {}
-    // Generic.Deleted
-    .gd { color: $pygments_RED; }
-    // Generic.Emph
+    // name.decorator, name.tag
+    .nd,
+    .nt {
+        color: $py-aqua;
+    }
+
+    // name.constant, name.exception
+    .no,
+    .ne {
+        color: $py-red;
+    }
+
+    // name.variabl, name.variable.class, name.variable.global, name.variable.instance
+    .nv,
+    .vc,
+    .vg,
+    .vi {
+        color: $py-red;
+    }
+
+    // number, number.float, number.hex, number.integer, number.integer.long, number.oct
+    .m,
+    .mf,
+    .mh,
+    .mi,
+    .il,
+    .mo {
+        color: $py-orange;
+    }
+
+    // operator, operator.word
+    .o,
+    .ow {
+        color: $py-aqua;
+    }
+
+    // literal
+    .l { color: $py-orange; }
+
+    // literal.date
+    .ld { color: $py-green; }
+
+    // string, string.backtick, string.double, string.heredoc, string.other, string.regex, string.single, string.symbol
+    .s,
+    .sb,
+    .s2,
+    .sh,
+    .sx,
+    .sr,
+    .s1,
+    .ss {
+        color: $py-green;
+    }
+
+    // string.char
+    .sc { color: $py-foreground; }
+
+    // string.doc
+    .sd { color: $py-comment; }
+
+    // string.escape, string.interpol
+    .se,
+    .si {
+        color: $py-orange;
+    }
+
+    // generic
+    // .g {}
+
+    // generic.deleted
+    .gd { color: $py-red; }
+
+    // generic.emph
     .ge { font-style: italic; }
-    // Generic.Error, Generic.Output, Generic.Traceback
-    .gr, .go, .gt{}
-    // Generic.Heading
-    .gh { font-weight: bold; color: $pygments_FOREGROUND; }
-    // Generic.Inserted
-    .gi { color: $pygments_GREEN; }
-    // Generic.Prompt
-    .gp { font-weight: bold; color: $pygments_COMMENT; }
-    // Generic.Strong
+
+    // generic.error, generic.output, generic.traceback
+    // .gr,
+    // .go,
+    // .gt {}
+
+    // generic.heading
+    .gh { color: $py-foreground; font-weight: bold; }
+    // generic.inserted
+
+    .gi { color: $py-green; }
+
+    // generic.prompt
+    .gp { color: $py-comment; font-weight: bold; }
+
+    // generic.strong
     .gs { font-weight: bold; }
-    // Generic.Subheading
-    .gu { font-weight: bold; color: $pygments_AQUA; }
+
+    // generic.subheading
+    .gu { color: $py-aqua; font-weight: bold; }
 
 }

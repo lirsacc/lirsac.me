@@ -1,21 +1,16 @@
 ---
-layout: default
+layout: page
 body_class: blog
-title: Posts
+title: The Blog
 ---
-
+<h1 class="page-title">The Blog</h1>
+<p>
+    Pretty empty for now, I am trying to write regularly again (meaning I stopped after high school...).
+</p>
 <ul class="posts">
     {% for post in site.posts %}
     <li class="post">
-        <a href="{{ post.url }}">
-            <h2>
-                <span class="meta">
-                    {{ post.date | date_to_string }}
-                    <span class="separator">·</span>
-                </span>
-                {{ post.title }}
-            </h2>
-        </a>
+        <span class="post-meta">{{ post.date | date_to_string }} - </span><a href="{{ post.url }}" class="post-link">{{ post.title }}</a>
     </li>
     {% endfor %}
 </ul>

@@ -1,11 +1,12 @@
 {
   "name": "chrly",
-  "version": "0.4.1",
+  "version": "0.8.0",
   "homepage": "",
   "author": {
     "name": "Charles Lirsac"
   },
   "dependencies": {
-    "normalize-scss": "~3.0.0"
+    "normalize-scss": "~3.0.0",
+    "modular-scale": "~2.0.4"
   }
 }

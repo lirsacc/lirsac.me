@@ -1,8 +1,10 @@
 <header class="main-header">
-    <nav class="header__inner">
-        <a href="{{ site.url }}" class="name">CH</a>
-        {% for link in site.data.header %}
-        <a href="{{ site.url }}{% if link.slug != nil %}{{ link.slug }}/{% endif %}" class="{{ link.class }}{% if link.class == page.body_class %} header__link--active{% endif %}">{{ link.text }}</a>
-        {% endfor %}
-    </nav>
+    <div class="header-inner">
+        <div class="header-name">{{ site.name }}</div>
+        <div class="header-links">
+            {% for link in site.data.header %}
+            <a href="{{ site.url }}{{ link.slug }}" class="header-link {{ link.class }}">{{ link.text }}</a>
+            {% endfor %}
+        </div>
+    </div>
 </header>

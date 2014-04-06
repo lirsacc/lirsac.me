@@ -1,11 +1,6 @@
-{% include head.html %}
-<body class="preload {{ page.body_class }}">
-    {% include header.html %}
-    <section class="main">
-        {{ content }}
-    </section>
-    {% include footer.html %}
-</body>
-{% include scripts.html %}
-{% include track.html %}
-</html>
+---
+layout: base
+---
+<section class="main">
+    {{ content }}
+</section>
