@@ -45,8 +45,8 @@ module Jekyll
                 zoom = @args.has_key?("zoom") ? @args["zoom"] : retina
                 s+= "data-zoom='#{zoom}' "
 
-                # zoom-retina = @args.has_key?("zoom-retina") ? @args["zoom-retina"] : zoom
-                # s+= "data-zoom-retina='#{zoom-retina}' "
+                zoom_retina = @args.has_key?("zoom_retina") ? @args["zoom_retina"] : zoom
+                s+= "data-zoom-retina='#{zoom_retina}' "
             else
                 s+= "no-zoom "
                 classes.push "no-zoom"
