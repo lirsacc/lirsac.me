@@ -4,17 +4,15 @@ production: true
 permalink: /blog/:title/
 excerpt_separator: "\n\n"
 
-name: chrly
-title: Chrly
-
 pygments: true
 markdown: redcarpet
 redcarpet:
-  extensions: ["strikethrough"]
+  extensions: ["strikethrough", "footnotes", "underline"]
+
+exclude: ['.travis.yml', 'readme.md', 'Gemfile', 'Gemfile.lock', 'node_modules', '.gitignore', 'Gruntfile.js', 'Gruntfile.coffee', 'config.rb', 'package.json', 'favicon.psd', '.sass-cache', 'package.json', 'bower.json', '.bowerrc', 'bower_components', '_assets', '.jekyll', 's3_website.yml', 'scss-lint-report.xml']
 
 google_analytics_id: UA-36424269-1
 clicky_tracking_id: 100700187
 
 url: http://lirsac.me/
-
-exclude: ['.travis.yml', 'readme.md', 'Gemfile', 'Gemfile.lock', 'node_modules', '.gitignore', 'Gruntfile.js', 'Gruntfile.coffee', 'config.rb', 'package.json', 'favicon.psd', '.sass-cache', 'package.json', 'bower.json', '.bowerrc', 'bower_components', '_assets', '.jekyll', 's3_website.yml']
+name: Chrly

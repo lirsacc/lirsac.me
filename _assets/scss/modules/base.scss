@@ -1,167 +1,277 @@
-//  ===============================================
-//
-//  Base module
-//
-//  ===============================================
-
 html {
-    &, * {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        box-sizing: border-box;
-    }
-    font-size: $fs-base * 1px;
+    font-size: $fs-base * .9px;
     height: 100%;
     margin: 0;
     padding: 0;
+
+    @media screen and (min-width: breakpoint($w-main)) {
+        font-size: $fs-base * 1px;
+    }
+
+    &,
+    * {
+        box-sizing: border-box;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+    }
 }
 
 body {
+    @include font-size($fs-0);
+    @include line-height($baseline, $fs-0);
     background: $c-bg;
     color: $c-fg;
-    font-family: $ff-sans;
+    font-family: $ff-serif;
     font-weight: $fw-main;
-    @include font-size($fs-main);
-    @include line-height($baseline, $fs-main);
-    border-top: 8px solid $c-fg-light;
-    padding-top: 1em;
-    @media screen and (min-width: breakpoint($w-small)){
-        padding-top: 2em;
-    }
-    @media screen and (min-width: breakpoint($w-main)){
-        padding-top: 2.5em;
-    }
-    @media screen and (min-width: breakpoint($w-large)){
-        padding-top: 3em;
-    }
 }
 
-.main {
-    height: auto;
-    @include font-size($fs-main);
-    @include line-height($baseline, $fs-main);
-}
+.main { height: auto; }
 
 a {
-    &, * { transition: 0.25s ease-in-out; }
     text-decoration: none;
-    font-weight: 700;
-    color: $c-accent;
-    &:hover {
-        color: $c-accent-2;
+
+    &,
+    * {
+        transition: background-color .25s ease-in-out,
+                    color .25s ease-in-out;
     }
 }
 
 hr {
     border: 0;
+    border-bottom: 1px solid #fff;
     border-top: 1px solid $c-fg-light;
-    border-bottom: 1px solid white;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin: 0;
     padding: 0;
-    font-weight: 700;
 }
 
-h3, h4, h5, h6 {
-    font-size: 1em;
+h1,
+h2 {
+    font-family: $ff-sans;
 }
 
 h1 {
-    font-size: ems(32, $fs-main);
-    line-height: ems(42, 36);
+    @include font-size($fs-3, $fs-0);
+    @include line-height($fs-4, $fs-3);
     font-weight: 900;
 }
 
-h2 {
-    font-size: 1em;
-    text-transform: uppercase;
-    font-weight: 900;
+h2 { font-weight: 700; }
+
+h2,
+h3 {
+    @include font-size($fs-1, $fs-0);
+    @include line-height($fs-3, $fs-1);
+}
+
+h3 {
+    font-style: italic;
+    font-weight: 300;
+}
+
+h4,
+h5 {
+    font-weight: 700;
+}
+
+h5 {
+    @include font-size($fs--2, $fs-0);
+    @include line-height($fs-1, $fs--2);
 }
 
 p > code {
-    display: inline;
     background: $c-fg-light;
     border: $c-fg-clear 1px solid;
     border-radius: 2px;
+    display: inline;
     padding: 1px 8px;
 }
 
-.meta {
-    color: $c-fg-clear;
-    font-size: .95em;
-    font-weight: 600;
-}
-
 blockquote {
+    border-left: 8px solid $c-fg-light;
+
     p {
-        margin: 0;
-        padding-top: .4em;
-        padding-bottom: .4em;
-        padding-right: .6em;
-        padding-left: .6em;
-        opacity: .6;
-        font-size: 1.2em;
+        color: $c-fg;
+        font-style: italic;
         font-weight: 300;
+        margin: 0;
+        padding: .1em .8em;
+
         &.author {
-            font-size: 1em;
+            @include font-size($fs--2, $fs-0);
+            font-style: normal;
             font-weight: bold;
-            padding-top: 0;
-            padding-botom: 0;
+            padding-bottom: 0;
+            padding-top: .5em;
         }
     }
-    border-left: 8px solid $c-fg-light;
-    @media screen and (min-width: breakpoint($w-main)){
-        border-left: 8px solid $c-fg-light;
+}
+
+%meta {
+    @include font-size($fs--2);
+    color: $c-fg-clear;
+    font-weight: 900;
+}
+
+.meta { @extend %meta; }
+
+p,
+ul,
+ol,
+blockquote {
+    a {
+        &,
+        &:visited {
+            color: $c-accent;
+        }
+
+        &:hover { color: $c-accent-2; }
     }
+}
+
+ul,
+ol {
+    list-style-position: inside;
+}
+
+p,
+ul,
+ol {
+    margin-bottom: ems($fs--3, $fs-main);
+    margin-top: 0;
 }
 
 .content {
 
     hr,
-    h1, h2, h3, h4, h5, h6,
-    > p, > ul, > ol, > blockquote {
-        @extend %center;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-        margin-top: 0;
-        margin-bottom: .4em;
-        @media screen and (min-width: breakpoint($w-main)){
-            margin-bottom: .6em;
-        }
-    }
-
-    > h2 {
-        margin-top: .6em;
-        @media screen and (min-width: breakpoint($w-main)){
-            margin-top: 1em;
-        }
-    }
-
-    > p, > ul, > ol, > blockquote, > .highlight {
-        margin-top: 0;
-        margin-bottom: .75em;
-        @media screen and (min-width: breakpoint($w-main)){
-            margin-bottom: 1em;
-        }
-    }
-
-    ul, ol { list-style-position: inside; }
-
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    > p,
+    > ul,
+    > ol,
+    > blockquote,
     > .highlight {
         @extend %center;
+    }
+
+    > h2 { margin-top: 1em; }
+
+    > h3 { margin-top: .75em; }
+
+    > h4 { margin-top: .5em; }
+
+    hr {
+        margin-bottom: 1em;
+        margin-top: 1em;
+    }
+
+    .hightlight,
+    blockquote {
+        margin-top: ems($fs--3, $fs-main);
+    }
+
+    .highlight {
+
         @media screen and (min-width: breakpoint($w-main)) {
             border-radius: 2px;
         }
-        code, pre {
+
+        code,
+        pre {
             margin: 0;
             padding: 0;
         }
-        pre {
-            @include rems(padding, 8, 14);
-        }
+
+        pre { @include rems(padding, 8, 14); }
+    }
+}
+
+.page-title {
+    @extend %center;
+    margin-bottom: .75em;
+}
+
+
+$img-class: 'zoomed-image';
+
+.#{$img-class}-overlay {
+    background-color: black(.35);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.#{$img-class} {
+    border-radius: 3px;
+    box-shadow: 0 0 42px black(.75);
+    position: fixed;
+}
+
+.#{$img-class}-overlay,
+.#{$img-class}-close,
+.#{$img-class} {
+    display: block;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity .4s ease-in-out,
+                visibility .4s ease-in-out;
+    visibility: hidden;
+}
+
+.#{$img-class}-wrapper.active {
+    .#{$img-class}-overlay,
+    .#{$img-class}-close,
+    .#{$img-class} {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+// Pretty loading spinner from http://tobiasahlin.com/spinkit/
+.spinner {
+    -webkit-animation: scaleout 1s infinite ease-in-out;
+    animation: scaleout 1s infinite ease-in-out;
+    background-color: #333;
+    border-radius: 100%;
+    height: 40px;
+    margin: 100px auto;
+    width: 40px;
+}
+
+@-webkit-keyframes scaleout {
+    0% {
+        -webkit-transform: scale(0);
     }
 
+    100% {
+        opacity: 0;
+        -webkit-transform: scale(1);
+    }
+}
+
+@keyframes scaleout {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+      }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
 }

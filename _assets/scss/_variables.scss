@@ -1,12 +1,15 @@
 // COLORS
 
 $c-bg: #fff;
-$c-fg: #333332;
+$c-bg-light: #fafafa;
+$c-bg-clear: #f1f1f1;
+
+$c-fg: #444448;
 $c-fg-clear: #c8ccd2;
 $c-fg-light: #eaeef0;
 
-$c-accent: #74bee1;
-$c-accent-2: #e88985;
+$c-accent: #2d72d9;
+$c-accent-2: #c1392b;
 
 $c-linkedin: #0e76a8;
 $c-twitter: #00acee;
@@ -17,9 +20,9 @@ $c-rss: #ee802f;
 
 // DIMENSIONS
 
-$w-small: 370;
+$w-small: 380;
 $w-main: 640;
-$w-large: 900;
+$w-large: 920;
 
 $h-header-link: 28;
 $h-header: 36;
@@ -29,22 +32,23 @@ $h-footer: 96;
 // TYPOGRAPHY
 
 $fs-base: 10;
-
 $fs-main: 18;
-
+$fs-important: 26;
 $baseline: 30;
+$baseline-rel: $baseline / $fs-main;
+
+$fs--3: ms(-3, $fs-important $fs-main, $golden);
+$fs--2: ms(-2, $fs-important $fs-main, $golden);
+$fs--1: ms(-1, $fs-important $fs-main, $golden);
+$fs-0: ms(0, $fs-important $fs-main, $golden);
+$fs-1: ms(1, $fs-important $fs-main, $golden);
+$fs-2: ms(2, $fs-important $fs-main, $golden);
+$fs-3: ms(3, $fs-important $fs-main, $golden);
+$fs-4: ms(4, $fs-important $fs-main, $golden);
+$fs-5: ms(5, $fs-important $fs-main, $golden);
+
 $fw-main: 400;
 
-$ff-sans: 'Source Sans Pro', 'Source Sans Pro', sans-serif;
+$ff-serif: 'Merriweather', Georgia, serif;
+$ff-sans: 'Source Sans Pro', sans-serif;
 $ff-mono: 'Source Code Pro', monospace;
-
-@font-face {
-    font-family: "icons";
-    src: url("../fonts/icons.eot");
-    src: url("../fonts/icons.eot?#iefix") format("embedded-opentype"),
-        url("../fonts/icons.woff") format("woff"),
-        url("../fonts/icons.ttf") format("truetype"),
-        url("../fonts/icons.svg#icons") format("svg");
-    font-weight: normal;
-    font-style: normal;
-}

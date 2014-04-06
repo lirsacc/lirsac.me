@@ -31,6 +31,12 @@ window.Lazy = ((global, document, undefined_) ->
         addClass elem, "loaded"
         store.splice store.indexOf(elem), 1
 
+    _show = (elem) ->
+        elem.src = elem.getAttribute selector
+        addClass(elem, "loaded")
+        spinner = elem.parentNode.querySelector ".spinner"
+        if spinner? then elem.parentNode.removeChild spinner
+
     # Loop trough images and switch src or remove event listeners
     # if there's no more images
     _load = () ->
@@ -38,11 +44,10 @@ window.Lazy = ((global, document, undefined_) ->
         if store.length > 0
             for elem in store
                 if elem? and _inView elem
-                    _loadImage elem
+                    _show elem
+                    store.splice store.indexOf(elem), 1
         else
-            if document.removeEventListener
-                global.removeEventListener "scroll", _throttle
-            else detachEvent "onscroll", _throttle
+            removeEvent document, "scroll", _throttle
             clearTimeout poller
 
         poller = setTimeout () ->
@@ -57,10 +62,10 @@ window.Lazy = ((global, document, undefined_) ->
             mainPoller = setTimeout _load, throttle
 
     init = (options) ->
-        if options?
-            tolerance = parseInt options.tolerance or 0
-            throttle = parseInt options.throttle or 0
-            selector = options.selector or "data-src"
+        unless options? then options = {}
+        tolerance = parseInt options.tolerance or 0
+        throttle = parseInt options.throttle or 0
+        selector = options.selector or "data-src"
         isRetina = window.devicePixelRatio > 1
         if isRetina then selector = "#{selector}-retina"
 
@@ -68,17 +73,15 @@ window.Lazy = ((global, document, undefined_) ->
 
         for elem in elements
             store.push elem
+            spinner = document.createElement "div"
+            addClass spinner, "spinner"
+            elem.parentNode.appendChild spinner
 
         _load()
 
-        if document.addEventListener
-            global.addEventListener "scroll", _throttle, false
-            global.addEventListener "load", _throttle, false
-        else
-            global.attachEvent "onscroll", _throttle
-            global.attachEvent "onload", _throttle
+        addEvent global, "scroll", _throttle
+        addEvent global, "load", _throttle
 
-    return init: init
-
+    return init
 
 ) this, document

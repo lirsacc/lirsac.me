@@ -5,21 +5,17 @@
 
   <meta content="{{ page.title }}" name="title">
   <meta content="Charles Lirsac" name="author">
-  <meta content="Copyright Charles Lirsac 2013" name="Copyright">
+  <meta content="Copyright Charles Lirsac 2014" name="Copyright">
 
   <!-- Mobile Tags -->
-  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, minimal-ui" />
   <meta http-equiv="cleartype" content="on">
 
   <title>{{ page.title }}</title>
-
-  <!-- Google Fonts -->
-  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic|Source+Code+Pro:300,400,500,700' rel='stylesheet' type='text/css'>
 
   <!-- Fallbacks -->
   <!--[if lt IE 9]>
@@ -29,13 +25,7 @@
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
   <![endif]-->
 
-  <!-- One compiled stylesheet -->
-  <link href='/assets/css/style.css' rel='stylesheet'>
-
-  {% if page.stylesheet %}
-  <!-- Custom stylesheet per page -->
-  <link href='/assets/css/custom/{{ page.stylesheet }}' rel='stylesheet'>
-  {% endif %}
-
   <link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+  {% include styles.html %}
 </head>

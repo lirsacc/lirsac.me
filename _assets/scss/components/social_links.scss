@@ -1,32 +1,31 @@
-//  ===============================================
-//
-//  Social links using icon font
-//
-//  ===============================================
-
 a.social {
+    @extend %icon;
     display: inline-block;
     position: relative;
     text-decoration: none;
-    @include icon;
+
     &.github {
         &:hover { color: $c-github; }
-        &:before { content: "\e002"; };
+        &:before { content: '\e002'; };
     }
+
     &.linkedin {
         &:hover { color: $c-linkedin; }
-        &:before { content: "\e003"; };
+        &:before { content: '\e003'; };
     }
+
     &.twitter {
         &:hover { color: $c-twitter; }
-        &:before { content: "\e000"; };
+        &:before { content: '\e000'; };
     }
+
     &.google-plus {
         &:hover { color: $google-plus-color; }
-        &:before { content: "\e01a"; };
+        &:before { content: '\e01a'; };
     }
+
     &.email {
         &:hover { color: $c-email; }
-        &:before { content: "\e005"; };
+        &:before { content: '\e006'; };
     }
 }

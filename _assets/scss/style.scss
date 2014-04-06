@@ -1,17 +1,31 @@
-//  Bower imports
-@import "../../bower_components/normalize-scss/_normalize";
+//  BOWER IMPORTS
+//  ===============================================
 
-// Primitive imports
-@import "_variables";
-@import "_helpers";
+@import '../../bower_components/normalize-scss/_normalize';
+@import '../../bower_components/modular-scale/stylesheets/_modular-scale';
+
+@import '_variables';
+@import '_helpers';
 
 //  Components
-@import "components/grid";
-@import "components/social_links";
+@import 'components/icons.scss';
+@import 'components/social_links';
 
 //  Modules
-@import "modules/base";
-@import "modules/header";
-@import "modules/footer";
-@import "modules/post";
-@import "modules/pygments";
+@import 'modules/base';
+@import 'modules/header';
+@import 'modules/footer';
+
+@import 'modules/post';
+
+@import 'modules/pygments';
+
+// Hack to fix transitions firing on page load
+// class is removed through javascript on load
+.preload * {
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
+    -webkit-transition: none !important;
+    transition: none !important;
+}

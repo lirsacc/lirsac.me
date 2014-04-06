@@ -17,17 +17,22 @@ linters:
   DeclarationOrder:
     enabled: true
 
-  DeclaredName:
-    enabled: true
-
   DuplicateProperty:
     enabled: true
+
+  EmptyLineBetweenBlocks:
+    enabled: true
+    ignore_single_line_blocks: true
 
   EmptyRule:
     enabled: true
 
+  FinalNewline:
+    enabled: true
+    present: true
+
   HexFormat:
-    enabled: false
+    enabled: true
 
   IdWithExtraneousSelector:
     enabled: true
@@ -38,9 +43,21 @@ linters:
 
   LeadingZero:
     enabled: true
+    style: exclude_zero # or 'include_zero'
+
+  NameFormat:
+    enabled: true
+    convention: hyphenated_lowercase # or 'BEM', or a regex pattern
 
   PlaceholderInExtend:
-    enabled: false
+    enabled: true
+
+  PropertySortOrder:
+    enabled: true
+
+  PropertySpelling:
+    enabled: true
+    extra_properties: []
 
   SelectorDepth:
     enabled: true
@@ -51,9 +68,6 @@ linters:
 
   SingleLinePerSelector:
     enabled: true
-
-  SortedProperties:
-    enabled: false
 
   SpaceAfterComma:
     enabled: true
@@ -66,11 +80,23 @@ linters:
 
   SpaceBeforeBrace:
     enabled: true
+    allow_single_line_padding: false
+
+  SpaceBetweenParens:
+    enabled: true
+    spaces: 0
+
+  StringQuotes:
+    enabled: true
+    style: single_quotes # or double_quotes
 
   TrailingSemicolonAfterPropertyValue:
     enabled: true
 
-  UsageName:
+  UrlFormat:
+    enabled: true
+
+  UrlQuotes:
     enabled: true
 
   ZeroUnit:
