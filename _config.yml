@@ -7,7 +7,7 @@ excerpt_separator: "\n\n"
 pygments: true
 markdown: redcarpet
 redcarpet:
-  extensions: ["strikethrough", "footnotes", "underline"]
+    extensions: ["strikethrough", "footnotes", "underline"]
 
 exclude: ['.travis.yml', 'readme.md', 'Gemfile', 'Gemfile.lock', 'node_modules', '.gitignore', 'Gruntfile.js', 'Gruntfile.coffee', 'config.rb', 'package.json', 'favicon.psd', '.sass-cache', 'package.json', 'bower.json', '.bowerrc', 'bower_components', '_assets', '.jekyll', 's3_website.yml', 'scss-lint-report.xml']
 
@@ -16,3 +16,25 @@ clicky_tracking_id: 100700187
 
 url: http://lirsac.me/
 name: Chrly
+
+# Prose specific config see https://github.com/prose/prose/wiki/Prose-Configuration
+prose:
+    rooturl: "_drafts"
+    siteurl: "http://www.lirsac.me"
+    media: "img"
+    metadata:
+        _posts:
+            - name: "layout"
+              field:
+                element: "hidden"
+                value: "post"
+            - name: "title"
+              field:
+                element: "textarea"
+                label: "title"
+                placeholder: "Post title"
+            - name: "date"
+              field:
+                element: "textarea"
+                label: "date"
+                placeholder: "Post date YYYY-MM-DD"
