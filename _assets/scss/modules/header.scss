@@ -1,25 +1,38 @@
-.main-header { margin-bottom: 1em; }
+.main-header {
+    @extend %clearfix;
+    @include ems(margin-top, $fs-main, $baseline);
+    @include ems(margin-bottom, $fs-main, $baseline);
+}
 
-.header-inner { @extend %center; }
+.header-inner {
+    @extend %center;
+}
+
+.header-name,
+.header-links {
+    @include font-size($fs-0);
+    @include line-height($baseline, $fs-0);
+}
+
+.header-links {
+    float: left;
+    font-weight: bold;
+}
 
 .header-links a {
-    @include font-size($fs--2);
-    font-weight: 700;
-    margin-right: 1em;
+
+    margin-left: 1em;
 
     &,
     &.visited {
-        color: $c-fg;
+        color: $c-fg-clear;
     }
-
-    &:hover { color: $c-accent-2; }
-
-    &:last-of-type { margin-right: 0; }
+    &.active { color: $c-accent-2; }
+    &:hover { color: $c-accent; }
 }
 
 .header-name {
+    float: left;
+    font-family: $ff-serif;
     font-weight: 900;
-    @include font-size($fs-1);
-    @include line-height($fs-3, $fs-1);
-    margin-top: 1em;
 }

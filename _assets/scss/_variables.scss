@@ -4,11 +4,11 @@ $c-bg: #fff;
 $c-bg-light: #fafafa;
 $c-bg-clear: #f1f1f1;
 
-$c-fg: #393939;
+$c-fg: #4c4c4c;
 $c-fg-clear: #c8ccd2;
 $c-fg-light: #eaeef0;
 
-$c-accent: #236399;
+$c-accent: #0f76bc;
 $c-accent-2: #e94143;
 
 $c-linkedin: #0e76a8;
@@ -32,23 +32,24 @@ $h-footer: 96;
 // TYPOGRAPHY
 
 $fs-base: 10;
-$fs-main: 18;
-$fs-important: 26;
-$baseline: 30;
-$baseline-rel: $baseline / $fs-main;
+$fs-main: 16;
+$baseline: 28;
 
-$fs--3: ms(-3, $fs-important $fs-main, $golden);
-$fs--2: ms(-2, $fs-important $fs-main, $golden);
-$fs--1: ms(-1, $fs-important $fs-main, $golden);
-$fs-0: ms(0, $fs-important $fs-main, $golden);
-$fs-1: ms(1, $fs-important $fs-main, $golden);
-$fs-2: ms(2, $fs-important $fs-main, $golden);
-$fs-3: ms(3, $fs-important $fs-main, $golden);
-$fs-4: ms(4, $fs-important $fs-main, $golden);
-$fs-5: ms(5, $fs-important $fs-main, $golden);
+$ratio: $augmented-fourth;
 
-$fw-main: 400;
+$fs--3: ms(-3, $fs-main $baseline, $ratio);
+$fs--2: ms(-2, $fs-main $baseline, $ratio);
+$fs--1: ms(-1, $fs-main $baseline, $ratio);
+$fs-0: ms(0, $fs-main $baseline, $ratio);
+$fs-1: ms(1, $fs-main $baseline, $ratio);
+$fs-2: ms(2, $fs-main $baseline, $ratio);
+$fs-3: ms(3, $fs-main $baseline, $ratio);
+$fs-4: ms(4, $fs-main $baseline, $ratio);
+$fs-5: ms(5, $fs-main $baseline, $ratio);
+$fs-6: ms(6, $fs-main $baseline, $ratio);
 
-$ff-serif: 'Merriweather', Georgia, serif;
-$ff-sans: 'Source Sans Pro', sans-serif;
+$fw-main: normal;
+
+$ff-serif: 'Roboto Slab', Georgia, serif;
+$ff-sans: 'Oxygen', Arial, sans-serif;
 $ff-mono: 'Source Code Pro', monospace;

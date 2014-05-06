@@ -1,12 +1,8 @@
 html {
-    font-size: $fs-base * .9px;
     height: 100%;
     margin: 0;
     padding: 0;
-
-    @media screen and (min-width: breakpoint($w-main)) {
-        font-size: $fs-base * 1px;
-    }
+    font-size: $fs-base * 1px;
 
     &,
     * {
@@ -21,11 +17,20 @@ body {
     @include line-height($baseline, $fs-0);
     background: $c-bg;
     color: $c-fg;
-    font-family: $ff-serif;
+    font-family: $ff-sans;
     font-weight: $fw-main;
+
+    @media screen and (min-width: breakpoint($w-main)) {
+        @include ems(padding-top, $fs-0, $baseline);
+    }
+
+    position: relative;
+    min-height: 100%;
 }
 
-.main { height: auto; }
+.main {
+    @include ems(padding-bottom, $fs-main, 4 * $baseline);
+}
 
 a {
     text-decoration: none;
@@ -53,38 +58,29 @@ h6 {
     padding: 0;
 }
 
+h1 {
+    @include font-size($fs-4, $fs-0);
+    @include line-height(1.5 * $baseline, $fs-4);
+}
+
+h2 {
+    @include font-size($fs-2, $fs-0);
+    @include line-height($baseline, $fs-2);
+    @include ems(margin-bottom, $fs-2, $baseline / 2);
+}
+
 h1,
 h2 {
-    font-family: $ff-sans;
+    font-family: $ff-serif;
+    // font-weight: 400;
 }
 
-h1 {
-    @include font-size($fs-3, $fs-0);
-    @include line-height($fs-4, $fs-3);
-    font-weight: 900;
-}
-
-h2 { font-weight: 700; }
-
-h2,
 h3 {
     @include font-size($fs-1, $fs-0);
-    @include line-height($fs-3, $fs-1);
 }
 
-h3 {
-    font-style: italic;
-    font-weight: 300;
-}
-
-h4,
-h5 {
-    font-weight: 700;
-}
-
-h5 {
-    @include font-size($fs--2, $fs-0);
-    @include line-height($fs-1, $fs--2);
+h4 {
+    text-transform: uppercase;
 }
 
 p > code {
@@ -92,7 +88,7 @@ p > code {
     border: $c-fg-clear 1px solid;
     border-radius: 2px;
     display: inline;
-    padding: 1px 8px;
+    padding: 0.1em 0.75em;
 }
 
 blockquote {
@@ -101,12 +97,10 @@ blockquote {
     p {
         color: $c-fg;
         font-style: italic;
-        font-weight: 300;
         margin: 0;
-        padding: .1em .8em;
+        padding: 0.1em 0.75em;
 
         &.author {
-            @include font-size($fs--2, $fs-0);
             font-style: normal;
             font-weight: bold;
             padding-bottom: 0;
@@ -116,9 +110,8 @@ blockquote {
 }
 
 %meta {
-    @include font-size($fs--2);
     color: $c-fg-clear;
-    font-weight: 900;
+    font-weight: bold;
 }
 
 .meta { @extend %meta; }
@@ -126,8 +119,18 @@ blockquote {
 p,
 ul,
 ol,
-blockquote {
+blockquote,
+hr,
+.hightlight,
+.image-wrapper {
+
+    margin-top: 0;
+    @include ems(margin-bottom, $fs-0, $baseline);
+
     a {
+
+        font-weight: bold;
+
         &,
         &:visited {
             color: $c-accent;
@@ -137,17 +140,42 @@ blockquote {
     }
 }
 
+blockquote,
+hr,
+.hightlight,
+.image-wrapper {
+    @include ems(margin-top, $fs-0, $baseline);
+}
+
 ul,
 ol {
     list-style-position: inside;
 }
 
-p,
-ul,
-ol {
-    margin-bottom: ems($fs--3, $fs-main);
-    margin-top: 0;
+blockquote {
+    border-left: 8px solid $c-fg-light;
+
+    p {
+        color: $c-fg;
+        font-style: italic;
+        margin: 0;
+        padding: 0.1em 0.75em;
+
+        &.author {
+            font-style: normal;
+            font-weight: bold;
+            padding-bottom: 0;
+            padding-top: .5em;
+        }
+    }
 }
+
+%meta {
+    color: $c-fg-clear;
+    font-weight: bold;
+}
+
+.meta { @extend %meta; }
 
 .content {
 
@@ -164,22 +192,6 @@ ol {
     > blockquote,
     > .highlight {
         @extend %center;
-    }
-
-    > h2 { margin-top: 1em; }
-
-    > h3 { margin-top: .75em; }
-
-    > h4 { margin-top: .5em; }
-
-    hr {
-        margin-bottom: 1em;
-        margin-top: 1em;
-    }
-
-    .hightlight,
-    blockquote {
-        margin-top: ems($fs--3, $fs-main);
     }
 
     .highlight {
@@ -200,20 +212,13 @@ ol {
 
 .page-title {
     @extend %center;
-    margin-bottom: .75em;
 }
 
 .image-wrapper {
     display: block;
-    margin-bottom: .75em;
-    margin-top: 0;
     padding: 0;
     position: relative;
     text-align: center;
-
-    @media screen and (min-width: breakpoint($w-main)) {
-        margin-bottom: 1em;
-    }
 
     img {
         cursor: zoom-in;
@@ -240,44 +245,6 @@ ol {
         }
 
         // &.huge = {}
-    }
-}
-
-$img-class: 'zoomed-image';
-
-.#{$img-class}-overlay {
-    background-color: black(.35);
-    height: 100%;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    cursor: zoom-out;
-}
-
-.#{$img-class} {
-    border-radius: 3px;
-    box-shadow: 0 0 42px black(.75);
-    position: fixed;
-}
-
-.#{$img-class}-overlay,
-.#{$img-class}-close,
-.#{$img-class} {
-    display: block;
-    opacity: 0;
-    overflow: hidden;
-    transition: opacity .4s ease-in-out,
-                visibility .4s ease-in-out;
-    visibility: hidden;
-}
-
-.#{$img-class}-wrapper.active {
-    .#{$img-class}-overlay,
-    .#{$img-class}-close,
-    .#{$img-class} {
-        opacity: 1;
-        visibility: visible;
     }
 }
 
@@ -322,5 +289,11 @@ $img-class: 'zoomed-image';
     height: auto;
     text-align: center;
     @include font-size(128, $fs-0);
-    @include line-height(140, 128);
+    @include line-height(164, 128);
+    @include ems(margin-top, 42, $baseline);
+    @include ems(margin-bottom, 42, $baseline);
+}
+
+.center {
+    text-align: center;
 }

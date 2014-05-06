@@ -1,0 +1,55 @@
+$img-class: 'zoomed-image';
+
+.#{$img-class}-overlay {
+    background-color: black(.45);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.#{$img-class}-overlay,
+.#{$img-class} {
+    cursor: zoom-out;
+}
+
+.#{$img-class} {
+    border-radius: 3px;
+    box-shadow: 0 0 42px black(.75);
+    position: fixed;
+}
+
+.#{$img-class}-close {
+    cursor: pointer;
+    @extend %icon;
+    @extend .icon-close;
+    color: $c-fg-light;
+    position: fixed;
+    @include font-size(22);
+    @include rems(right, 6);
+    top: 2.5%;
+    @include rems(height, 32);
+    @include rems(line-height, 32);
+    @include rems(width, 32);
+}
+
+.#{$img-class}-overlay,
+.#{$img-class}-close,
+.#{$img-class} {
+    display: block;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity .4s ease-in-out,
+                visibility .4s ease-in-out;
+    visibility: hidden;
+}
+
+.#{$img-class}-wrapper.active {
+    .#{$img-class}-overlay,
+    .#{$img-class}-close,
+    .#{$img-class} {
+        opacity: 1;
+        visibility: visible;
+    }
+}

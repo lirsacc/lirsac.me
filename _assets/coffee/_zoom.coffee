@@ -7,9 +7,7 @@
 #     *    scale (default .95)
 #
 # TODO :
-#     *    Resize events
 #     *    Touch events
-#     *    Retina support
 #     *    Preloading & loading spinner
 #     *    Arrow keys to navigate + preloading
 #     *    Handle data-legend
@@ -45,24 +43,28 @@ window.Zoom = ((global, document, undefined_) ->
             else
                 imgHeight = _scale * screenHeight
                 imgWidth = imgRatio * imgHeight
-            img.style.width = "#{imgWidth}px"
-            img.style.height = "#{imgHeight}px"
-            img.style.top = "#{(screenHeight - imgHeight) / 2}px"
-            img.style.left = "#{(screenWidth - imgWidth) / 2}px"
+
+        img.style.width = "#{imgWidth}px"
+        img.style.height = "#{imgHeight}px"
+        img.style.top = "#{(screenHeight - imgHeight) / 2}px"
+        img.style.left = "#{(screenWidth - imgWidth) / 2}px"
 
     _set = (elem) ->
         newImg = new Image()
         newImg.src = elem.getAttribute _selector
 
         newImg.onload = () ->
+            _calcDimensions newImg
             _image.src = newImg.src
-            _calcDimensions _image
+            _image.style.width = newImg.style.width
+            _image.style.height = newImg.style.height
+            _image.style.top = newImg.style.top
+            _image.style.left = newImg.style.left
             _activate()
 
     _updateActive = () ->
         unless (_active and _image?) then return
         _calcDimensions _image, true
-
 
     _valid = (elem) ->
         elem.tagName == "IMG" and _typesRegEx.test elem.getAttribute _selector
@@ -97,17 +99,28 @@ window.Zoom = ((global, document, undefined_) ->
 
         _createMarkup cls
         _overlay = document.querySelector ".#{cls}-overlay"
+        _close = document.querySelector ".#{cls}-close"
         _wrapper = document.querySelector ".#{cls}-wrapper"
         _image = document.querySelector ".#{cls}"
 
-        for el in targets when _valid el
-            addEvent el, "click", () ->
-                _set el
+        # Not jQuery => use invoked functions to get a new closure and
+        # add the event listener on the correct element
+        for i in [0..targets.length - 1]
+            if _valid targets[i]
+                do (i) ->
+                    addEvent targets[i], "click", () ->
+                        _set targets[i]
 
         window.onresize = _updateActive
         addEvent window, "orientationchange", _updateActive
 
         addEvent _overlay, "click", () ->
+            _deactivate()
+
+        addEvent _image, "click", () ->
+            _deactivate()
+
+        addEvent _close, "click", () ->
             _deactivate()
 
         if useEscapeKey

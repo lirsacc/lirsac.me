@@ -3,7 +3,7 @@
         <div class="header-name">{{ site.name }}</div>
         <div class="header-links">
             {% for link in site.data.header %}
-            <a href="{{ site.url }}{{ link.slug }}" class="header-link {{ link.class }}">{{ link.text }}</a>
+            <a href="{{ site.url }}{{ link.slug }}" class="header-link {{ link.class }} {% if link.class == page.body_class %}active{% endif %}">{{ link.text }}</a>
             {% endfor %}
         </div>
     </div>

@@ -55,7 +55,7 @@
     }
 }
 
-@mixin line-height($height, $context : $fs-base) {
+@mixin line-height($height, $context : $fs-main) {
     @include ems(line-height, $context, $height)
 }
 
