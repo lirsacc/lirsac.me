@@ -41,4 +41,29 @@ There are plenty of ways to point your domain to you S3 bucket, the simplest in 
 
 Next update your registar with the DNS servers given in the *Delegation Set* section to allow Route 53 to manage your domain. To point your domain just click *Create a Record Set* select *A -IPv4*, then select the *Alias* checkbox and you should be prompted with the correct bucket address. Do the same for both bucket and you're all set, just wait for the DNS to update (depends on your TTL/Refresh rate) and you should have access to your files on the apex domain and non apex domain.
 
-## Travis CI & s3_website
+## Getting deploy on push to work
+
+### s3_website
+
+To automate the upload to S3, there is a very useful command line tool called [s3_website](https://github.com/laurilehmijoki/s3_website) by Lauri Lehmijoki which is pretty simple to set-up. It also discoveres the `_site` directories if you're running a Jekyll site.
+It can be installed as a Ruby gem, and config is stored in a `s3_website.yml` file (You can create a starter file by running `s3_website cfg create` in your project directory).
+
+My config file is pretty standard and looks like this at the moment:
+
+{% highlight yaml %}
+
+s3_id: <%= ENV['S3_KEY'] %>
+s3_secret: <%= ENV['S3_SECRET'] %>
+s3_bucket: lirsac.me
+s3_endpoint: eu-west-1
+max_age: 120
+gzip: true
+
+{% endhighlight %}
+
+There are a lot more options available (Cloudfront cache invalidation, excluding and ignoring files, reduced redundancy...), but those work for a simple blog. It just sets the credentials, bucket name and S3 region (see [available values](http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region "Available S3 Regions")), plus activates gzipping of all files.Note that the `s3_id` and `s3_key` values are read from your environment variables which will be useful to run this on Travis without exposing your credentials.
+
+To push to S3, just run `s3_website push` or `s3_website push --headless` (delete files from S3 which are missing on the local site without prompt) from the project directory.
+
+### Setting up Travis
+
