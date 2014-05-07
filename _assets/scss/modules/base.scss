@@ -77,11 +77,11 @@ h2 {
 
 h3 {
     @include font-size($fs-0, $fs-0);
-    text-transform: uppercase;
 }
 
 h4 {
-    // color: $c-fg-clear;
+    @include font-size($fs--2, $fs-0);
+    text-transform: uppercase;
 }
 
 // Code in paragraphs
@@ -221,6 +221,7 @@ blockquote {
 
 .page-title {
     @extend %center;
+    @include ems(margin-bottom, $fs-4, .5 * $baseline)
 }
 
 .image-wrapper {
