@@ -2,7 +2,8 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    @include ems(margin-top, $fs-main, $baseline);
+    @include ems(margin-top, $fs-main, 2 * $baseline);
+    @include ems(margin-bottom, $fs-main, $baseline);
 }
 
 .footer-inner {

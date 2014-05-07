@@ -29,7 +29,7 @@ body {
 }
 
 .main {
-    @include ems(padding-bottom, $fs-main, 4 * $baseline);
+    @include ems(padding-bottom, $fs-main, 6 * $baseline);
 }
 
 a {
@@ -76,11 +76,12 @@ h2 {
 }
 
 h3 {
-    @include font-size($fs-1, $fs-0);
+    @include font-size($fs-0, $fs-0);
+    text-transform: uppercase;
 }
 
 h4 {
-    text-transform: uppercase;
+    // color: $c-fg-clear;
 }
 
 p > code {
@@ -118,13 +119,18 @@ blockquote {
 
 p,
 ul,
+ol {
+    margin-top: 0;
+}
+
+p,
+ul,
 ol,
 blockquote,
 hr,
-.hightlight,
+.highlight,
 .image-wrapper {
 
-    margin-top: 0;
     @include ems(margin-bottom, $fs-0, $baseline);
 
     a {
@@ -142,7 +148,7 @@ hr,
 
 blockquote,
 hr,
-.hightlight,
+.highlight,
 .image-wrapper {
     @include ems(margin-top, $fs-0, $baseline);
 }
