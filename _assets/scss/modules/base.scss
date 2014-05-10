@@ -88,6 +88,7 @@ h4 {
 
 p > code {
     background: #fefefe;
+    color: #727272;
     border: #d9d9d9 1px solid;
     border-radius: 2px;
     display: inline;
@@ -111,6 +112,17 @@ blockquote {
             padding-top: .5em;
         }
     }
+}
+
+sup > a {
+    margin: 0 .5em;
+    font-weight: bold;
+    display: inline-block;
+    text-decoration: underline;
+}
+
+.footnotes ol {
+    list-style-position: outside;
 }
 
 %meta {
@@ -199,7 +211,8 @@ blockquote {
     > ul,
     > ol,
     > blockquote,
-    > .highlight {
+    > .highlight,
+    > .footnotes {
         @extend %center;
     }
 
