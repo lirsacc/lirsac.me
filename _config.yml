@@ -4,7 +4,7 @@ production: true
 permalink: /blog/:title/
 excerpt_separator: "\n\n"
 
-pygments: true
+highlighter: 'rouge'
 markdown: redcarpet
 redcarpet:
     extensions: ["strikethrough", "footnotes", "underline"]
