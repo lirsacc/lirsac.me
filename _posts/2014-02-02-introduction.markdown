@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Site update and introduction"
+title: Hello World 
 date: 2014-02-02
 ---
 
