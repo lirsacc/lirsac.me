@@ -143,8 +143,7 @@ ul,
 ol,
 blockquote,
 hr,
-.highlight,
-.image-wrapper {
+.highlight {
 
     @include ems(margin-bottom, $fs-0, $baseline);
 
@@ -163,8 +162,7 @@ hr,
 
 blockquote,
 hr,
-.highlight,
-.image-wrapper {
+.highlight {
     @include ems(margin-top, $fs-0, $baseline);
 }
 
@@ -243,6 +241,9 @@ blockquote {
     position: relative;
     text-align: center;
 
+    @include ems(margin-top, $fs-0, 1.5 * $baseline);
+    @include ems(margin-bottom, $fs-0, 1.5 * $baseline);
+
     img {
         cursor: zoom-in;
         margin: 0 auto;
@@ -265,6 +266,27 @@ blockquote {
             @media screen and (min-width: breakpoint($w-large)) {
                 border-radius: 3px;
             }
+        }
+
+        // &.huge = {}
+    }
+
+    .image-caption {
+        width: 100%;
+        @include font-size($fs--2, $fs-0);
+        @include line-height($fs-2, $fs--2);
+        opacity: .8;
+        margin: 0 auto;
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
+
+        &.small {
+            @include rems(max-width, $w-main);
+        }
+
+        &.big {
+            @include rems(max-width, $w-large);
         }
 
         // &.huge = {}

@@ -57,9 +57,9 @@ Create images with the liquid tag
 
 {% image src=http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528aedf6ec3df_1.JPG %}
 
-{% image src=https://s3.amazonaws.com/ooomf-com-files/mOqOuMduRLKZH4hfUE7S_3.JPG size=small %}
+{% image src=https://s3.amazonaws.com/ooomf-com-files/mOqOuMduRLKZH4hfUE7S_3.JPG | size=small %}
 
-{% image src=https://s3.amazonaws.com/ooomf-com-files/8jLdwLg6TLKIQfJcZgDb_Freedom_5.jpg size=huge %}
+{% image src=https://s3.amazonaws.com/ooomf-com-files/8jLdwLg6TLKIQfJcZgDb_Freedom_5.jpg | size=huge %}
 
 ## Code blocks through pygments
 

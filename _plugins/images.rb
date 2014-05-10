@@ -1,6 +1,6 @@
 # Minimal Image Liguid Tag to integrate with the theme's CSS and JS
 #
-# Use like {% image src=ImageSRC arg_name=arg_value ... %}
+# Use like {% image src=ImageSRC | arg_1=arg_1_value | arg_2=... %}
 #
 # Parameters
 # ----------
@@ -11,6 +11,7 @@
 #     *    zoom-retina => defaults to no_zoom
 #     *    no_zoom => disbale lightbox and add .no-zoom class, no value needed
 #     *    size => huge, small or big defaults to big
+#     *    caption => image caption
 
 module Jekyll
 
@@ -30,7 +31,8 @@ module Jekyll
             main_class = "image-wrapper"
 
             classes = []
-            classes.push (@args.has_key?("size") ? @args["size"] : "big")
+            size_class = (@args.has_key?("size") ? @args["size"] : "big")
+            classes.push size_class
 
             if @args.has_key?("no_lazy")
                 s = "<div class='#{main_class}'><img src='#{@args['src']}' no-lazy "
@@ -53,21 +55,26 @@ module Jekyll
                 classes.push "no-zoom"
             end
 
-            s += "class='#{classes.join(' ')}'"
+            s += "class='#{classes.join(' ')}'/>"
 
-            s +=  "/></div>"
+            if @args.has_key?("caption")
+                s += "<div class='image-caption #{size_class}'>#{@args['caption']}</div>"
+            end
+
+            s += "</div>"
             s
         end
 
         def parse_args(args)
             _h = {}
-            array = args.split(" ")
+            array = args.split(" | ")
             for s in array
                 kv = s.split("=")
                 _h[kv[0]] = (kv[1] != nil ? kv[1] : true)
             end
             _h
         end
+
     end
 end
 
