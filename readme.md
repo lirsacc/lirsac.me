@@ -1,7 +1,7 @@
 Jekyll based personnal blog/site.
 =================================
 
-[Personal site](www.lirsac.me), build by [Travis CI](https://travis-ci.org) :
+[Personal site](www.lirsac.me), build by [Travis CI](https://travis-ci.org), hosting on Amazon S3 (see setup [here](http://lirsac.me/blog/host-on-amazon-s3-and-deploy-with-github-and-travis/):
 
 [![Build Status](https://travis-ci.org/lirsacc/lirsac.me.png?branch=master)](https://travis-ci.org/lirsacc/lirsac.me)
 
@@ -12,10 +12,10 @@ In no particular order:
 
 + RSS & Sitemap
 + Better readme
-+ Image zooming & caption
-  + Style and js
-  + Custom plugin to generate markup
++ ~~Image zooming & caption~~
+  + ~~Style and js~~
+  + ~~Custom plugin to generate markup~~
 + Refactor scss to make it lighter
 + Retina images
 + Jekyll plugins for specific markup
-+ Footnotes styling
++ ~~Footnotes styling~~
