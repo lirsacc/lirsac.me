@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Host a static site on Amazon S3 & deploy with Github & Travis
-date: 2014-05-05
+date: 2014-05-10
 ---
 
 As I said in my first post, this site is built by [Jekyll](http://jekyllrb.com/) and hosted on [Amazon S3](http://aws.amazon.com/s3/ "Amazon S3") and its source on [Github](https://github.com/lirsacc/lirsac.me/ "Git repo of lirsac.me") and deployed on push through [Travis CI](https://travis-ci.org/lirsacc/lirsac.me) to emulate Github Pages' ease of use. In this post, I will try to explain all the steps required to setting it all up.
