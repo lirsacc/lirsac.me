@@ -8,7 +8,7 @@ date: 2013-12-08 14:08:00
 
 Corned beef tri-tip pig fatback meatball brisket. Filet mignon tenderloin flank kielbasa venison. Tail prosciutto shoulder, turkey cow hamburger flank pork swine beef ribs pig tri-tip short loin meatloaf beef. Brisket turducken boudin, frankfurter jowl chuck flank shank ham hock pork chop meatloaf.
 
-You can use different text formats: *italic*, **bold**, _underline_, and  ~~strikethrough~~, `code` and [links](http://google.com).
+You can use different text formats: *italic*, **bold**, _underline_, and  ~~strike through~~, `code` and [links](http://google.com).
 
 Basic quotes :
 
