@@ -70,7 +70,7 @@ window.Zoom = ((global, document, undefined_) ->
         elem.tagName == "IMG" and _typesRegEx.test elem.getAttribute _selector
 
     _createMarkup = (cls) ->
-        str = "</div><div class='#{cls}-overlay'></div><img src='' class='#{cls}'/><div class='#{cls}-close'>"
+        str = "<div class='#{cls}-overlay'></div><img src='' class='#{cls}'/><div class='#{cls}-close'></div>"
         el = document.createElement "div"
         el.innerHTML = str
         addClass el, "#{cls}-wrapper"
