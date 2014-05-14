@@ -7,41 +7,49 @@
 #     *    scale (default .95)
 #
 # TODO :
+#     *    Add throttling on _resize, _activate & _set
 #     *    Touch events
 #     *    Preloading & loading spinner
 #     *    Arrow keys to navigate + preloading
-#     *    Handle data-legend
+#     *    Handle data-legend / captions
+#
+# =========================================================================
 
-window.Zoom = ((global, document, undefined_) ->
+Zoom = ((global, document, undefined_) ->
     "use strict"
 
     _obj = document.body or document.documentElement
-    _w = window
-    _typesRegEx = new RegExp('\.(png|jpg|jpeg|gif)$', 'i')
 
+    _scale = undefined
+    _selector = undefined
+
+    _active = false
     _overlay = undefined
     _wrapper = undefined
     _image = undefined
-    _scale = undefined
-    _selector = undefined
-    _active = false
+
+    _resetDimensions = () ->
+        _image.setAttribute "style", "left: 50%; top: 50%; width: 0; height: 0"
 
     _calcDimensions = (img, force) ->
-        unless force? then force = false
-        screenWidth = _w.innerWidth
-        screenHeight = _w.innerHeight
+        force ?= false
+
+        screenWidth = window.innerWidth or document.documentElement.clientWidth
+        screenHeight = window.innerHeight or document.documentElement.clientHeight
+        maxWidth = _scale * screenWidth
+        maxHeight = _scale * screenHeight
         screenRatio = screenWidth / screenHeight
 
         imgWidth = img.width
         imgHeight = img.height
         imgRatio = imgWidth / imgHeight
 
-        if imgWidth > _scale * screenWidth or imgHeight > _scale * screenHeight or force
+        if imgWidth > maxWidth or imgHeight > maxHeight or force
             if imgRatio > screenRatio
-                imgWidth = _scale * screenWidth
+                imgWidth = maxWidth
                 imgHeight = imgWidth / imgRatio
             else
-                imgHeight = _scale * screenHeight
+                imgHeight = maxHeight
                 imgWidth = imgRatio * imgHeight
 
         img.style.width = "#{imgWidth}px"
@@ -60,20 +68,21 @@ window.Zoom = ((global, document, undefined_) ->
             _image.style.height = newImg.style.height
             _image.style.top = newImg.style.top
             _image.style.left = newImg.style.left
-            _activate()
 
-    _updateActive = () ->
-        unless (_active and _image?) then return
+        _activate()
+
+    _resize = () ->
+        unless _active and _image? then return
         _calcDimensions _image, true
 
     _valid = (elem) ->
-        elem.tagName == "IMG" and _typesRegEx.test elem.getAttribute _selector
+        elem.tagName == "IMG"
 
     _createMarkup = (cls) ->
-        str = "<div class='#{cls}-overlay'></div><img src='' class='#{cls}'/><div class='#{cls}-close'></div>"
         el = document.createElement "div"
-        el.innerHTML = str
         addClass el, "#{cls}-wrapper"
+        el.innerHTML = "<div class='#{cls}-overlay'></div>\
+                       <img src='' class='#{cls}'/>"
         _obj.appendChild el
 
     _activate = () ->
@@ -85,17 +94,19 @@ window.Zoom = ((global, document, undefined_) ->
         unless _active then return
         _active = false
         removeClass _wrapper, "active"
+        _resetDimensions()
 
     init = (options) ->
-        unless options? then options = {}
+
+        options ?= {}
         _selector = options.selector or "data-zoom"
-        useEscapeKey = options.escapeKey or true
+        useEscapeKey = options.useEscapeKey or true
         cls = options.cls or "zoomed-image"
         _scale = options.scale or 0.95
 
         targets = document.querySelectorAll "img[#{_selector}]"
 
-        if targets.length == 0 then return
+        if targets.length == 0 then return # Nothing to do here
 
         _createMarkup cls
         _overlay = document.querySelector ".#{cls}-overlay"
@@ -103,24 +114,22 @@ window.Zoom = ((global, document, undefined_) ->
         _wrapper = document.querySelector ".#{cls}-wrapper"
         _image = document.querySelector ".#{cls}"
 
-        # Not jQuery => use invoked functions to get a new closure and
-        # add the event listener on the correct element
-        for i in [0..targets.length - 1]
-            if _valid targets[i]
-                do (i) ->
-                    addEvent targets[i], "click", () ->
-                        _set targets[i]
+        _resetDimensions()
 
-        window.onresize = _updateActive
-        addEvent window, "orientationchange", _updateActive
+        # Not jQuery => use immediatly invoked function to get a new closure
+        # and add the event listener on the correct target
+        for target in targets when _valid target
+            do (target) ->
+                addEvent target, "click", () ->
+                    _set target
+
+        window.onresize = _resize
+        addEvent window, "orientationchange", _resize
 
         addEvent _overlay, "click", () ->
             _deactivate()
 
         addEvent _image, "click", () ->
-            _deactivate()
-
-        addEvent _close, "click", () ->
             _deactivate()
 
         if useEscapeKey

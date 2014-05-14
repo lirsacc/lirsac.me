@@ -1,7 +1,7 @@
 $img-class: 'zoomed-image';
 
 .#{$img-class}-overlay {
-    background-color: black(.45);
+    background-color: white(.45);
     height: 100%;
     left: 0;
     position: fixed;
@@ -18,6 +18,11 @@ $img-class: 'zoomed-image';
     border-radius: 3px;
     box-shadow: 0 0 42px black(.75);
     position: fixed;
+    // Will be overidden by inline styles
+    top: 50%;
+    left: 50%;
+    height: 0;
+    width: 0;
 }
 
 .#{$img-class}-close {
@@ -40,9 +45,8 @@ $img-class: 'zoomed-image';
     display: block;
     opacity: 0;
     overflow: hidden;
-    transition: opacity .4s ease-in-out,
-                visibility .4s ease-in-out;
     visibility: hidden;
+    transition: .25s ease-in-out;
 }
 
 .#{$img-class}-wrapper.active {
