@@ -38,7 +38,8 @@ a {
     &,
     * {
         transition: background-color .25s ease-in-out,
-                    color .25s ease-in-out;
+                    color .25s ease-in-out,
+                    border-color .25s ease-in-out;
     }
 }
 
@@ -84,8 +85,6 @@ h4 {
     text-transform: uppercase;
 }
 
-// Code in paragraphs
-
 p > code {
     background: #fefefe;
     color: #727272;
@@ -120,6 +119,11 @@ ol {
     margin-top: 0;
 }
 
+ul,
+ol {
+    list-style-position: inside;
+}
+
 p,
 ul,
 ol,
@@ -148,11 +152,6 @@ hr,
     @include ems(margin-top, $fs-0, $baseline);
 }
 
-ul,
-ol {
-    list-style-position: inside;
-}
-
 blockquote {
     border-left: 8px solid $c-fg-light;
 
@@ -164,19 +163,12 @@ blockquote {
 
         &.author {
             font-style: normal;
-            font-weight: bold;
+            font-weight: 700;
             padding-bottom: 0;
             padding-top: .5em;
         }
     }
 }
-
-%meta {
-    color: $c-fg-clear;
-    font-weight: bold;
-}
-
-.meta { @extend %meta; }
 
 .content {
 

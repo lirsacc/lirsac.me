@@ -4,9 +4,6 @@
     @include ems(margin-top, $fs-main, $baseline);
 }
 
-.post-title {
-}
-
 .posts {
     @extend %center;
     list-style-type: none;

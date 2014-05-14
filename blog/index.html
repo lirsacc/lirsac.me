@@ -10,7 +10,7 @@ title: The Blog
 <ul class="posts">
     {% for post in site.posts %}
     <li class="post">
-        <span class="post-meta">{{ post.date | date_to_string }} - </span><a href="{{ post.url }}" class="post-link">{{ post.title }}</a>
+        <span class="post-meta">{{ post.date | date: "%b %d, %Y" }} - </span><a href="{{ post.url }}" class="post-link">{{ post.title }}</a>
     </li>
     {% endfor %}
 </ul>

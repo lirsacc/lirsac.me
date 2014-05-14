@@ -11,7 +11,7 @@ I am Charles, which at the moment means a French <a href="http://en.ec-lyon.fr/7
 <ul class="posts">
     {% for post in site.posts limit:2 %}
     <li class="post">
-        <span class="post-meta">{{ post.date | date_to_string }} - </span><a href="{{ post.url }}" class="post-link">{{ post.title }}</a>
+        <span class="post-meta">{{ post.date | date: "%b %d, %Y" }} - </span><a href="{{ post.url }}" class="post-link">{{ post.title }}</a>
     </li>
     {% endfor %}
 </ul>

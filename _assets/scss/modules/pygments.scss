@@ -187,18 +187,18 @@ pre {
     // .gt {}
 
     // generic.heading
-    .gh { color: $py-foreground; font-weight: bold; }
+    .gh { color: $py-foreground; font-weight: 700; }
     // generic.inserted
 
     .gi { color: $py-green; }
 
     // generic.prompt
-    .gp { color: $py-comment; font-weight: bold; }
+    .gp { color: $py-comment; font-weight: 700; }
 
     // generic.strong
-    .gs { font-weight: bold; }
+    .gs { font-weight: 700; }
 
     // generic.subheading
-    .gu { color: $py-aqua; font-weight: bold; }
+    .gu { color: $py-aqua; font-weight: 700; }
 
 }
