@@ -102,7 +102,7 @@ module.exports = (grunt) ->
 
         autoprefixer:
             options:
-                browsers: ['last 2 version', '> 5%']
+                browsers: ['last 4 version', '> 4%']
             simple:
                 src: "<%= cfg.assets_target %>/css/style.css"
                 dest: "<%= cfg.assets_target %>/css/style.css"
