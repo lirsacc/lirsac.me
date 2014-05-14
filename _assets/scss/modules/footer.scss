@@ -9,7 +9,7 @@ footer {
 .footer-inner {
     @extend %center;
     color: $c-fg-clear;
-    font-weight: bold;
+    font-weight: 700;
     text-align: center;
     @include line-height(1.5 * $baseline, $fs-0);
 

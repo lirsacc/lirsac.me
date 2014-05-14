@@ -32,8 +32,8 @@ $h-footer: 96;
 // TYPOGRAPHY
 
 $fs-base: 10;
-$fs-main: 17;
-$baseline:31;
+$fs-main: 18;
+$baseline:33;
 
 $ratio: $augmented-fourth;
 
@@ -51,5 +51,5 @@ $fs-6: ms(6, $fs-main $baseline, $ratio);
 $fw-main: normal;
 
 $ff-serif: 'Roboto Slab', Georgia, serif;
-$ff-sans: 'Oxygen', Arial, sans-serif;
+$ff-sans: 'Roboto', Arial, sans-serif;
 $ff-mono: 'Source Code Pro', monospace;

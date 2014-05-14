@@ -96,27 +96,9 @@ p > code {
     margin: 0 .2em;
 }
 
-blockquote {
-    border-left: 8px solid $c-fg-light;
-
-    p {
-        color: $c-fg;
-        font-style: italic;
-        margin: 0;
-        padding: 0.1em 0.75em;
-
-        &.author {
-            font-style: normal;
-            font-weight: bold;
-            padding-bottom: 0;
-            padding-top: .5em;
-        }
-    }
-}
-
 sup > a {
     margin: 0 .5em;
-    font-weight: bold;
+    font-weight: 700;
     display: inline-block;
     text-decoration: underline;
 }
@@ -127,7 +109,7 @@ sup > a {
 
 %meta {
     color: $c-fg-clear;
-    font-weight: bold;
+    font-weight: 900;
 }
 
 .meta { @extend %meta; }
@@ -149,7 +131,7 @@ hr,
 
     a {
 
-        font-weight: bold;
+        font-weight: 700;
 
         &,
         &:visited {
@@ -278,7 +260,7 @@ blockquote {
         opacity: .8;
         margin: 0 auto;
         text-align: center;
-        font-weight: bold;
+        font-weight: 700;
         text-transform: uppercase;
 
         &.small {

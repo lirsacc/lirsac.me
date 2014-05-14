@@ -27,5 +27,15 @@
 
   <link rel="shortcut icon" href="/assets/img/favicon.ico">
 
-  {% include styles.html %}
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700|Roboto:400,300,300italic,400italic,700,700italic,900,900italic|Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
+
+  <!-- One compiled stylesheet -->
+  <link href='/assets/css/style.css' rel='stylesheet'>
+
+  {% if page.stylesheet %}
+  <!-- Custom stylesheet for current page -->
+  <link href='/assets/css/custom/{{ page.stylesheet }}' rel='stylesheet'>
+  {% endif %}
+
 </head>
