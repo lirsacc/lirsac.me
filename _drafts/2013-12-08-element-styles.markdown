@@ -10,6 +10,8 @@ Corned beef tri-tip pig fatback meatball brisket. Filet mignon tenderloin flank 
 
 You can use different text formats: *italic*, **bold**, _underline_, and  ~~strike through~~, `code` and [links](http://google.com).
 
+Tooltips are automatically added with a `data-tooltip` attribute: <a href="http://google.com" data-tooltip="http://google.com">Google</a>.
+
 Basic quotes :
 
 > Salami rump tongue, meatloaf beef ribs turkey pastrami chuck. Fatback flank shankle ground round pork chop beef tail sausage pig venison spare ribs.

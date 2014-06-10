@@ -1,0 +1,23 @@
+a[data-tooltip] {
+    position: relative;
+
+    &:before {
+        @include rems(height, $baseline);
+        @include rems(top, - $baseline);
+        font-size: ems($fs--1, $fs-0);
+        background-color: black(.75);
+        border-radius: 2px;
+        color: $c-bg;
+        content: attr(data-tooltip);
+        display: none;
+        left: 0;
+        line-height: ems($baseline, $fs--1);
+        padding: 0 16px;
+        position: absolute;
+        white-space: nowrap;
+    }
+
+    &:hover:before {
+        display: block;
+    }
+}
