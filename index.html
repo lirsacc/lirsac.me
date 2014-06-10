@@ -9,7 +9,7 @@ I am Charles, which at the moment means a French <a href="http://en.ec-lyon.fr/7
 </p>
 
 <ul class="posts">
-    {% for post in site.posts limit:2 %}
+    {% for post in site.posts %}
     <li class="post">
         <span class="post-meta">{{ post.date | date: "%b %d, %Y" }} - </span><a href="{{ post.url }}" class="post-link">{{ post.title }}</a>
     </li>
