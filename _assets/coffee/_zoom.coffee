@@ -102,7 +102,7 @@ Zoom = ((global, document, undefined_) ->
         _selector = options.selector or "data-zoom"
         useEscapeKey = options.useEscapeKey or true
         cls = options.cls or "zoomed-image"
-        _scale = options.scale or 0.95
+        _scale = options.scale or 0.986
 
         targets = document.querySelectorAll "img[#{_selector}]"
 
