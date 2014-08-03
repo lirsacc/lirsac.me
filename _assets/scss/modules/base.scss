@@ -230,16 +230,10 @@ blockquote {
 
         &.small {
             @include rems(max-width, $w-main);
-            @media screen and (min-width: breakpoint($w-main)) {
-                border-radius: 3px;
-            }
         }
 
         &.big {
             @include rems(max-width, $w-large);
-            @media screen and (min-width: breakpoint($w-large)) {
-                border-radius: 3px;
-            }
         }
 
         // &.huge = {}
