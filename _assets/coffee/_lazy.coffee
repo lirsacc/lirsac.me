@@ -1,6 +1,6 @@
 # Coffeescript/Vanilla JS image lazy loader
-# Adapted from https://github.com/toddmotto/echo
-# All credits go to respective author
+# Started as an adaptation of https://github.com/toddmotto/echo
+# All credits go to respective authors
 #
 # Parameters :
 #     *    selector (default data-src)
