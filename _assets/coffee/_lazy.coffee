@@ -16,6 +16,7 @@ Lazy = ((global, document, undefined_) ->
     tolerance = 0
     throttle = 0
     selector = "data-src"
+    handleRetina = true
 
     poller = null
     globalPoller = null
@@ -38,7 +39,11 @@ Lazy = ((global, document, undefined_) ->
     # Preload and reveal individual images when file has been downloaded
     _show = (elem) ->
         tmpImage = new Image()
-        tmpImage.src = elem.getAttribute selector
+        if handleRetina then newSrc = elem.getAttribute "#{selector}-retina"
+        # Always fall back to normal selector
+        # in case retina attribute is not found
+        if !newSrc then newSrc = elem.getAttribute selector
+        tmpImage.src = newSrc
 
         tmpImage.onload = () ->
             store.splice store.indexOf(elem), 1
@@ -79,10 +84,7 @@ Lazy = ((global, document, undefined_) ->
         tolerance = parseInt options.tolerance or 200
         throttle = parseInt options.throttle or 150
         selector = options.selector or "data-src"
-        handleRetina = options.handleRetina or false
-
-        if handleRetina and  window.devicePixelRatio > 1
-            selector = "#{selector}-retina"
+        handleRetina = (options.handleRetina or handleRetina) and window.devicePixelRatio > 1
 
         targets = document.querySelectorAll "img[#{selector}]"
 

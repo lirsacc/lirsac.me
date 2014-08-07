@@ -3,8 +3,9 @@
 # Parameters :
 #     *    selector (default data-zoom)
 #     *    useEscapeKey (default true)
-#     *    cls (default .zoomed-image)
+#     *    cls (default zoomed-image)
 #     *    scale (default .95)
+#     *    handleReatina (defualt: true)
 #
 # TODO :
 #     *    Add throttling on _resize, _activate & _set
@@ -21,6 +22,7 @@ Zoom = ((global, document, undefined_) ->
     _obj = document.body or document.documentElement
 
     _scale = undefined
+    _handleRetina = true
     _selector = undefined
 
     _active = false
@@ -59,7 +61,11 @@ Zoom = ((global, document, undefined_) ->
 
     _set = (elem) ->
         newImg = new Image()
-        newImg.src = elem.getAttribute _selector
+        if _handleRetina then newSrc = elem.getAttribute "#{_selector}-retina"
+        # Always fall back to normal selector
+        # in case retina attribute is not found
+        if !newSrc then newSrc = elem.getAttribute _selector
+        newImg.src = newSrc
 
         newImg.onload = () ->
             _calcDimensions newImg
@@ -103,6 +109,7 @@ Zoom = ((global, document, undefined_) ->
         useEscapeKey = options.useEscapeKey or true
         cls = options.cls or "zoomed-image"
         _scale = options.scale or 0.986
+        _handleRetina = (options.handleRetina or _handleRetina) and window.devicePixelRatio > 1
 
         targets = document.querySelectorAll "img[#{_selector}]"
 
