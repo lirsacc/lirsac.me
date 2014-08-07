@@ -30,6 +30,7 @@ Zoom = ((global, document, undefined_) ->
     _wrapper = undefined
     _image = undefined
 
+    # Default centering for an image / object
     _resetDimensions = () ->
         _image.setAttribute "style", "left: 50%; top: 50%; width: 0; height: 0"
 
@@ -117,7 +118,6 @@ Zoom = ((global, document, undefined_) ->
 
         _createMarkup cls
         _overlay = document.querySelector ".#{cls}-overlay"
-        _close = document.querySelector ".#{cls}-close"
         _wrapper = document.querySelector ".#{cls}-wrapper"
         _image = document.querySelector ".#{cls}"
 

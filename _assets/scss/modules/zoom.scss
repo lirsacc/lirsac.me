@@ -1,7 +1,8 @@
 $img-class: 'zoomed-image';
+$overlay-color: black(.45);
 
 .#{$img-class}-overlay {
-    background-color: white(.45);
+    background-color: $overlay-color;
     height: 100%;
     left: 0;
     position: fixed;
@@ -15,32 +16,18 @@ $img-class: 'zoomed-image';
 }
 
 .#{$img-class} {
-    border-radius: 3px;
+    border-radius: 2px;
     box-shadow: 0 0 42px black(.75);
     position: fixed;
-    // Will be overidden by inline styles
+
+    // Will be overidden by inline styles set by javascript
     top: 50%;
     left: 50%;
     height: 0;
     width: 0;
 }
 
-.#{$img-class}-close {
-    cursor: pointer;
-    @extend %icon;
-    @extend .icon-close;
-    color: $c-fg-light;
-    position: fixed;
-    @include font-size(22);
-    @include rems(right, 6);
-    top: 2.5%;
-    @include rems(height, 32);
-    @include rems(line-height, 32);
-    @include rems(width, 32);
-}
-
 .#{$img-class}-overlay,
-.#{$img-class}-close,
 .#{$img-class} {
     display: block;
     opacity: 0;
@@ -51,7 +38,6 @@ $img-class: 'zoomed-image';
 
 .#{$img-class}-wrapper.active {
     .#{$img-class}-overlay,
-    .#{$img-class}-close,
     .#{$img-class} {
         opacity: 1;
         visibility: visible;

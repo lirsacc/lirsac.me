@@ -57,11 +57,11 @@ Create images with the liquid tag
 
     {{ "{% image src=http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528aedf6ec3df_1.JPG " }}%}
 
-{% image src=http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_528aedf6ec3df_1.JPG %}
+{% image src=http://33.media.tumblr.com/b39a844d2c755fca6b9009e557fcf88a/tumblr_n9hym20RNy1st5lhmo1_1280.jpg %}
 
 {% image src=http://31.media.tumblr.com/01a998fe4b01eb36ffb2feb8b8905f59/tumblr_n5e6mau0Jx1st5lhmo1_1280.jpg | size=small | zoom=https://s3.amazonaws.com/ooomf-com-files/91vrBzqgSveXxB03xgrG_patterns.jpg %}
 
-{% image src=https://s3.amazonaws.com/ooomf-com-files/8jLdwLg6TLKIQfJcZgDb_Freedom_5.jpg | size=huge | no_zoom %}
+{% image src=http://31.media.tumblr.com/b92879483bd60c7db0871cc64b694b05/tumblr_n9hyqfJavs1st5lhmo1_1280.jpg | size=huge | no_zoom %}
 
 ## Code blocks through pygments
 
