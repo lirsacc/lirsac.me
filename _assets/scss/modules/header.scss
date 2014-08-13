@@ -1,28 +1,49 @@
 .main-header {
     @extend %clearfix;
-    @include ems(margin-top, $fs-main, $baseline);
-    @include ems(margin-bottom, $fs-main, $baseline);
+    background: $c-fg-light;
+    color: $c-fg;
 }
 
 .header-inner {
-    @extend %center;
+    @extend %large-center;
 }
 
 .header-name,
 .header-links {
     @include font-size($fs-0);
-    @include line-height($baseline, $fs-0);
+    @include rems(height, 2 * $baseline);
+    @include rems(line-height, 2 * $baseline);
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+
+.header-name {
+    font-weight: 300;
+    font-family: $ff-serif;
+
+    @include respond-to($w-small) {
+        text-align: left;
+        width: 40%;
+    }
+
+    a , a:visited, a:hover, a:active {
+        color: $c-fg;
+    }
 }
 
 .header-links {
-    float: left;
-    font-weight: 700;
+    @include respond-to($w-small) {
+        width: 60%;
+        text-align: right;
+    }
 }
 
 .header-links a {
 
     display: inline-block;
     margin-left: 1em;
+    font-size: 1.25em;
 
     &:first-of-type {
         margin-left: 0;
@@ -30,7 +51,7 @@
 
     &,
     &.visited {
-        color: $c-fg-clear;
+        color: $c-fg;
     }
 
     &.active {
@@ -40,10 +61,11 @@
     &:hover {
         color: $c-accent;
     }
-}
 
-.header-name {
-    float: left;
-    font-family: $ff-serif;
-    font-weight: 900;
+    &:before {
+        // font-size: 1em;
+        position: relative;
+        top: .15em;
+        // margin-right: .75em;
+    }
 }

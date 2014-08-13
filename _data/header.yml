@@ -1,7 +1,14 @@
 - slug:
   class: home
   text: Home
+  icon: line-home
 
 - slug: blog
   class: blog
   text: Blog
+  icon: line-book
+
+# - slug: pictures
+#   class: pictures
+#   text: Photography
+#   icon: line-polaroid
