@@ -5,3 +5,4 @@ bower_components
 .sass-cache
 Gemfile.lock
 *.swp
+npm-debug.log
