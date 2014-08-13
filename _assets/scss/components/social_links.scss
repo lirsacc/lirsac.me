@@ -3,29 +3,16 @@ a.social {
     display: inline-block;
     position: relative;
     text-decoration: none;
+    outline: none;
 
-    &.github {
-        &:hover { color: $c-github; }
-        &:before { content: '\e002'; };
+    &:hover, &:focus {
+        outline: none;
     }
 
-    &.linkedin {
-        &:hover { color: $c-linkedin; }
-        &:before { content: '\e003'; };
-    }
-
-    &.twitter {
-        &:hover { color: $c-twitter; }
-        &:before { content: '\e000'; };
-    }
-
-    &.google-plus {
-        &:hover { color: $google-plus-color; }
-        &:before { content: '\e01a'; };
-    }
-
-    &.email {
-        &:hover { color: $c-email; }
-        &:before { content: '\e006'; };
-    }
+    &.github:hover              { color: $c-github; }
+    &.linkedin:hover            { color: $c-linkedin; }
+    &.twitter:hover             { color: $c-twitter; }
+    &.google-plus:hover         { color: $google-plus-color; }
+    &.email:hover               { color: $c-email; }
+    &.rss:hover                 { color: $c-rss; }
 }

@@ -1,11 +1,19 @@
 - name: twitter
   url: https://twitter.com/@lirsacc
+  icon: twitter
 
 - name: linkedin
   url: http://www.linkedin.com/in/lirsacc
+  icon: linkedin
 
 - name: github
   url: https://github.com/lirsacc
+  icon: github
 
 - name: email
   url: mailto:charles@lirsac.me
+  icon: envelope
+
+- name: rss
+  url: http://lirsac.me/rss.xml
+  icon: rss
