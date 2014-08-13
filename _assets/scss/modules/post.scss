@@ -1,5 +1,6 @@
 .post-header {
     @extend %center;
+    text-align: center;
     @include ems(margin-bottom, $fs-main, $baseline);
     @include ems(margin-top, $fs-main, $baseline);
 }

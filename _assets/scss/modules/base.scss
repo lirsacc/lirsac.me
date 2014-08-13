@@ -1,17 +1,3 @@
-html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-size: $fs-base * 1px;
-
-    &,
-    * {
-        box-sizing: border-box;
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-    }
-}
-
 body {
     @include font-size($fs-0);
     @include line-height($baseline, $fs-0);
@@ -20,15 +6,12 @@ body {
     font-family: $ff-sans;
     font-weight: $fw-main;
 
-    @media screen and (min-width: breakpoint($w-main)) {
-        @include ems(padding-top, $fs-0, $baseline);
-    }
-
     position: relative;
     min-height: 100%;
 }
 
 .main {
+    @include ems(padding-top, $fs-main, 2 * $baseline);
     @include ems(padding-bottom, $fs-main, 6 * $baseline);
 }
 
@@ -37,9 +20,10 @@ a {
 
     &,
     * {
-        transition: background-color .25s ease-in-out,
-                    color .25s ease-in-out,
-                    border-color .25s ease-in-out;
+        transition: background-color .2s ease-in-out,
+                    color .2s ease-in-out,
+                    border-color .2s ease-in-out,
+                    border-style .2s ease-in-out;
     }
 }
 
@@ -62,19 +46,14 @@ h6 {
 h1 {
     @include font-size($fs-4, $fs-0);
     @include line-height(1.5 * $baseline, $fs-4);
-    font-weight: 900;
+    font-weight: 700;
 }
 
 h2 {
     @include font-size($fs-2, $fs-0);
     @include line-height($baseline, $fs-2);
     @include ems(margin-bottom, $fs-2, $baseline / 2);
-}
-
-h1,
-h2 {
-    font-family: $ff-serif;
-    // font-weight: 400;
+    font-weight: 700;
 }
 
 h3 {
@@ -109,7 +88,7 @@ sup > a {
 
 %meta {
     color: $c-fg-clear;
-    font-weight: 900;
+    font-weight: 600;
 }
 
 .meta { @extend %meta; }
@@ -130,20 +109,29 @@ ul,
 ol,
 blockquote,
 hr,
-.highlight {
+.highlight { @include ems(margin-bottom, $fs-0, $baseline); }
 
-    @include ems(margin-bottom, $fs-0, $baseline);
-
+p,
+ul,
+ol,
+blockquote,
+hr {
     a {
 
-        font-weight: 700;
+        // font-weight: 700;
+        border-bottom: 1px dotted $c-fg-clear;
 
         &,
         &:visited {
             color: $c-accent;
         }
 
-        &:hover { color: $c-accent-2; }
+        &:hover {
+            background-color: $c-accent-clear;
+            // color: white;
+            border-color: $c-accent-clear;
+            border-style: none none solid none;
+        }
     }
 }
 
@@ -191,7 +179,7 @@ blockquote {
 
     .highlight {
 
-        @media screen and (min-width: breakpoint($w-main)) {
+        @include respond-to($w-main) {
             border-radius: 2px;
         }
 
@@ -219,15 +207,13 @@ blockquote {
     @include ems(margin-top, $fs-0, 1.5 * $baseline);
     @include ems(margin-bottom, $fs-0, 1.5 * $baseline);
 
+
+
     img {
         cursor: zoom-in;
         margin: 0 auto;
         padding: 0;
         width: 100%;
-
-        &.no-zoom {
-            cursor: initial;
-        }
 
         &.small {
             @include rems(max-width, $w-main);
@@ -238,6 +224,11 @@ blockquote {
         }
 
         // &.huge = {}
+
+    }
+
+    noscript img, img.no-zoom {
+        cursor: initial;
     }
 
     .image-caption {
@@ -259,41 +250,6 @@ blockquote {
         }
 
         // &.huge = {}
-    }
-}
-
-// Pretty loading spinner from http://tobiasahlin.com/spinkit/
-.spinner {
-    -webkit-animation: scaleout 1s infinite ease-in-out;
-    animation: scaleout 1s infinite ease-in-out;
-    background-color: #333;
-    border-radius: 100%;
-    height: 40px;
-    margin: 100px auto;
-    width: 40px;
-}
-
-@-webkit-keyframes scaleout {
-    0% {
-        -webkit-transform: scale(0);
-    }
-
-    100% {
-        opacity: 0;
-        -webkit-transform: scale(1);
-    }
-}
-
-@keyframes scaleout {
-    0% {
-        -webkit-transform: scale(0);
-        transform: scale(0);
-      }
-
-    100% {
-        opacity: 0;
-        -webkit-transform: scale(1);
-        transform: scale(1);
     }
 }
 

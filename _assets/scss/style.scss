@@ -1,28 +1,36 @@
-//  BOWER IMPORTS
-//  ===============================================
-
 @import '../../bower_components/normalize-scss/_normalize';
-@import '../../bower_components/modular-scale/stylesheets/_modular-scale';
 
 @import '_variables';
+
+*,
+*:after,
+*::before {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: $fs-base * 1px;
+}
+
 @import '_helpers';
 
-//  Components
+
 @import 'components/icons.scss';
 @import 'components/social_links';
+@import 'components/spinner';
 
-//  Modules
 @import 'modules/base';
 @import 'modules/header';
 @import 'modules/footer';
-
 @import 'modules/post';
-
 @import 'modules/pygments';
 @import 'modules/zoom';
 
 // Hack to fix transitions firing on page load
-// class is removed through javascript on load
+// class is removed through javascript on load event
 .preload * {
     -moz-transition: none !important;
     -ms-transition: none !important;

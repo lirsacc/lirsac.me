@@ -8,7 +8,8 @@ $c-fg: #4c4c4c;
 $c-fg-clear: #c8ccd2;
 $c-fg-light: #eaeef0;
 
-$c-accent: #0f76bc;
+$c-accent: #1d78bd;
+$c-accent-clear: #c4e4f4;
 $c-accent-2: #e94143;
 
 $c-linkedin: #0e76a8;
@@ -22,7 +23,7 @@ $c-rss: #ee802f;
 
 $w-small: 380;
 $w-main: 640;
-$w-large: 920;
+$w-large: 960;
 
 $h-header-link: 28;
 $h-header: 36;
@@ -31,10 +32,18 @@ $h-footer: 96;
 
 // TYPOGRAPHY
 
+$ff-serif: 'Roboto Slab', Georgia, serif;
+$ff-sans: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$ff-mono: 'Source Code Pro', monospace;
+
+$fw-main: normal;
+
 $fs-base: 10;
 $fs-main: 18;
-$baseline:31;
+$baseline:32;
 
+// Generate modular scale font-sizes
+@import '../../bower_components/modular-scale/stylesheets/_modular-scale';
 $ratio: $augmented-fourth;
 
 $fs--3: ms(-3, $fs-main $baseline, $ratio);
@@ -47,9 +56,3 @@ $fs-3: ms(3, $fs-main $baseline, $ratio);
 $fs-4: ms(4, $fs-main $baseline, $ratio);
 $fs-5: ms(5, $fs-main $baseline, $ratio);
 $fs-6: ms(6, $fs-main $baseline, $ratio);
-
-$fw-main: normal;
-
-$ff-serif: 'Roboto Slab', Georgia, serif;
-$ff-sans: 'Source Sans Pro', Arial, sans-serif;
-$ff-mono: 'Source Code Pro', monospace;
