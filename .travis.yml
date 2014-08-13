@@ -9,7 +9,7 @@ install:
   - bower install
 script:
   - grunt build
-after_success: bundle exec s3_website push --headless
+after_success: bundle exec s3_website push
 env:
   global:
   - secure: YzXcqU9FcOenY3BIOu1U1LjlWn5tLqpCIhoSA8GOOLPdD3m2bXAyGTau7ou49f/CJ0PuVBNdQCs9pt405GzLhLcgnDy2YKGEB5h+slusX3u1k7SU3VPsDfJ2oWV8A/cNiWELYf40hRiEduz8bEt2zI0ZkLRMsu+GM/VU3WYHq4I=
