@@ -55,7 +55,12 @@ module Jekyll
                 classes.push "no-zoom"
             end
 
-            s += "class='#{classes.join(' ')}'/>"
+            class_string = "class='#{classes.join(' ')}'"
+            s += class_string + "/>"
+
+            # Backup in case javascript is disabled on device
+            no_script = "<noscript><img src='#{@args['src']}' #{class_string}/></noscript>"
+            s += no_script
 
             if @args.has_key?("caption")
                 s += "<div class='image-caption #{size_class}'>#{@args['caption']}</div>"
