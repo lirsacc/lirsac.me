@@ -28,7 +28,12 @@ removeClass = (elem, className) ->
     if elem.classList
         elem.classList.remove className
     else
-        elem.className = elem.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ')
+        elem.className = elem.className.replace(
+            new RegExp(
+                '(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'
+            ),
+            ' '
+        )
 
 addEvent = (element, eventName, callback) ->
     if element.addEventListener

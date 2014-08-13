@@ -37,8 +37,10 @@ Zoom = ((global, document, undefined_) ->
     _calcDimensions = (img, force) ->
         force ?= false
 
-        screenWidth = window.innerWidth or document.documentElement.clientWidth
-        screenHeight = window.innerHeight or document.documentElement.clientHeight
+        screenWidth = (
+            global.innerWidth or document.documentElement.clientWidth)
+        screenHeight = (
+            global.innerHeight or document.documentElement.clientHeight)
         maxWidth = _scale * screenWidth
         maxHeight = _scale * screenHeight
         screenRatio = screenWidth / screenHeight
@@ -110,7 +112,10 @@ Zoom = ((global, document, undefined_) ->
         useEscapeKey = options.useEscapeKey or true
         cls = options.cls or "zoomed-image"
         _scale = options.scale or 0.986
-        _handleRetina = (options.handleRetina or _handleRetina) and window.devicePixelRatio > 1
+        _handleRetina = (
+            ( options.handleRetina or _handleRetina ) and
+            window.devicePixelRatio > 1
+        )
 
         targets = document.querySelectorAll "img[#{_selector}]"
 
