@@ -1,8 +1,6 @@
 "use strict"
 
-init = () ->
+document.addEventListener 'DOMContentLoaded', () ->
     removeClass document.body, "preload"
-    if Lazy? then Lazy()
+    if Lazy? then Lazy.init()
     if Zoom? then Zoom()
-
-document.addEventListener 'DOMContentLoaded', init

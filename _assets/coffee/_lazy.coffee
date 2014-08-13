@@ -5,101 +5,112 @@
 # Parameters :
 #     *    selector (default data-src)
 #     *    tolerance (default 200)
-#     *    handleRetina (default true)
+#     *    retina (default true)
 #     *    throttle (default 150)
 
 Lazy = ((global, document, undefined_) ->
     "use strict"
 
-    store = []
+    # Defaults
+    _tolerance = 200
+    _retina = true
+    _throttle = 150
+    _selector = 'data-src'
+    _debug = false
+    _cb = ->
 
-    tolerance = 0
-    throttle = 0
-    selector = "data-src"
-    handleRetina = true
-
-    poller = null
-    globalPoller = null
+    _poller = null
 
     _inView = (elem) ->
 
-        width = window.innerWidth or document.documentElement.clientWidth
-        height = window.innerHeight or document.documentElement.clientHeight
-
-        # Always true when at bottom of page
-        if window.pageYOffset + height >= document.body.offsetHeight
-            return true
+        width = global.innerWidth or document.documentElement.clientWidth
+        height = global.innerHeight or document.documentElement.clientHeight
 
         bounds = elem.getBoundingClientRect()
-        top = bounds.top
-        left = bounds.left
 
-        top >= 0 and left >= 0 and top <= height + tolerance and left <= width
+        (
+            bounds.top >= 0 and
+            bounds.left >= 0 and
+            bounds.top <= height + _tolerance and
+            bounds.left <= width + _tolerance and
+            bounds.right >= - _tolerance and
+            bounds.bottom >= - _tolerance
+        )
 
     # Preload and reveal individual images when file has been downloaded
     _show = (elem) ->
         tmpImage = new Image()
-        if handleRetina then newSrc = elem.getAttribute "#{selector}-retina"
+        if _retina then newSrc = elem.getAttribute "#{_selector}-retina"
         # Always fall back to normal selector
         # in case retina attribute is not found
-        if !newSrc then newSrc = elem.getAttribute selector
+        if !newSrc then newSrc = elem.getAttribute _selector
         tmpImage.src = newSrc
 
         tmpImage.onload = () ->
-            store.splice store.indexOf(elem), 1
             elem.src = tmpImage.src
             addClass elem, "loaded"
             spinner = elem.parentNode.querySelector ".spinner"
             if spinner? then elem.parentNode.removeChild spinner
+            elem.removeAttribute _selector
 
-    # Loop trough images and switch src
+    # Loop trough images and switch src while removing _selector attribute
     # if there's no more images, remove document level event listeners
-    _load = () ->
+    load = () ->
 
-        if store.length > 0
-            for elem in store when elem? and _inView elem
-                _show elem
-        else
-            removeEvent document, "scroll", _throttle
-            clearTimeout poller
+        targets = document.querySelectorAll "img[#{_selector}]"
 
-        # Sets a poller timeout which unsets itself after throttle ms
-        # poller != null means _load has been executed less than throttle ms ago
-        poller = setTimeout () ->
-            poller = null
-        , throttle
+        for target in targets when target? and _inView target
+            _show target
+            if _debug
+                console.log "Loaded => #{target.getAttribute _selector}"
+            _cb target
 
-    # If poller is null => execute _load
-    # else creates a globalPoller timeout which executes _load after
-    # throttle ms and gets overriden when _throttle is called
-    _throttle = () ->
-        if not poller? then _load()
-        else
-            clearTimeout globalPoller
-            globalPoller = setTimeout _load, throttle
+        if targets.length is 0
+            cancel()
 
-    init = (options) ->
+    cancel = () ->
+        removeEvent document, "scroll", _delay
+        clearTimeout _poller
 
-        options ?= {}
-        tolerance = parseInt options.tolerance or 200
-        throttle = parseInt options.throttle or 150
-        selector = options.selector or "data-src"
-        handleRetina = (options.handleRetina or handleRetina) and window.devicePixelRatio > 1
+    _delay = () ->
+        if !!_poller
+            return
+        clearTimeout _poller
+        _poller = setTimeout () ->
+            load()
+            _poller = null
+        , _throttle
 
-        targets = document.querySelectorAll "img[#{selector}]"
+    init = (opts) ->
 
+        # Parse options
+        opts = opts or {}
+        _tolerance = parseInt opts.tolerance or _tolerance
+        _throttle = parseInt opts.throttle or _throttle
+        _selector = opts.selector or _selector
+        _retina = (opts.retina or _retina) and window.devicePixelRatio > 1
+        _debug = opts.debug or _debug
+        _cb = opts.callback or _cb
+
+        # Add spinner
+        targets = document.querySelectorAll "img[#{_selector}]"
         for elem in targets
             do (elem) ->
-                store.push elem
                 spinner = document.createElement "div"
                 addClass spinner, "spinner"
                 elem.parentNode.appendChild spinner
 
-        _load()
+        # Load first images
+        load()
 
-        addEvent document, "scroll", _throttle
-        addEvent document, "load", _throttle
+        # Add scroll event
+        addEvent document, "scroll", _delay
+        addEvent document, "load", _delay
 
-    return init
+    {
+        init: init,
+        load: load,
+        cancel: cancel,
+    }
 
 ) this, document
