@@ -1,3 +1,10 @@
+// Requires variable $fs-base to be defined
+
+//_________________________________________________________________________
+//
+// Functions
+//_________________________________________________________________________
+
 @function black($opacity) {
     @return rgba(0, 0, 0, $opacity);
 }
@@ -18,8 +25,17 @@
     @return ($px/$context) * 1em;
 }
 
-// Adapted rem/em fallback from : http://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/
+//_________________________________________________________________________
+//
+// Mixins
+//_________________________________________________________________________
 
+@mixin respond-to($w, $limit: 'min') {
+    @media only screen and (#{$limit}-width: breakpoint($w)) { @content; }
+}
+
+// Adapted rem/em fallback
+//  From : http://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/
 @mixin rems($property, $values...) {
     $px-values: null;
     $rem-values: null;
@@ -47,7 +63,7 @@
 }
 
 @mixin font-size($size, $context: 0) {
-    font-size: $size *1px;
+    font-size: $size * 1px;
     @if $context == 0 {
         font-size: rems($size);
     } @else {
@@ -66,11 +82,16 @@
     width: 100%;
     padding-left: 4%;
     padding-right: 4%;
-    @media screen and (min-width: breakpoint($width)) {
+    @include respond-to($width) {
         padding-left: 0;
         padding-right: 0;
     }
 }
+
+//_________________________________________________________________________
+//
+// Silent Classes
+//_________________________________________________________________________
 
 %clearfix {
     *zoom: 1;
