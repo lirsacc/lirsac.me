@@ -2,13 +2,13 @@ language: ruby
 rvm:
   - 2.0.0
 install:
-  - npm install -g grunt-cli
+  - npm install -g gulp
   - npm install -g bower
   - bundle install
   - npm install
   - bower install
 script:
-  - grunt build
+  - gulp build --prod
 after_success: bundle exec s3_website push
 env:
   global:

@@ -1,12 +1,17 @@
 - slug:
   class: home
   text: Home
-  icon: line-home
+  icon: home
 
 - slug: blog
   class: blog
   text: Blog
-  icon: line-book
+  icon: book
+
+- slug: about
+  class: about
+  text: About
+  icon: user
 
 # - slug: pictures
 #   class: pictures

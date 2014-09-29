@@ -12,7 +12,7 @@
 
 - name: email
   url: mailto:charles@lirsac.me
-  icon: envelope
+  icon: mail-alt
 
 - name: rss
   url: http://lirsac.me/rss.xml

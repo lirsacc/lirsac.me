@@ -1,9 +1,9 @@
 body {
     @include font-size($fs-0);
     @include line-height($baseline, $fs-0);
-    background: $c-bg;
+    background: #fff;
     color: $c-fg;
-    font-family: $ff-sans;
+    font-family: $ff-main;
     font-weight: $fw-main;
 
     position: relative;
@@ -11,7 +11,7 @@ body {
 }
 
 .main {
-    @include ems(padding-top, $fs-main, 2 * $baseline);
+    @include ems(padding-top, $fs-main, 1 * $baseline);
     @include ems(padding-bottom, $fs-main, 6 * $baseline);
 }
 
@@ -46,7 +46,7 @@ h6 {
 h1 {
     @include font-size($fs-4, $fs-0);
     @include line-height(1.5 * $baseline, $fs-4);
-    font-weight: 700;
+    font-weight: 900;
 }
 
 h2 {
@@ -111,30 +111,6 @@ blockquote,
 hr,
 .highlight { @include ems(margin-bottom, $fs-0, $baseline); }
 
-p,
-ul,
-ol,
-blockquote,
-hr {
-    a {
-
-        // font-weight: 700;
-        border-bottom: 1px dotted $c-fg-clear;
-
-        &,
-        &:visited {
-            color: $c-accent;
-        }
-
-        &:hover {
-            background-color: $c-accent-clear;
-            // color: white;
-            border-color: $c-accent-clear;
-            border-style: none none solid none;
-        }
-    }
-}
-
 blockquote,
 hr,
 .highlight {
@@ -177,11 +153,29 @@ blockquote {
         @extend %center;
     }
 
-    .highlight {
+    p,
+    ul,
+    ol,
+    blockquote,
+    hr {
+        a {
+            border-bottom: 2px solid $c-fg-clear;
+            font-weight: 600;
 
-        @include respond-to($w-main) {
-            border-radius: 2px;
+            &,
+            &:visited {
+                color: $c-accent;
+            }
+
+            &:hover {
+                background-color: $c-accent-clear;
+                border-color: $c-accent-clear;
+                border-style: none none solid none;
+            }
         }
+    }
+
+    .highlight {
 
         code,
         pre {
@@ -190,12 +184,17 @@ blockquote {
         }
 
         pre { @include rems(padding, 8, 14); }
+
+        @include respond-to($w-main) {
+            border-radius: 2px;
+        }
     }
 }
 
 .page-title {
     @extend %center;
-    @include ems(margin-bottom, $fs-4, .5 * $baseline)
+    @include ems(margin-bottom, $fs-main, $baseline / 4);
+    @include ems(margin-top, $fs-main, $baseline);
 }
 
 .image-wrapper {
@@ -207,10 +206,7 @@ blockquote {
     @include ems(margin-top, $fs-0, 1.5 * $baseline);
     @include ems(margin-bottom, $fs-0, 1.5 * $baseline);
 
-
-
     img {
-        cursor: zoom-in;
         margin: 0 auto;
         padding: 0;
         width: 100%;
@@ -225,6 +221,23 @@ blockquote {
 
         // &.huge = {}
 
+    }
+
+    // Animate image loading effect
+    img[data-src]{
+        transition: opacity .25s ease-in-out,
+                    visibility .25s ease-in-out;
+        visibility: hidden;
+        opacity: 0;
+
+        &.loaded {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    img[data-zoom]{
+        cursor: zoom-in;
     }
 
     noscript img, img.no-zoom {

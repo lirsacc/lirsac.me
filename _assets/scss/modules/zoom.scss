@@ -1,8 +1,13 @@
-$img-class: 'zoomed-image';
-$overlay-color: black(.45);
+$imgClass: 'Zoom';
 
-.#{$img-class}-overlay {
-    background-color: $overlay-color;
+.#{$imgClass}__wrapper {
+    &, * {
+        z-index: 3000;
+    }
+}
+
+.#{$imgClass}__overlay {
+    background-color: black(.45);
     height: 100%;
     left: 0;
     position: fixed;
@@ -10,12 +15,12 @@ $overlay-color: black(.45);
     width: 100%;
 }
 
-.#{$img-class}-overlay,
-.#{$img-class} {
+.#{$imgClass}_overlay,
+.#{$imgClass}__image {
     cursor: zoom-out;
 }
 
-.#{$img-class} {
+.#{$imgClass}__image {
     border-radius: 2px;
     box-shadow: 0 0 42px black(.75);
     position: fixed;
@@ -25,21 +30,28 @@ $overlay-color: black(.45);
     left: 50%;
     height: 0;
     width: 0;
+
+    transform: translate3d(0,0,0) translate(-50%, -50%) scale(0);
+    transform-origin: 50% 50%;
 }
 
-.#{$img-class}-overlay,
-.#{$img-class} {
+.#{$imgClass}__overlay,
+.#{$imgClass}__image {
     display: block;
     opacity: 0;
     overflow: hidden;
     visibility: hidden;
-    transition: .25s ease-in-out;
+    transition: .2s ease-in-out;
 }
 
-.#{$img-class}-wrapper.active {
-    .#{$img-class}-overlay,
-    .#{$img-class} {
+.#{$imgClass}__wrapper.is-active {
+    .#{$imgClass}__overlay,
+    .#{$imgClass}__image {
         opacity: 1;
         visibility: visible;
+    }
+
+    .#{$imgClass}__image {
+        transform: translate3d(0,0,0) translate(-50%, -50%) scale(1);
     }
 }

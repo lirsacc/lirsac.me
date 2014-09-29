@@ -22,21 +22,17 @@ $c-rss: #ee802f;
 // DIMENSIONS
 
 $w-small: 380;
-$w-main: 640;
-$w-large: 960;
-
-$h-header-link: 28;
-$h-header: 36;
+$w-main: 720;
+$w-large: 990;
 
 $h-footer: 96;
 
 // TYPOGRAPHY
 
-$ff-serif: 'Roboto Slab', Georgia, serif;
-$ff-sans: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$ff-main: 'Source Sans Pro', Helvetica, Arial, sans-serif;
 $ff-mono: 'Source Code Pro', monospace;
 
-$fw-main: normal;
+$fw-main: 400;
 
 $fs-base: 10;
 $fs-main: 18;

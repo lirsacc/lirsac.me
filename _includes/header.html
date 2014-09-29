@@ -1,10 +1,11 @@
-<header class="main-header">
-    <div class="header-inner">
-        <div class="header-name"><a href="{{ site.url }}">{{ site.name }}</a></div>
-        <div class="header-links">
-            {% for link in site.data.header %}
-            <a href="{{ site.url }}{{ link.slug }}" class="header-link {{ link.class }} {% if link.class == page.body_class %}active{% endif %} icon-{{ link.icon }}" title="{{ link.text }}"></a>
-            {% endfor %}
-        </div>
-    </div>
-</header>
+<nav class="Main-menu">
+    <a href="#" class="Main-menu__trigger"><span class="open"></span><span class="close"></span></a>
+    <ul class="Main-menu__links">
+    <li><span class="Main-menu__name">{{ site.name }}</span></li>
+    {% for link in site.data.header %}
+    <li>
+        <a href="/{{ link.slug }}" class="Main-menu__link {{ link.class }}{% if link.class == page.body_class %}is-active{% endif %} icon-{{ link.icon }}" title="{{ link.text }}">{{ link.text }}</a>
+    </li>
+    {% endfor %}
+    </ul>
+</nav>

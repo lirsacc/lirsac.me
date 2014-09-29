@@ -12,8 +12,12 @@
 
 li.post {
     width: 100%;
+    margin-bottom: .5em;
 }
 
 .post-meta {
     @extend %meta;
+    padding-right: 1em;
+
+    // &::before { content: '>\00a0'; }
 }
