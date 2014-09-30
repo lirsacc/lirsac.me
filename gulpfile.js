@@ -14,7 +14,6 @@ var browserify =    require('browserify'),
     del =           require('del'),
     spawn =         require('child_process').spawn,
     express =       require('express'),
-    body =          require('body-parser'),
     livereload =    require('tiny-lr');
 
 var ENV = process.env.NODE_ENV;
