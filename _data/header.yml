@@ -8,10 +8,10 @@
   text: Blog
   icon: book
 
-- slug: about
-  class: about
-  text: About
-  icon: user
+# - slug: about
+#   class: about
+#   text: About
+#   icon: user
 
 # - slug: pictures
 #   class: pictures
