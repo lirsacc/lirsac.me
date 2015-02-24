@@ -18,3 +18,4 @@ deploy:
   region: "EU (Ireland) Region"
   endpoint: "lirsac.me.s3-website-eu-west-1.amazonaws.com"
   detect_encoding: true
+  skip_cleanup: true
