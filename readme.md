@@ -6,8 +6,6 @@ Static website built with [metalsmith](http://metalsmith.io).
 
 Building: `npm run build --prod`
 
-Hosting is done on Amazon S3 (s3_website used for upload and build on push on Travis)
-
 ## To-do
 
 + Move metalsmith plugins as standalone modules
