@@ -1,0 +1,20 @@
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer__inner {
+    @extend %center;
+    color: $light;
+    text-align: center;
+    line-height: 1.5 * $baseline / $main-size * 1em;
+
+    a.social {
+        color: $light;
+        font-size: 1.314em;
+        margin-right: 1em;
+
+        &:last-of-type { margin-right: 0; }
+    }
+}

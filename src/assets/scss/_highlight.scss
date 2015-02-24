@@ -1,0 +1,107 @@
+// highlight.js
+// Code blocks created by metallic will be inside a pre > code.lang-xx
+// element
+
+$hl-background:   #fefefe;
+$hl-foreground:   #4c4c4c;
+$hl-comment:      #998;
+
+$hl-red:          #f92683;
+$hl-orange:       #d88200;
+$hl-yellow:       #fdca81;
+$hl-green:        #75af2f;
+$hl-aqua:         #75c5ba;
+$hl-blue:         #3ea8c8;
+$hl-purple:       #c282ae;
+$hl-brown:        #a9643f;
+
+
+pre code {
+  font-family: $mono;
+  font-size: .85em;
+  line-height: 0.9em;
+  overflow: auto;
+  white-space: pre;
+  font-weight: normal;
+  text-size-adjust: none;
+  color: $hl-foreground;
+}
+
+pre {
+  background-color: $hl-background;
+}
+
+.hljs-comment {
+  color: $hl-comment;
+}
+
+.hljs-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-regexp,
+.ruby .hljs-constant,
+.xml .hljs-tag .hljs-title,
+.xml .hljs-pi,
+.xml .hljs-doctype,
+.html .hljs-doctype,
+.css .hljs-id,
+.css .hljs-class,
+.css .hljs-pseudo {
+  color: $hl-red;
+}
+
+.hljs-number,
+.hljs-preprocessor,
+.hljs-pragma,
+.hljs-built_in,
+.hljs-literal,
+.hljs-params,
+.hljs-constant {
+  color: $hl-orange;
+}
+
+.ruby .hljs-class .hljs-title,
+.css .hljs-rules .hljs-attribute {
+  color: $hl-yellow;
+}
+
+.hljs-string,
+.hljs-value,
+.hljs-inheritance,
+.hljs-header,
+.ruby .hljs-symbol,
+.xml .hljs-cdata {
+  color: $hl-green;
+}
+
+.hljs-title,
+.css .hljs-hexcolor {
+  color: $hl-aqua;
+}
+
+
+.hljs-function,
+.python .hljs-decorator,
+.python .hljs-title,
+.ruby .hljs-function .hljs-title,
+.ruby .hljs-title .hljs-keyword,
+.perl .hljs-sub,
+.javascript .hljs-title,
+.coffeescript .hljs-title {
+  color: $hl-blue;
+}
+
+.hljs-keyword,
+.javascript .hljs-function {
+  color: $hl-purple;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata {
+  opacity: 0.5;
+}

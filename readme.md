@@ -1,21 +1,15 @@
-Jekyll based personnal blog/site.
-=================================
-
-[Personal site](www.lirsac.me), build by [Travis CI](https://travis-ci.org), hosting on Amazon S3 (see setup [here](http://lirsac.me/blog/host-on-amazon-s3-and-deploy-with-github-and-travis/):
+# lirsac.me
 
 [![Build Status](https://travis-ci.org/lirsacc/lirsac.me.png?branch=master)](https://travis-ci.org/lirsacc/lirsac.me)
 
-Left to do
-----------
+Static website built with [metalsmith](http://metalsmith.io).
 
-In no particular order:
+Building: `npm run build --prod`
 
-+ RSS & Sitemap
-+ Better readme
-+ ~~Image zooming & caption~~
-  + ~~Style and js~~
-  + ~~Custom plugin to generate markup~~
-+ Refactor scss to make it lighter
-+ Retina images
-+ Jekyll plugins for specific markup
-+ ~~Footnotes styling~~
+Hosting is done on Amazon S3 (s3_website used for upload and build on push on Travis)
+
+## To-do
+
++ Move metalsmith plugins as standalone modules
++ Add some script for images zooming and gallery (see when post with picture gallery arrives) and captions
++ Make script to handle github pages

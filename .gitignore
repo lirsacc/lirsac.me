@@ -1,9 +1,6 @@
-_site
-assets
 node_modules
-bower_components
-.sass-cache
-Gemfile.lock
-*.swp
+site
+_site
+build
+_build
 npm-debug.log
-/favicon*

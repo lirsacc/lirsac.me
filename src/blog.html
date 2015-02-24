@@ -1,0 +1,14 @@
+---
+template: page.hbs
+body_class: blog
+title: The blog
+slug: blog
+---
+<h1 class="page-title">Blog</h1>
+<ul class="posts">
+    {{#each collections.blog }}
+    <li class="post">
+        <span class="meta">{{{date this.date 'short'}}}</span> <a href="/{{ this.path }}/" class="post-link">{{ this.title }}</a>
+    </li>
+    {{/each}}
+</ul>

@@ -1,0 +1,19 @@
+- slug:
+  class: home
+  text: Home
+
+- slug: blog
+  class: blog
+  text: Blog
+
+# - slug: about
+#   class: about
+#   text: About
+
+# - slug: resume
+#   class: resume
+#   text: Resume
+
+# - slug: pictures
+#   class: pictures
+#   text: Photography

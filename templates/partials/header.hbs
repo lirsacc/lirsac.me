@@ -1,0 +1,11 @@
+<nav class="main-menu">
+    <a href="/" class="main-menu__name">CH</a>
+    <ul class="main-menu__links">
+    {{#iter header reverse=true}}
+    <li>
+        <a href="/{{ this.slug }}" class="{{ this.class }}{{#is this.class ../body_class }} is-active{{/is}}" title="{{ this.text }}">{{ this.text }}
+        </a>
+    </li>
+    {{/iter}}
+    </ul>
+</nav>

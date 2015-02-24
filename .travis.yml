@@ -1,19 +1,20 @@
-language: ruby
-rvm:
-  - 2.0.0
+language: node_js
 install:
-  - npm install -g gulp
-  - npm install -g bower
-  - bundle install
-  - npm install
-  - bower install
+- npm install
 script:
-  - gulp build --prod
-after_success: bundle exec s3_website push
-env:
-  global:
-  - secure: YzXcqU9FcOenY3BIOu1U1LjlWn5tLqpCIhoSA8GOOLPdD3m2bXAyGTau7ou49f/CJ0PuVBNdQCs9pt405GzLhLcgnDy2YKGEB5h+slusX3u1k7SU3VPsDfJ2oWV8A/cNiWELYf40hRiEduz8bEt2zI0ZkLRMsu+GM/VU3WYHq4I=
-  - secure: uNPUARiMIo/Q4vkGSMcnRw0Si4qTkAIJAquvEu3cTtb6XHFGtxUVFThGtTFy0QNFylHnpMoWZ0aQi/2l7iqU5l3CIzYm415S89Ga9T3/5/SOtVg+9EJhf58fYXb33nAjFTcx2kEUvXLz5eAKLD0ZngcKFTR/SnoAe4y7pI6yxhQ=
+- node build.js --prod
 branches:
   only:
-    - master
+  - master
+deploy:
+  provider: s3
+  access_key_id:
+    secure: aXi3Zdy6ACutKA5IZbEgo/u3YrDRbBCXmq1OAzyyqo9Y3dxDN8p22d634p7bR5uD59Rv+ng8KVUcNysTZzc0Y5SOnGzlK++M35qQdKrWdg1AfulxXwhDaX3POAhrr8dIJIEGqcNu1Ga+KZzhRob7s7uMnxh71MnMh4MuoOFqGpk=
+  secret_access_key:
+    secure: gBiAuI9XjF9kghwvr1jbnyE8v2b3oK7sgNRUTzfta1Qi7ou1PNVqFXg4irf1exrR+PJpV4xRn+Qw83jwHpxRI54AFb7h4S7EzAwwy04Fj2HZET0g7yaOVfg+CWEyyubfOG2TQOD2EIpTVPj7pf4NHWYnPxYK0caQXYZ3kOkpSVE=
+  bucket: "lirsac.me"
+  region: eu-west-1
+  local_dir: _site
+  region: "EU (Ireland) Region"
+  endpoint: "lirsac.me.s3-website-eu-west-1.amazonaws.com"
+  detect_encoding: true

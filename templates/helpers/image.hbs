@@ -1,0 +1,10 @@
+<div class="image-wrapper">
+    {{#if noLazy}}
+        <img src="" class="{{classes}}" {{attributes}}/>
+    {{else}}
+        <img src="" data-src="{{src}}" class="{{classes}}" {{{attributes}}}/>
+    {{/if}}
+    <noscript>
+        <img src="{{src}}" class="{{classes}}" {{{attributes}}}/>
+    </noscript>
+</div>
