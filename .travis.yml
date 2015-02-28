@@ -1,11 +1,11 @@
 language: node_js
 install: npm install
 script:
-  - node build.js --prod
-  - bash deploy.sh
+- node build.js --prod
+- bash deploy.sh
 cache:
   directories:
   - node_modules
 env:
   global:
-    secure: WtIgU0PSiwmSekWqMSRtv29FEXp6liowDV0Y965FvUfwi+DpbYlcbCdB8rpvg768KAxoRQEknKAEsNbuLOucO3WM6Eag2Hcq8YdLKWxKz4WgyP6y8gs0apBisqHLVe3eQUrlXADyJsT3V4FLp+Rqh36+WNyRJsLs56UgzitS1+M=
+  - secure: I1Q9pxagnDp7HeJyc8D2+GDEXQTc7R5TKjOm9cdAFFNfTce/yjZRqTPZCE4PGX7bAPx7sFJ/jEEiywtosggQqDKnQMqeN+AniOkbgs5l0RN4ymUy7bs2fgKj/hbRJDDwo9enST1kgUA/UAMcVRXH3Ctkz3D1sYMcHBg9eP3TsAA=
