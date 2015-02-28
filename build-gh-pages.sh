@@ -13,7 +13,8 @@ revision=`git rev-parse HEAD`
 tmp_dir=`mktemp -d /tmp/build-lirsac.me-XXXX`
 mv _site/* $tmp_dir
 
-git checkout gh-pages
+git checkout -B gh-pages origin/gh-pages
+
 rm -r !(.|..|.git*|node_modules)
 mv -f $tmp_dir/* .
 git status -s

@@ -7,6 +7,9 @@ if [ "$TRAVIS" == "true" ]; then
   git config user.name "lirsacc (travis ci)"
   git config user.email "c.lirsac@gmail.com"
   repo=https://$GITHUB_TOKEN@github.com/$target
+  git remote rename origin.bak
+  git remote add origin $repo
+  git remote remove origin.bak
 fi
 
 ./build-gh-pages.sh
