@@ -1,20 +1,10 @@
 language: node_js
-install:
-- npm install
-script:
-- node build.js --prod
-branches:
-  only:
-  - master
-deploy:
-  provider: s3
-  access_key_id:
-    secure: aXi3Zdy6ACutKA5IZbEgo/u3YrDRbBCXmq1OAzyyqo9Y3dxDN8p22d634p7bR5uD59Rv+ng8KVUcNysTZzc0Y5SOnGzlK++M35qQdKrWdg1AfulxXwhDaX3POAhrr8dIJIEGqcNu1Ga+KZzhRob7s7uMnxh71MnMh4MuoOFqGpk=
-  secret_access_key:
-    secure: gBiAuI9XjF9kghwvr1jbnyE8v2b3oK7sgNRUTzfta1Qi7ou1PNVqFXg4irf1exrR+PJpV4xRn+Qw83jwHpxRI54AFb7h4S7EzAwwy04Fj2HZET0g7yaOVfg+CWEyyubfOG2TQOD2EIpTVPj7pf4NHWYnPxYK0caQXYZ3kOkpSVE=
-  bucket: "lirsac.me"
-  region: eu-west-1
-  local_dir: _site
-  endpoint: lirsac.me.s3-website-eu-west-1.amazonaws.com
-  detect_encoding: true
-  skip_cleanup: true
+install: npm install
+script: node build.js --prod
+after_success: bash deploy.sh
+cache:
+  directories:
+  - node_modules
+env:
+  global:
+    secure: WtIgU0PSiwmSekWqMSRtv29FEXp6liowDV0Y965FvUfwi+DpbYlcbCdB8rpvg768KAxoRQEknKAEsNbuLOucO3WM6Eag2Hcq8YdLKWxKz4WgyP6y8gs0apBisqHLVe3eQUrlXADyJsT3V4FLp+Rqh36+WNyRJsLs56UgzitS1+M=
