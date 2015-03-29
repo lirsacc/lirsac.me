@@ -3,6 +3,8 @@ install: npm install
 script:
 - node build.js --prod
 - bash deploy.sh
+branches:
+  -only: master
 cache:
   directories:
   - node_modules
