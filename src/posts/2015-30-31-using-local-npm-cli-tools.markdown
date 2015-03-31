@@ -2,7 +2,6 @@
 template: post.hbs
 title: Using local npm cli tools
 date: 2015-03-31
-draft: true
 ---
 
 I recently had the need to regularly run cli apps that were installed locally through npm. This didn't use to happen very often and I would install cli tools globally, but recently I've had to work on a few projects using different versions of node, which would require reinstalling the packages for every version which is not very practical.
