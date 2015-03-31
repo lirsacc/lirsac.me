@@ -12,6 +12,7 @@ var Metalsmith = require('metalsmith'),
     imagemin = require('metalsmith-imagemin'),
     autoprefixer = require('metalsmith-autoprefixer'),
     feed = require('metalsmith-feed'),
+    notifier = require('node-notifier'),
 
   	links = require('./plugins/collections-permalinks'),
     browserify = require('./plugins/metalsmith-browserify'),
@@ -31,14 +32,14 @@ var PROD = argv.production || argv.prod || argv.p || false,
 // Helper functions
 // ===========================================================================
 
-function loadMetadata(dir, ext) {
+function loadMetadata(dir, ext, metadata) {
 	return fs.readdirSync(path.join(__dirname, 'src', dir))
 		.reduce(function (data, file) {
 			if (file.indexOf(ext)) {
         data[file.replace('.' + ext, '')] = path.join(dir, file);
 			}
 			return data;
-		}, {});
+		}, metadata || {});
 }
 
 function isTextFile (filename, props, index) {
@@ -77,10 +78,16 @@ function isTextFile (filename, props, index) {
 
 var smithy = new Metalsmith(__dirname);
 
+// Load metadata from files
 smithy.use(metadata(
-	loadMetadata('data', 'yaml'),
-  { production: PROD }
+	loadMetadata('data', 'yaml')
 ));
+
+// Add conditionnal metadata
+smithy.use(function (files, metalsmith, done) {
+  metalsmith._metadata.production = PROD;
+  done();
+});
 
 if (PROD)
   smithy.use(drafts());
@@ -157,5 +164,12 @@ smithy.use(feed({
 // Actual build
 smithy.destination(DESTINATION);
 smithy.build(function(err) {
-	if (err) throw err;
+	if (err) {
+    throw err;
+  } else {
+    notifier.notify({
+      title: 'Metalsmith',
+      message: 'Finished forging your site',
+    });
+  }
 });
