@@ -166,7 +166,7 @@ smithy.destination(DESTINATION);
 smithy.build(function(err) {
 	if (err) {
     throw err;
-  } else {
+  } else if (!PROD) {
     notifier.notify({
       title: 'Metalsmith',
       message: 'Finished forging your site',
