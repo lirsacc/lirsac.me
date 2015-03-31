@@ -10,4 +10,4 @@ Building: `npm run build --prod`
 
 + Move metalsmith plugins as standalone modules
 + Add some script for images zooming and gallery (see when post with picture gallery arrives) and captions
-+ Make script to handle github pages
++ ~~Make script to handle github pages~~
