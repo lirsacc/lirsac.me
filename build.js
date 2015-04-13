@@ -13,21 +13,25 @@ var Metalsmith = require('metalsmith'),
     autoprefixer = require('metalsmith-autoprefixer'),
     feed = require('metalsmith-feed'),
     notifier = require('node-notifier'),
-
-  	links = require('./plugins/collections-permalinks'),
-    browserify = require('./plugins/metalsmith-browserify'),
-    md = require('./plugins/metalsmith-markdown-it'),
-
   	Handlebars = require('handlebars'),
   	argv = require('yargs').argv,
   	fs = require('fs'),
   	path = require('path');
 
+
+var PLUGINS = path.join(__dirname, 'tools', 'plugins');
+
+var links = require(PLUGINS + '/collections-permalinks'),
+    browserify = require(PLUGINS + '/metalsmith-browserify'),
+    md = require(PLUGINS + '/metalsmith-markdown-it');
+
 var PROD = argv.production || argv.prod || argv.p || false,
   	DESTINATION = argv.output || argv.o || path.join(__dirname, '_site'),
-  	PARTIALS = path.join(__dirname, 'templates', 'partials'),
-  	HELPERS = path.join(__dirname, 'helpers'),
-  	HELPERS_TMPL = path.join(__dirname, 'templates', 'helpers');
+
+    TEMPLATES = path.join(__dirname, 'tools', 'templates'),
+  	PARTIALS = path.join(__dirname, 'tools', 'templates', 'partials'),
+  	HELPERS = path.join(__dirname, 'tools', 'helpers'),
+  	HELPERS_TMPL = path.join(__dirname, 'tools', 'templates', 'helpers');
 
 // Helper functions
 // ===========================================================================
@@ -119,11 +123,7 @@ smithy.use(permalinks({
 // Templates used in place for using helpers like Jekyll liquid tags
 // Exclude image files as the inPlace option fails
 smithy.use(branch(isTextFile).use(
-  templates({
-	  engine: 'handlebars',
-	  directory: 'templates',
-    inPlace: true
-  })
+  templates({ engine: 'handlebars', directory: TEMPLATES, inPlace: true })
 ));
 
 // Usual transforms
@@ -134,10 +134,7 @@ smithy.use(md({
 }))
 
 // Templates layout
-smithy.use(templates({
-	engine: 'handlebars',
-	directory: 'templates'
-}));
+smithy.use(templates({ engine: 'handlebars', directory: TEMPLATES }));
 
 smithy.use(sass({
   outputStyle: PROD ? "compressed" : "nested",
