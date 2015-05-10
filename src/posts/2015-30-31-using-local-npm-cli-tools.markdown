@@ -15,3 +15,5 @@ As an alternative which does not pollutes the `PATH` and is quicker to type, we 
 Add this to your `~/.profile` or any file sourced in your shell and you can just use `npl package args` from the project directory and it will pass `args` to your cli tool (or fail with exit code 1 and warn you if you're not in an npm project). Alias it as you want, `npl` is just very easy to type with my right hand on a French keyboard.
 
 The first `_npl_completion` function is just here to add tab completion by simply listing the files in the `.bin` directory, the [Advanced Bash Scripting Guide](http://tldp.org/LDP/abs/html/tabexpansion.html) is a good resource to get started on this.
+
+**Update May 10, 2015**: Thanks to [this SO answer](http://stackoverflow.com/a/14524311), the completion is now improved and gets back to normal filenames after comleting the command name. (Before it would just propose command names over and over again).
