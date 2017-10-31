@@ -2,8 +2,8 @@
 html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}ul{list-style:none}button,input,select,textarea{margin:0}html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}img,embed,iframe,object,audio,video{height:auto;max-width:100%}iframe{border:0}table{border-collapse:collapse;border-spacing:0}td,th{padding:0;text-align:left}
 
 :root {
-  --base-size: 16;
-  --line-height: 29;
+  --base-size: 18;
+  --line-height: 33;
 
   --bg: rgba(254, 254, 254, 1.0);
   --fg: rgba(37, 37, 37, 1.0);
@@ -16,10 +16,13 @@ html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,ifr
   --ts-3: 1em;
   --ts-4: 0.75em;
 
-  --max-width: calc(640 / var(--base-size) * 1rem);
+  --max-width: calc(720 / var(--base-size) * 1rem);
 
-  --font-family: "Work Sans", system-ui;
-  --accent-font-family: "Space Mono", monospace, system-ui;
+  --font-family: "Work Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  --font-family-mono: "Fira Mono", monospace;
 }
 
 body {
@@ -31,11 +34,13 @@ body {
   padding: var(--ts-0);
 }
 
+.monospace { font-family: var(--font-family-mono); }
+
 .accent { color: var(--accent); }
 .muted { color: var(--muted); }
 .bg-accent { background-color: var(--accent); color: white; }
 .bg-muted { background-color: var(--muted); }
-.ff-accent { font-family: var(--accent-font-family); }
+
 .h0 { font-size: var(--ts-0); }
 .h1 { font-size: var(--ts-1); }
 .h2 { font-size: var(--ts-2); }
@@ -43,7 +48,7 @@ body {
 .h4 { font-size: var(--ts-3); }
 .h5 { font-size: var(--ts-4); }
 .h6 { font-size: var(--ts-4); }
-.bold { font-weight: 700; }
+.bold { font-weight: 600; }
 
 a {
   text-decoration: none;
