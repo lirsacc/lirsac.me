@@ -1,0 +1,28 @@
+title = "lirsacc"
+
+# The URL the site will be built for
+base_url = "https://lirsac.me"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Gutenberg
+highlight_code = true
+highlight_theme = "material-light"
+
+# Whether to generate a RSS feed automatically
+generate_rss = true
+
+# Whether to generate a tags page and individual
+# tag pages for pages with tags
+generate_tags_pages = false
+
+# Whether to generate a categories page and individual
+# category pages for pages with a category
+generate_categories_pages = false
+
+[extra]
+# Put all your custom variables here
+clicky_site_id = "100700187"
+description = "Personal site of Charles Lirsac"

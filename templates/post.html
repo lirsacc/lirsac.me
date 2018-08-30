@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title | safe | title }}{% endblock title %}
+
+{% block content %}
+<article class="post">
+  <a class="navlink small" href="/writing">← Back</a>
+  <header>
+    <div class="meta">
+      <time datetime="{{ page.date }}">{{ page.date | date(format="%B, %e %Y") }}</time>
+    </div>
+    <h1>{{ page.title | safe | title }}</h1>
+  </header>
+  {{ page.content | safe }}
+</article>
+{% endblock content %}

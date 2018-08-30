@@ -1,0 +1,10 @@
+<figure class="image {% if size %}{{ size }}{% endif %}">
+  <a href="{{ src }}">
+    <img src="{{ src }}" {% if alt %}alt="{{ alt }}"{% elif caption %}alt="{{ caption | striptags }}"{% endif %}/>
+  </a>
+  {% if caption %}
+  <div class="caption">
+    {{ caption }}
+  </div>
+  {% endif %}
+</figure>
