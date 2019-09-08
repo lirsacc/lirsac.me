@@ -5,36 +5,36 @@ _exit() {
   exit "${2:-1}"
 }
 
-REPO=keats/gutenberg
+REPO=getzola/zola
 VERSION=latest
 
-# Guess gutenberg location,
-# prefers globally installed gutenberg and falls back to local install.
-find_gutenberg_command() {
-  if which gutenberg; then
+# Guess Zola location,
+# prefers globally installed Zola and falls back to local install.
+find_command() {
+  if command zola; then
     echo "Using gutenber install from \$PATH..." >&2
-    cmd="gutenberg"
+    cmd="zola"
   else
-    echo "No gutenberg install found in \$PATH, attempting to load local binary..." >&2
-    if [[ ! -f ./gutenberg ]]; then
+    echo "No zola install found in \$PATH, attempting to load local binary..." >&2
+    if [[ ! -f ./zola ]]; then
       echo 'Downloading from Github...' >&2
       archive="$(./download-github-release.sh ${REPO} ${VERSION})"
       echo 'Extracting archive...' >&2
       tar -xf "${archive}"
-      [[ -f ./gutenberg ]] || _exit "Gutenberg binary not found after download!"
-      chmod +x ./gutenberg
+      [[ -f ./zola ]] || _exit "zola binary not found after download!"
+      chmod +x ./zola
     else
-      echo "Found existing local binary at '$(realpath ./gutenberg)'..." >&2
+      echo "Found existing local binary at '$(realpath ./zola)'..." >&2
     fi
-    cmd="./gutenberg"
+    cmd="./zola"
   fi
   echo "${cmd}"
 }
 
-cmd=$(find_gutenberg_command)
+cmd=$(find_command)
 ${cmd} --version
 
-[[ ! -z "${cmd}" ]] || _exit "Gutenberg is not available!"
+[[ ! -z "${cmd}" ]] || _exit "Zola is not available!"
 
 echo
 

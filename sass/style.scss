@@ -1,34 +1,38 @@
 @charset "UTF-8";
 
+// ----------------------------------------------------------------------------
+
 $bg: rgba(254, 254, 254, 1.0);
 $fg: rgba(59, 63, 73, 1.0);
-$accent: rgba(30, 92, 247, 1.0);
-$muted: rgba(248, 249, 250, 1.0);
+$accent: rgba(18, 107, 251, 1.0);
 $light: rgba(231, 236, 240, 1.0);
 $gray: rgba(173, 178, 190, 1.0);
 $dark-gray: rgba(129, 136, 155, 1.0);
 
-$sans_serif:
-  "IBM Plex Sans",
+$base_font:
+  "Inter",
   system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
   sans-serif;
 
-$monospace: "IBM Plex Mono", monospace;
+$monospace: "IBM Plex Mono", menlo, monospace;
 
-$base_font_size: 16;
-$line_height: 1.8;
-$heading_line_height: 1.4;
-$leading: 1rem;
+$base_font_size: 17;
+$body_line_height: 1.7;
+$body_font_weight: 400;
+$heading_line_height: 1.3;
+
+$small_font_font_size: 0.85em;
 
 $content_width: 640;
 
-$f1: 2rem;
-$f2: 1.5rem;
-$f3: 1.2rem;
-$f4: 1.2rem;
-$f5: 1rem;
-$f6: .85rem;
+$ws: 1rem * 8 / $base_font_size;
+
+// ----------------------------------------------------------------------------
+
+@import "./fonts";
+
+// ----------------------------------------------------------------------------
 
 @mixin container($width: $content_width) {
   width: 100%;
@@ -41,7 +45,6 @@ html {
   font-size: percentage($base_font_size / 16);
   text-rendering: optimizeLegibility;
   box-sizing: border-box;
-  // -webkit-font-smoothing: antialiased;
 }
 
 *, *:before, *:after {
@@ -51,23 +54,154 @@ html {
 body {
   background-color: $bg;
   color: $fg;
-  font-weight: 400;
-  font-family: $sans_serif;
+  font-weight: $body_font_weight;
+  font-family: $base_font;
   font-size: 1rem;
-  line-height: $line_height;
+  line-height: $body_line_height;
   word-wrap: break-word;
   hyphens: auto;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
-main {
-  flex: auto;
+main, header, footer {
+  @include container;
+  margin-top: 4 * $ws;
+  margin-bottom: 4 * $ws;
 }
 
 ::selection {
-  background-color: rgba($accent, .333);
+  background-color: $accent;
+  color: $bg;
+}
+
+.monospace, code, pre {
+  font-family: $monospace;
+}
+
+.small {
+  font-size: $small_font_font_size;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+a {
+  transition: color .15s, background-color .15s, outline .15s;
+  color: inherit;
+  text-decoration: underline;
+
+  h1, h2, h3, h4, h5, h6, &.no-underline {
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:focus {
+    color: $accent;
+  }
+
+  &:focus {
+    outline: 3px solid $accent;
+    outline-offset: 2px;
+  }
+}
+
+code {
+  padding: .1rem .2rem;
+  margin: -.1rem -.2rem;
+  background-color: rgba($gray, .1);
+}
+
+h1, h2 {
+  line-height: $heading_line_height;
+}
+
+h1 {
+  margin-top: 4 * $ws;
+  margin-bottom: 4 * $ws;
+  font-size: 2rem;
+}
+
+h2 {
+  margin-top: 4 * $ws;
+  margin-bottom: 2 * $ws;
+  font-size: 1.4rem;
+}
+
+h3, h4, h5, h6, p, ul, ol {
+  margin-bottom: 2 * $ws;
+  margin-top: 2 * $ws;
+}
+
+h5, h6 {
+  font-size: 1em;
+}
+
+blockquote, pre, .gist {
+  margin-bottom: 4 * $ws;
+  margin-top: 4 * $ws;
+}
+
+blockquote {
+  color: $dark-gray;
+  font-style: italic;
+  margin-inline-start: 0;
+  padding: 0 2 * $ws;
+  font-family: $monospace;
+  margin-inline-start: 2 * $ws;
+
+  *:first-child {
+    margin-top: 0;
+  }
+
+  *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+pre {
+  padding: $ws;
+  padding: 2 * $ws;
+  overflow: auto;
+  border-radius: 4px;
+  line-height: 1.5;
+  font-size: $small_font_font_size;
+}
+
+@keyframes wave-animation {
+  0% { transform: rotate(  0.0deg) }
+  0.416666667% { transform: rotate(-10.0deg) }
+  0.833333333% { transform: rotate( 12.0deg) }
+  1.25% { transform: rotate(-10.0deg) }
+  1.666666667% { transform: rotate(  9.0deg) }
+  2.083333333% { transform: rotate(  0.0deg) }
+  100% { transform: rotate(  0.0deg) }
+}
+
+.wave {
+  animation-name: wave-animation;
+  animation-duration: 60s;
+  animation-delay: 30s;
+  animation-iteration-count: infinite;
+  transform-origin: 70% 70%;
+  display: inline-block;
+}
+
+.meta {
+  font-family: $monospace;
+  color: $dark-gray;
+}
+
+article, header, .section {
+  padding: 0 2 * $ws;
+}
+
+article {
+  > .meta {
+    margin-top: - 3 * $ws;
+    margin-bottom: 4 * $ws;
+  }
 }
 
 img,
@@ -84,265 +218,75 @@ iframe {
   border: 0;
 }
 
-a {
-  transition: color .4s;
-  color: $accent;
-  text-decoration: none;
+aside {
+  margin-top: 3 * $ws;
+  margin-bottom: 3 * $ws;
+  padding: 0 2 * $ws;
+  font-size: $small_font_font_size;
+  border-left: 4px solid $accent;
 
-  &:hover {
-    text-decoration: underline;
-    color: $fg;
-  }
-}
-
-// a:link,
-// a:visited { color: #265C83; }
-// a:hover   { color: #7FDBFF; }
-// a:active  {
-//   transition: color .3s;
-//   color: #007BE6;
-// }
-
-// .link { text-decoration: none; }
-
-// Type scale
-.f1, h1 { font-size: $f1; }
-.f2, h2 { font-size: $f2; }
-.f3, h3 { font-size: $f3; }
-.f4, h4 { font-size: $f4; }
-.f5, h5, h6 { font-size: $f5; }
-.f6, .small { font-size: $f6; }
-
-.bold {
-  font-weight: 700;
-}
-
-p {
-  margin-top: $leading;
-  margin-bottom: $leading;
-}
-
-ul, ol {
-  margin-top: $leading;
-  margin-bottom: $leading;
-  ul, ol {
+  *:first-child {
     margin-top: 0;
+  }
+
+  *:last-child {
     margin-bottom: 0;
   }
-}
-
-blockquote {
-  margin-top: 2 * $leading;
-  margin-bottom: 2 * $leading;
-  padding-left: 2em;
-  color: $dark-gray;
-  font-size: $f4;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 400;
-  line-height: $heading_line_height;
-  margin-bottom: $leading;
-  margin-top: 2 * $leading;
-}
-
-
-h1, h2 {
-  font-weight: 700;
-}
-
-.gist, pre, figure {
-  margin-top: 2 * $leading;
-  margin-bottom: 2 * $leading;
-}
-
-.monospace {
-  font-family: $monospace;
-}
-
-code, pre {
-  background: $muted!important;
-  border: 1px solid $light;
-  border-radius: 1px;
-  @extend .small;
-  word-wrap: normal;
-  @extend .monospace;
-}
-
-pre {
-  overflow: auto;
-  padding: .5rem;
-}
-
-code {
-  padding: .1em;
-  vertical-align: bottom;
-}
-
-.meta {
-  color: $gray;
-  @extend .monospace;
-}
-
-.header,
-.footer,
-.container,
-article {
-  @include container;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.footer,
-.header {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-top: 2 * $leading;
-  margin-bottom: 2 * $leading;
-  @extend .small;
-}
-
-.navlink {
-  color: $gray;
-  text-decoration: none!important;
-  &:hover {
-    color: $fg;
-  }
-}
-
-.networks,
-header nav {
-  margin-left: -.5em;
-  margin-right: -.5em;
-  a {
-    margin-left: .5em;
-    margin-right: .5em;
-    @extend .navlink;
-  }
-}
-
-.networks {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.logo {
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  border-radius: 1px;
-  background-color: $gray;
-
-  &:hover {
-    background-color: $accent;
-    transform: rotate(45deg);
-  }
-}
-
-.footer {
-  color: $gray;
-}
-
-article header {
-  margin-bottom: 2rem;
-  margin-top: 2rem;
-  h1 {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
-
-article {
-  aside {
-    background: $muted;
-    color: $dark-gray;
-    border: 1px solid $light;
-    border-radius: 1px;
-    padding: 0 1rem;
-    margin-bottom: 2 * $leading;
-    margin-top: 2 * $leading;
-    &, h6 {
-      font-size: $f6;
-    }
-    &:first-child { margin-top: 0; }
-    &:last-child { margin-bottom: 0; }
-    // h6, p, ul {
-    //   margin-top: 0;
-    //   margin-bottom: 0;
-    // }
-    h6 {
-      font-weight: bold;
-      margin-bottom: .5 * $leading;
-    }
-  }
-}
-
-.post-list {
-  > a {
-    display: block;
-    margin-bottom: 3 * $leading;
-    margin-top: 3 * $leading;
-    color: $fg;
-    h2 {
-      margin-bottom: 0;
-      margin-top: 0;
-      font-weight: 400;
-    }
-    &:hover {
-      text-decoration: none;
-      h2 {
-        color: $accent;
-      }
-    }
-  }
-}
-
-.breakout {
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-figure {
-  padding: 0;
-  margin-left: 0;
-  margin-right: 0;
 }
 
 figure.image {
-  &.large {
-    @extend .breakout;
-    width: 1.5 * 1rem * $content_width / $base_font_size;
-    max-width: 100vw;
-  }
+  margin-top: 4 * $ws;
+  margin-bottom: 4 * $ws;
 
-  &.full {
-    @extend .breakout;
-    width: 100vw;
+  > a {
+    &:hover {
+      background-color: transparent;
+    }
   }
 }
 
 .footnote-definition {
-  color: $gray;
+  margin-top: 4 * $ws;
+  margin-bottom: 4 * $ws;
   position: relative;
-  margin-top: 2 * $leading;
-  margin-bottom: 2 * $leading;
-  margin-left: 2rem;
 
-  > sup {
-    position: absolute;
-    left: -2rem;
-    top: .3rem;
-    display: inline-block;
-    background-color: $light;
-    width: 1rem;
-    height: 1rem;
-    line-height: 1rem;
-    border-radius: 1px;
-    text-align: center;
-    font-size: .7em;
-    font-weight: bold;
+  > p::first-letter {
+    margin-left: $body_line_height * 1em;
   }
+}
+
+.footnote-definition-label {
+  position: absolute;
+  top: .05em;
+  font-weight: 700;
+  display: inline-block;
+  vertical-align: baseline;
+  font-size: $small_font_font_size;
+  background-color: $light;
+  color: $gray;
+  border-radius: 3px;
+  width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5em;
+  text-align: center;
+}
+
+.home, .four_oh_four {
+  margin-top: 16 * $ws;
+}
+
+.post-list {
+  > a {
+    text-decoration: none;
+  }
+
+  .meta {
+    margin-top: - 1.5 * $ws;
+    margin-bottom: 1.5 * $ws;
+  }
+}
+
+// Zola specific styling
+#zola-continue-reading {
+  display: none;
 }

@@ -2,15 +2,23 @@
 
 {% block title %}{{ page.title | safe | title }}{% endblock title %}
 
+{% block header %}
+<header>
+  <nav>
+    <a class="small no-underline" href="/">← Home</a>
+  </nav>
+</header>
+{% endblock %}
+
 {% block content %}
-<article class="post">
-  <a class="navlink small" href="/writing">← Back</a>
-  <header>
-    <div class="meta">
-      <time datetime="{{ page.date }}">{{ page.date | date(format="%B, %e %Y") }}</time>
-    </div>
-    <h1>{{ page.title | safe | title }}</h1>
-  </header>
+<article>
+  <h1>{{ page.title | safe | title }}</h1>
+
+  <div class="meta">
+    <time datetime="{{ page.date }}">{{ page.date | date(format="%B, %e %Y") }}</time> - {{ page.word_count }} words
+  </div>
+
   {{ page.content | safe }}
+
 </article>
 {% endblock content %}

@@ -14,7 +14,7 @@ template = "post.html"
     
 This was written a while ago and is most likely not completely accurate. There is also many better options to do just this with less hassle. Notable changes since I wrote this:
 
-- This site is now hosted on [Netlify](https://www.netlify.com/) which is an order of magnitude simpler to setup at the cost of having all my eggs in one basket
+- This site is now hosted on [Netlify](https://www.netlify.com/) which is super simple to setup at the cost of having all my eggs in one basket
 - Github recently [announced](https://blog.github.com/2018-05-01-github-pages-custom-domains-https/) HTTPS support for custom pages using domain.
 - This site is built with [Gutenberg](https://github.com/Keats/gutenberg).
 
@@ -126,7 +126,7 @@ branches:
     - master
 ```
 
-First you define the project's environment. As you can see even when using Grunt[^1], we define the project as a ruby project, (apparently, [all environments have node/npm installed](http://stackoverflow.com/questions/18456611/is-it-possible-to-set-up-travis-to-run-tests-for-several-languages)). Then you define all the steps your build will run (see [here](http://docs.travis-ci.com/user/build-lifecycle/) for more info on the different steps). `install` is pretty straightforward, we the have the `script: grunt build`, and `after_success` is run when the script was executed successfully. We could also define a `after_failure` step if you want more the the build failure email.
+First you define the project's environment. As you can see, even when using Grunt, we define the project as a ruby project, (apparently, [all environments have node/npm installed](http://stackoverflow.com/questions/18456611/is-it-possible-to-set-up-travis-to-run-tests-for-several-languages)). Then you define all the steps your build will run (see [here](http://docs.travis-ci.com/user/build-lifecycle/) for more info on the different steps). `install` is pretty straightforward, we the have the `script: grunt build`, and `after_success` is run when the script was executed successfully. We could also define a `after_failure` step if you want more the the build failure email.
 
 The `env` section defines environment variables. The `secure` keyword means that it has been encrypted thanks to the travis command line tool. To encrypt the `S3_KEY` variable used in the s3_website config, just run the following commands (`--add` automatically adds it to the config file if it's found):
 
@@ -178,6 +178,4 @@ That's where you will set up policies limiting the reach of this specific user. 
 
 In the end, the setup was pretty straightforward thanks to the respective documentations, albeit with a few mistakes on my part. But it still shouldn't take more than an hour to setup, and it's a one time thing with very little added complexity. As for the comparison with Github Pages, I am not aware of any performance issues there, so if you run Jekyll the main advantage is the ability to run custom plugins. If you don't run Jekyll however, any custom static site generator can work without playing with github branches, so the added control can be worth it if you have specific requirements.
 
-Even if it started as an experiment, I have kept it in place as it is free for the moment. To take it further, I started experimenting a bit more as I think it would be interesting to handle versions, uploading a new site to the bucket with the commit sha for example, in order to make interactive mock-ups available to a client. I hope this guide is clear enough for anyone wanting to reproduce the setup. 
-
-[^1]: For now, I use [Grunt](http://gruntjs.com/) and [Bower](http://bower.io/) out of habit, even though Jekyll is ruby based (the Jekyll task is wrapped in a grunt task). With [Jekyll 2](http://jekyllrb.com/news/2014/05/06/jekyll-turns-2-0-0/) I might try to consolidate the build (Bower would still remain though).
+Even if it started as an experiment, I have kept it in place as it is free for the moment. To take it further, I started experimenting a bit more as I think it would be interesting to handle versions, uploading a new site to the bucket with the commit sha for example, in order to make interactive mock-ups available to a client. I hope this guide is clear enough for anyone wanting to reproduce the setup.

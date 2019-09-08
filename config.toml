@@ -9,7 +9,7 @@ compile_sass = true
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Gutenberg
 highlight_code = true
-highlight_theme = "material-light"
+highlight_theme = "ayu-dark"
 
 # Whether to generate a RSS feed automatically
 generate_rss = true
@@ -23,6 +23,4 @@ generate_tags_pages = false
 generate_categories_pages = false
 
 [extra]
-# Put all your custom variables here
-clicky_site_id = "100700187"
 description = "Personal site of Charles Lirsac"
