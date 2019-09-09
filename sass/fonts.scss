@@ -1,11 +1,12 @@
 $fonts_path_prefix: "/fonts/" !default;
+$file_suffix: ".optimized";
 
 @mixin font-face($family, $file, $weight: null, $style: null) {
   @font-face {
     font-family: $family;
     src:
-      url("#{$fonts_path_prefix}#{$file}.woff2") format("woff2"),
-      url("#{$fonts_path_prefix}#{$file}.woff") format("woff");
+      url("#{$fonts_path_prefix}#{$file}#{$file_suffix}.woff2") format("woff2"),
+      url("#{$fonts_path_prefix}#{$file}#{$file_suffix}.woff") format("woff");
     font-weight: $weight;
     font-style: $style;
     font-display: swap;

@@ -3,3 +3,4 @@ gutenberg
 zola
 public
 .vscode
+.python-version
