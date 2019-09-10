@@ -115,9 +115,10 @@ a {
 }
 
 code {
-  padding: .1rem .2rem;
-  margin: -.1rem -.2rem;
-  background-color: rgba($gray, .1);
+  padding: .1rem .15rem;
+  margin: -.1rem -.15rem;
+  background-color: rgba($gray, .25);
+  border-radius: 2px;
 }
 
 h1, h2 {
