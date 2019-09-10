@@ -5,6 +5,7 @@
 $bg: rgba(254, 254, 254, 1.0);
 $fg: rgba(59, 63, 73, 1.0);
 $accent: rgba(18, 107, 251, 1.0);
+$accent_2: rgba(251, 119, 223, 1.0);
 $light: rgba(231, 236, 240, 1.0);
 $gray: rgba(173, 178, 190, 1.0);
 $dark-gray: rgba(129, 136, 155, 1.0);
@@ -73,6 +74,12 @@ main, header, footer {
 ::selection {
   background-color: $accent;
   color: $bg;
+}
+
+code, a {
+  &::selection, ::selection {
+    background-color: $accent_2;
+  }
 }
 
 .monospace, code, pre {
