@@ -15,7 +15,7 @@
   <h1>{{ page.title | safe | title }}</h1>
 
   <div class="meta">
-    <time datetime="{{ page.date }}">{{ page.date | date(format="%B, %e %Y") }}</time> - {{ page.word_count }} words
+    <time datetime="{{ page.date }}">{{ page.date | date(format="%B, %e %Y") }}</time> - {{ page.word_count }} words - {{ page.reading_time }} minute{% if page.reading_time > 1 %}s{% endif %} read
   </div>
 
   {{ page.content | safe }}

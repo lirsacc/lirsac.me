@@ -3,18 +3,20 @@
 {% block title %}{{ section.title | safe | title }}{% endblock title %}
 
 {% block content %}
-<div class="section">
+<div class="page">
   <h1 class="">{{ section.title | safe | title }}</h1>
 
-  <div class="post-list">
+  <ul class="post-list">
     {% for page in section.pages %}
-    <a href="{{ page.permalink }}">
-      <h2>{{ page.title }}</h2>
-      <div class="meta">
-        <time datetime="{{ page.date }}">{{ page.date | date(format="%B, %e %Y") }}</time>
-      </div>
-    </a>
+    <li>
+      <a href="{{ page.permalink }}">
+        <h2>{{ page.title }}</h2>
+        <div class="meta">
+          <time datetime="{{ page.date }}">{{ page.date | date(format="%B, %e %Y") }}</time>
+        </div>
+      </a>
+    </li>
     {% endfor %}
-  </div>
+  </ul>
 </div>
 {% endblock content %}
