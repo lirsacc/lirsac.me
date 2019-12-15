@@ -1,6 +1,9 @@
 +++
 title = "Concurrency limits and kernel settings when running NGINX & Gunicorn"
 slug = "concurrency-limits-and-kernel-settings-when-running-nginx-gunicorn"
+aliases = [
+  "writing/concurrency-limits-and-kernel-settings-when-running-nginx-gunicorn",
+]
 date = 2017-12-23
 template = "post.html"
 +++

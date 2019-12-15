@@ -3,8 +3,9 @@ title = "Hosting a static site on Amazon S3 & deploying it with Github & Travis"
 slug = "hosting-a-static-site-on-amazon-s3-deploying-it-with-github-travis"
 date = 2014-05-10
 aliases = [
-  "blog/host-a-static-site-on-amazon-s3-deploy-with-github-travis/"
-  ]
+  "blog/host-a-static-site-on-amazon-s3-deploy-with-github-travis",
+  "writing/hosting-a-static-site-on-amazon-s3-deploying-it-with-github-travis",
+]
 template = "post.html"
 +++
 

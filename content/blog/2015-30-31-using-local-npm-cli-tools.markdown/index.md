@@ -2,7 +2,7 @@
 title = "Using locally installed command line tools from NPM"
 date = 2015-03-31
 slug = "using-local-npm-cli-tools"
-aliases = ["blog/using-local-npm-cli-tools/"]
+aliases = ["writing/using-local-npm-cli-tools/"]
 template = "post.html"
 +++
 
