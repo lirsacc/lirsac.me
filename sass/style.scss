@@ -364,6 +364,15 @@ figure.image {
   }
 }
 
+.footnote-reference {
+  font-weight: bold;
+  color: $gray;
+
+  > a {
+    text-decoration: none;
+  }
+}
+
 .footnote-definition {
   margin-top: 4 * $ws;
   margin-bottom: 4 * $ws;
