@@ -7,7 +7,7 @@ template = "post.html"
 
 <aside>
 
-This article was originally published on [Threads' engineering blog](https://thread.engineering/2019-12-11-aptly-setup/).
+This article was originally published on [Thread's engineering blog](https://thread.engineering/2019-12-11-aptly-setup/).
 
 </aside>
 
