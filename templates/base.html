@@ -54,6 +54,14 @@
 
   {% block scripts %}
   {% endblock scripts %}
+
+  {% if config.extra.clicky %}
+  <script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push({{ config.extra.clicky }});</script>
+  <script async src="//static.getclicky.com/js"></script>
+  <noscript>
+    <img alt="Clicky" width="1" height="1" src="//in.getclicky.com/{{ config.extra.clicky }}ns.gif" />
+  </noscript>
+  {% endif %}
 </body>
 
 </html>
