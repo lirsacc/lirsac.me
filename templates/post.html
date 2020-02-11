@@ -2,20 +2,12 @@
 
 {% block title %}{{ page.title | safe | title }}{% endblock title %}
 
-{% block header %}
-<header>
-  <nav>
-    <a class="small no-underline" href="/">← Home</a>
-  </nav>
-</header>
-{% endblock %}
-
 {% block content %}
 <article>
   <h1>{{ page.title | safe | title }}</h1>
 
   <div class="meta">
-    <time datetime="{{ page.date }}">{{ page.date | date(format="%B, %e %Y") }}</time> - {{ page.word_count }} words - {{ page.reading_time }} minute{% if page.reading_time > 1 %}s{% endif %} read
+    <time datetime="{{ page.date }}">{{ page.date | date(format="%B, %e %Y") }}</time>
   </div>
 
   {{ page.content | safe }}

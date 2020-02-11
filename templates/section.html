@@ -2,14 +2,6 @@
 
 {% block title %}{{ section.title | safe | title }}{% endblock title %}
 
-{% block header %}
-<header>
-  <nav>
-    <a class="small no-underline" href="/">← Home</a>
-  </nav>
-</header>
-{% endblock %}
-
 {% block content %}
 <div class="page">
   <h1 class="">{{ section.title | safe | title }}</h1>
@@ -18,11 +10,18 @@
     {% for page in section.pages %}
     <li>
       <a href="{{ page.permalink }}">
-        <h2>{{ page.title }}</h2>
+        <p class="post-title">
+          {{ page.title }}
+        </p>
         <div class="meta">
           <time datetime="{{ page.date }}">{{ page.date | date(format="%B, %e %Y") }}</time>
         </div>
       </a>
+      {% if page.extra.excerpt %}
+      <p class="post-summary">
+        {{ page.extra.excerpt }}
+      </p>
+      {% endif %}
     </li>
     {% endfor %}
   </ul>

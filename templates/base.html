@@ -35,6 +35,12 @@
 <body id="body">
 
   {% block header %}
+  <header>
+    <nav>
+      <a class="small no-underline" href="/">← Home</a>
+      <a class="small no-underline" href="/blog">Blog</a>
+    </nav>
+  </header>
   {% endblock header %}
 
   <main>
@@ -42,7 +48,7 @@
   </main>
 
   {% block footer %}
-  <footer>
+  <footer class="small">
     © 2019 {{ config.extra.author }}
   </footer>
   {% endblock footer %}
