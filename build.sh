@@ -12,7 +12,7 @@ VERSION=latest
 # prefers globally installed Zola and falls back to local install.
 find_command() {
   if command zola; then
-    echo "Using gutenber install from \$PATH..." >&2
+    echo "Using zola install from \$PATH..." >&2
     cmd="zola"
   else
     echo "No zola install found in \$PATH, attempting to load local binary..." >&2
