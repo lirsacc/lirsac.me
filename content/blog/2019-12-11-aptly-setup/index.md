@@ -13,7 +13,9 @@ This article was originally published on [Thread's engineering blog](https://thr
 
 This article describes Thread’s current setup for hosting and distributing Debian packages. We’ll first explain why we ended up with this setup and provide steps necessary to replicate it as well as a high level cost overview.
 
-### Context & Goals
+<!-- more -->
+
+## Context & Goals
 
 We currently distribute most of our Python applications to production as Debian packages. This is native to our distribution of choice (Debian), and offers clear advantages such as dependency resolution between packages and integration with `systemd`.
 
@@ -32,13 +34,13 @@ As such the requirements were mainly:
 Our first approach was to look at other fully managed products such as [PackageCloud](https://packagecloud.io/) or [Cloudsmith](https://cloudsmith.io/) to minimise the required engineering effort and operational overhead. 
 Our trial of PackageCloud indicated that their upload API was eventually consistent (leading to unreliable releases) and that this would be too costly [^2] for our use case. We decided to look at hosting our packages on our own infrastructure and settled on using [Aptly](https://www.aptly.info/) (an open source application built to maintain local apt repositories) and serving packages through Amazon S3.
 
-### The setup
+## The setup
 
 We'll detail here how we are running the aptly service and how we interact with it from our machines.
 
 You'll need a valid [aptly configuration file](https://www.aptly.info/doc/configuration/) and GPG key as well as an [Ansible ](https://www.ansible.com/) controlled machine to run the aptly API and an [S3 bucket](https://aws.amazon.com/s3/).
 
-#### Running Aptly
+### Running Aptly
 
 As for most of our infrastructure, everything is setup through Ansible and configured to run through `systemd`:
 
@@ -363,7 +365,7 @@ All the steps should be fairly self explanatory and reproducible outside of Ansi
 
 - Omitted from the Ansible role are monitoring & backup configurations used for added reliability.
 
-#### Uploading packages
+### Uploading packages
 
 Now that we have a running aptly API, we start uploading packages. We use the following script after building debs and storing all the packages in a single directory.
 
@@ -404,7 +406,7 @@ This is more than one step, but it is reliable and ensures that releasing depend
 
 This was important as some hosted solutions would not provide a consistent upload endpoint and instead released on a timer leading to inconsistent and delayed releases. In practice this showed up as not all the uploaded packages being available when we updated running machines which lead to incompatible versions and missed releases.
 
-#### Downloading packages
+### Downloading packages
 
 Aptly itself is used to manage the repository (hierarchy, manifests, signing, etc.) and doesn't serve packages by default. We've chosen to expose our repository through S3 and download packages directly from there to benefit from AWS access control and reliability. On machines, we use [apt-transport-s3](https://github.com/MayaraCloud/apt-transport-s3).
 
@@ -449,7 +451,7 @@ The only thing required to get this to work was adding the following rules to ou
 
 Where `s3auth.conf` contains your S3 credentials and `sources.list` contains the following line: `deb s3://${BUCKET_NAME}.s3.amazonaws.com/${PATH_PREFIX}/ any main`.
 
-### Final cost estimate
+## Final cost estimate
 
 As mentioned above, one of the main reasons to go with a self managed solution was to keep costs under control. So how are we doing now?
 

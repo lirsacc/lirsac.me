@@ -6,7 +6,6 @@ aliases = ["writing/using-local-npm-cli-tools/"]
 template = "post.html"
 +++
 
-
 <aside>
 
 ###### Updated August 18, 2017
@@ -23,7 +22,6 @@ Yarn also has the [`run`](https://yarnpkg.com/en/docs/cli/run) command which can
 Thanks to [this SO answer](http://stackoverflow.com/a/14524311), the completion is now improved and gets back to normal filenames after completing the command name. (Before it would just propose command names over and over again).
 
 </aside>
-
 
 I recently had the need to regularly run cli apps that were installed locally through npm. This didn't use to happen very often and I would install cli tools globally, but recently I've had to work on a few projects using different versions of node, which would require reinstalling the packages for every version which is not very practical.
 

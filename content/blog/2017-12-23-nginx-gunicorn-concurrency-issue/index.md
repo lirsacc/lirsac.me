@@ -8,21 +8,21 @@ date = 2017-12-23
 template = "post.html"
 +++
 
-A few weeks ago the team I work on at [Stylight](https://tech.stylight.com/) encountered a strange issue which lead us to dive into the Linux networking stack, kernel settings and how web servers interact with each other. While this issue turned out to be simple, we didn't find much information putting it all together online and thought our experience would be worth sharing.
+A few weeks ago the team I work on at [Stylight](https://tech.stylight.com/) encountered an unexpected concurrency issue with one of our services. While this specific issue turned out to be simple, we didn't find much information putting it all together online and thought our experience would be worth sharing.
 
 <!-- more -->
 
 ## The problem
 
-After going to production and coming under increased load, one of our web services used for financial reporting started dropping requests with a `502 (Bad Gateway)` response code alongside the following error message:
+After going to production and coming under increased load, one of our web services used for financial reporting started dropping requestsm NGINX with `502 (Bad Gateway)` response codes alongside the following error message from NGINX:
 
 ```
 connect() to unix:/run/gunicorn.socket failed (11: Resource temporarily unavailable)
 ```
 
-A quick 10s load test performed with [vegeta](https://github.com/tsenart/vegeta) confirmed that the problem started appearing around 20 req/s while both the NGINX and Gunicorn configurations were setup to handle much more than that. 
+A quick 10s load test performed with [vegeta](https://github.com/tsenart/vegeta) confirmed that the problem started appearing around 20 req/s while both the NGINX and Gunicorn configurations were setup to handle much more than that and did so when ran locally against the production database.
 
-Running the service locally confirmed as much and after some head scratching, we were tipped off the real problem by [this paragraph](http://docs.gunicorn.org/en/stable/faq.html?highlight=somaxconn#how-can-i-increase-the-maximum-socket-backlog) from Gunicorn's documentation:
+Running the service in docker locally however exhibited the same problem as production. After some head scratching, we were tipped off the real problem by [this paragraph](http://docs.gunicorn.org/en/stable/faq.html?highlight=somaxconn#how-can-i-increase-the-maximum-socket-backlog) from Gunicorn's documentation:
 
 > **How can I increase the maximum socket backlog?**  
 > Listening sockets have an associated queue of incoming connections that are waiting to be accepted. If you happen to have a stampede of clients that fill up this queue new connections will eventually start getting dropped.
@@ -35,7 +35,7 @@ You can find code and instructions to reproduce the problem in a minimal way in 
 
 As we run our services in Docker on AWS's infrastructure, we needed to figure out where the `net.core.somaxconn` setting was being limited. Turns out it is set to 128 by default in both docker containers and on Amazon's default Ubuntu AMIs. It can be tweaked with the following commands:
 
-* For Linux machines, run `sysctl -w net.core.somaxconn=...` (may require sudo access).
+* For Linux machines, run `sysctl -w net.core.somaxconn=...` (may require root access).
 * When running inside docker containers, you need to call `docker run` with the `--sysctl net.core.somaxconn=...` flag set correctly. Refer to the [relevant docker documentation](https://docs.docker.com/engine/reference/commandline/run/#configure-namespaced-kernel-parameters-sysctls-at-runtime) for more information.
 
 **Disclaimer:** The default setting of 128 queued connections per socket should work for most applications with fast transactions, and the problem only affects very high concurrency servers and / or applications which expect to wait on blocking I/O and queue up a lot of requests. This was the case for us with reporting queries expected to potentially run in minutes, in which case being able to queue and delay some users was preferable than dropping their requests. A higher setting should not be a problem for most applications with fast transactions; however increasing the TCP queue size could hide some downstream latency issues and failing early may be better. As always consider your specific use-case and whether this is an unavoidable problem to be solved or a symptom of a deeper issue (design, architecture, etc.).
