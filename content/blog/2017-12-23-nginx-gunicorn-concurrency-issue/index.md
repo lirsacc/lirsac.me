@@ -14,7 +14,7 @@ A few weeks ago the team I work on at [Stylight](https://tech.stylight.com/) enc
 
 ## The problem
 
-After going to production and coming under increased load, one of our web services used for financial reporting started dropping requestsm NGINX with `502 (Bad Gateway)` response codes alongside the following error message from NGINX:
+After going to production and coming under increased load, one of our web services used for financial reporting started dropping requests with `502 (Bad Gateway)` response codes alongside the following error message from NGINX:
 
 ```
 connect() to unix:/run/gunicorn.socket failed (11: Resource temporarily unavailable)
