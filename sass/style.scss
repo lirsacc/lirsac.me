@@ -112,7 +112,8 @@ header nav a {
 }
 
 code,
-a {
+a,
+pre {
   &::selection,
   ::selection {
     background-color: $accent_2;
