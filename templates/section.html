@@ -10,18 +10,9 @@
     {% for page in section.pages %}
     <li>
       <a href="{{ page.permalink }}">
-        <p class="post-title">
-          {{ page.title }}
-        </p>
-        <div class="meta">
-          <time datetime="{{ page.date }}">{{ page.date | date(format="%B, %e %Y") }}</time>
-        </div>
+        <time class="meta" datetime="{{ page.date }}">{{ page.date | date(format="%b %Y") }}</time>
+        {{ page.title }}
       </a>
-      {% if page.extra.excerpt %}
-      <p class="post-summary">
-        {{ page.extra.excerpt }}
-      </p>
-      {% endif %}
     </li>
     {% endfor %}
   </ul>

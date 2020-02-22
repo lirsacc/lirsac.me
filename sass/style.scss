@@ -433,20 +433,6 @@ ul.post-list {
   a {
     text-decoration: none;
   }
-
-  .post-title {
-    font-weight: bold;
-  }
-
-  .meta {
-    margin-top: -2 * $ws;
-    margin-bottom: 2 * $ws;
-  }
-
-  .post-summary {
-    margin-top: -1 * $ws;
-    margin-bottom: 4 * $ws;
-  }
 }
 
 // Zola specific styling
