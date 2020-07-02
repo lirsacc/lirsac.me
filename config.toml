@@ -12,7 +12,7 @@ highlight_code = true
 highlight_theme = "ayu-dark"
 
 # Whether to generate a RSS feed automatically
-generate_rss = true
+generate_feed = true
 
 # Whether to generate a tags page and individual
 # tag pages for pages with tags

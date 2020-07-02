@@ -34,7 +34,7 @@ find_command() {
 cmd=$(find_command)
 ${cmd} --version
 
-[[ ! -z "${cmd}" ]] || _exit "Zola is not available!"
+[[ -n "${cmd}" ]] || _exit "Zola is not available!"
 
 echo
 
