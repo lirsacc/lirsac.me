@@ -23,5 +23,5 @@ generate_tags_pages = false
 generate_categories_pages = false
 
 [extra]
-description = "Personal site of Charles Lirsac"
+description = "Online home of Charles Lirsac"
 author = "Charles Lirsac"

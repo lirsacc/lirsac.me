@@ -11,7 +11,7 @@
     <li>
       <a href="{{ page.permalink }}">
         <time class="meta" datetime="{{ page.date }}">{{ page.date | date(format="%b %Y") }}</time>
-        {{ page.title }}
+        <div>{{ page.title }}</div>
       </a>
     </li>
     {% endfor %}
