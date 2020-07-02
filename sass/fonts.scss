@@ -1,50 +1,23 @@
 $fonts_path_prefix: "/fonts/" !default;
-$file_suffix: ".optimized";
 
 @mixin font-face($family, $file, $weight: null, $style: null) {
   @font-face {
     font-family: $family;
     src:
-      url("#{$fonts_path_prefix}#{$file}#{$file_suffix}.woff2") format("woff2"),
-      url("#{$fonts_path_prefix}#{$file}#{$file_suffix}.woff") format("woff");
+      url("#{$fonts_path_prefix}#{$file}.woff2") format("woff2"),
+      url("#{$fonts_path_prefix}#{$file}.woff") format("woff");
     font-weight: $weight;
     font-style: $style;
     font-display: swap;
   }
 }
 
-// Inter family ---------------------------------------------------------------
+@include font-face("Basier Square", "basiersquare/basiersquare-regular", 400);
+@include font-face("Basier Square", "basiersquare/basiersquare-regularitalic", 400, $style: italic);
+@include font-face("Basier Square", "basiersquare/basiersquare-bold", 700);
+@include font-face("Basier Square", "basiersquare/basiersquare-bolditalic", 700, $style: italic);
 
-// @include font-face("Inter", "inter/Inter-ExtraLight-BETA", 200);
-// @include font-face("Inter", "inter/Inter-ExtraLightItalic-BETA", 200, italic);
-// @include font-face("Inter", "inter/Inter-Light-BETA", 300);
-// @include font-face("Inter", "inter/Inter-LightItalic-BETA", 300, italic);
-@include font-face("Inter", "inter/Inter-Regular");
-@include font-face("Inter", "inter/Inter-Italic", $style: italic);
-// @include font-face("Inter", "inter/Inter-Medium", 500);
-// @include font-face("Inter", "inter/Inter-MediumItalic", 500, italic);
-// @include font-face("Inter", "inter/Inter-SemiBold", 600);
-// @include font-face("Inter", "inter/Inter-SemiBoldItalic", 600, italic);
-@include font-face("Inter", "inter/Inter-Bold", 700);
-@include font-face("Inter", "inter/Inter-BoldItalic", 700, italic);
-// @include font-face("Inter", "inter/Inter-ExtraBold", 800);
-// @include font-face("Inter", "inter/Inter-ExtraBoldItalic", 800, italic);
-// @include font-face("Inter", "inter/Inter-Black", 900);
-// @include font-face("Inter", "inter/Inter-BlackItalic", 900, italic);
-
-// IBM Plex Mono family -------------------------------------------------------
-
-// @include font-face("IBM Plex Mono", "ibm-plex-mono/IBMPlexMono-Thin", 100);
-// @include font-face("IBM Plex Mono", "ibm-plex-mono/IBMPlexMono-ThinItalic", 100, italic);
-// @include font-face("IBM Plex Mono", "ibm-plex-mono/IBMPlexMono-ExtraLight", 200);
-// @include font-face("IBM Plex Mono", "ibm-plex-mono/IBMPlexMono-ExtraLightItalic", 200, italic);
-// @include font-face("IBM Plex Mono", "ibm-plex-mono/IBMPlexMono-Light", 300);
-// @include font-face("IBM Plex Mono", "ibm-plex-mono/IBMPlexMono-LightItalic", 300, italic);
-@include font-face("IBM Plex Mono", "ibm-plex-mono/IBMPlexMono-Regular");
-@include font-face("IBM Plex Mono", "ibm-plex-mono/IBMPlexMono-Italic", $style: italic);
-// @include font-face("IBM Plex Mono", "ibm-plex-mono/IBMPlexMono-Medium", 500);
-// @include font-face("IBM Plex Mono", "ibm-plex-mono/IBMPlexMono-MediumItalic", 500, italic);
-// @include font-face("IBM Plex Mono", "ibm-plex-mono/IBMPlexMono-SemiBold", 600);
-// @include font-face("IBM Plex Mono", "ibm-plex-mono/IBMPlexMono-SemiBoldItalic", 600, italic);
-@include font-face("IBM Plex Mono", "ibm-plex-mono/IBMPlexMono-Bold", 700);
-@include font-face("IBM Plex Mono", "ibm-plex-mono/IBMPlexMono-BoldItalic", 700, italic);
+@include font-face("Basier Square Mono", "basiersquaremono/basiersquaremono-regular", 400);
+@include font-face("Basier Square Mono", "basiersquaremono/basiersquaremono-regularitalic", 400, $style: italic);
+@include font-face("Basier Square Mono", "basiersquaremono/basiersquaremono-bold", 700);
+@include font-face("Basier Square Mono", "basiersquaremono/basiersquaremono-bolditalic", 700, $style: italic);
