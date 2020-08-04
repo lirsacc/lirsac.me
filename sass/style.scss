@@ -2,30 +2,33 @@
 
 // ----------------------------------------------------------------------------
 
-$bg: rgba(254, 254, 254, 1);
-$fg: rgba(46, 52, 64, 1);
-$accent: rgba(18, 107, 251, 1);
-$accent_2: rgba(251, 119, 223, 1);
-$light: rgba(231, 236, 240, 1);
-$gray: rgba(173, 178, 190, 1);
-$dark-gray: rgba(129, 136, 155, 1);
+:root {
+  --bg: rgba(254, 254, 254, 1);
+  --fg: rgba(46, 52, 64, 1);
+  --accent: rgba(18, 107, 251, 1);
+  --accent-2: rgba(251, 119, 223, 1);
+  --light: rgba(231, 236, 240, 1);
+  --gray-rgb: 173, 178, 190;
+  --gray: rgba(var(--gray-rgb), 1);
+  --dark-gray: rgba(129, 136, 155, 1);
 
-$base_font: "Basier Square", system-ui, -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
+  --base-font: "Basier Square", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
 
-$monospace: "Basier Square Mono", menlo, monospace;
+  --monospace: "Basier Square Mono", menlo, monospace;
 
-$base_font_size: 17;
-$body_line_height: 1.7;
-$body_font_weight: 400;
-$heading_line_height: 1.5;
+  --base-font-size: 17;
+  --body-line-height: 1.7;
+  --body-font-weight: 400;
+  --heading-line-height: 1.5;
 
-$small_font_font_size: 0.85em;
+  --small-font-font-size: 0.85em;
 
-$content_width: 680;
+  --content-width: 680;
 
-$ws: 1rem * 8 / $base_font_size;
+  --ws: calc(1rem * 8 / var(--base-font-size));
+}
 
 // ----------------------------------------------------------------------------
 
@@ -33,15 +36,15 @@ $ws: 1rem * 8 / $base_font_size;
 
 // ----------------------------------------------------------------------------
 
-@mixin container($width: $content_width) {
+@mixin container() {
   width: 100%;
-  max-width: 1rem * $width / $base_font_size;
+  max-width: calc(1rem * var(--content-width) / var(--base-font-size));
   margin-left: auto;
   margin-right: auto;
 }
 
 html {
-  font-size: percentage($base_font_size / 16);
+  font-size: calc(100 * var(--base-font-size) / 16);
   text-rendering: optimizeLegibility;
   box-sizing: border-box;
   height: 100%;
@@ -54,12 +57,12 @@ html {
 }
 
 body {
-  background-color: $bg;
-  color: $fg;
-  font-weight: $body_font_weight;
-  font-family: $base_font;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-weight: var(--body-font-weight);
+  font-family: var(--base-font);
   font-size: 1rem;
-  line-height: $body_line_height;
+  line-height: var(--body-line-height);
   word-wrap: break-word;
   hyphens: auto;
   margin: 0;
@@ -77,29 +80,29 @@ main {
 header,
 footer {
   @include container;
-  margin-top: 4 * $ws;
-  margin-bottom: 4 * $ws;
+  margin-top: calc(4 * var(--ws));
+  margin-bottom: calc(4 * var(--ws));
 }
 
 article,
 header,
 footer,
 .page {
-  padding: 0 2 * $ws;
+  padding: 0 calc(2 * var(--ws));
 }
 
 footer {
-  color: $dark-gray;
+  color: var(--dark-gray);
 }
 
 ::selection {
-  background-color: $accent;
-  color: $bg;
+  background-color: var(--accent);
+  color: var(--bg);
 }
 
 header nav a {
   margin: 0 0.5em;
-  color: $dark-gray;
+  color: var(--dark-gray);
   // font-weight: bold;
 
   &:first-of-type {
@@ -116,18 +119,18 @@ a,
 pre {
   &::selection,
   ::selection {
-    background-color: $accent_2;
+    background-color: var(--accent-2);
   }
 }
 
 .monospace,
 code,
 pre {
-  font-family: $monospace;
+  font-family: var(--monospace);
 }
 
 .small {
-  font-size: $small_font_font_size;
+  font-size: var(--small-font-font-size);
 }
 
 .large {
@@ -155,11 +158,11 @@ a {
 
   &:hover,
   &:focus {
-    color: $accent;
+    color: var(--accent);
   }
 
   &:focus {
-    outline: 3px solid $accent;
+    outline: 3px solid var(--accent);
     outline-offset: 2px;
   }
 }
@@ -169,7 +172,7 @@ summary {
   cursor: pointer;
 
   &:focus {
-    outline: 3px solid $accent;
+    outline: 3px solid var(--accent);
     outline-offset: 2px;
   }
 }
@@ -177,24 +180,24 @@ summary {
 :not(pre) > code {
   padding: 0.1rem 0.15rem;
   margin: -0.1rem -0.15rem;
-  background-color: rgba($gray, 0.25);
+  background-color: rgba(var(--gray-rgb), 0.25);
   border-radius: 2px;
 }
 
 h1,
 h2 {
-  line-height: $heading_line_height;
+  line-height: var(--heading-line-height);
 }
 
 h1 {
-  margin-top: 4 * $ws;
-  margin-bottom: 4 * $ws;
+  margin-top: calc(4 * var(--ws));
+  margin-bottom: calc(4 * var(--ws));
   font-size: 1.75rem;
 }
 
 h2 {
-  margin-top: 2 * $ws;
-  margin-bottom: 2 * $ws;
+  margin-top: calc(2 * var(--ws));
+  margin-bottom: calc(2 * var(--ws));
   font-size: 1.4rem;
 }
 
@@ -210,8 +213,8 @@ h6,
 p,
 ul,
 ol {
-  margin-bottom: 2 * $ws;
-  margin-top: 2 * $ws;
+  margin-bottom: calc(2 * var(--ws));
+  margin-top: calc(2 * var(--ws));
 }
 
 h5,
@@ -222,17 +225,17 @@ h6 {
 blockquote,
 pre,
 .gist {
-  margin-bottom: 4 * $ws;
-  margin-top: 4 * $ws;
+  margin-bottom: calc(4 * var(--ws));
+  margin-top: calc(4 * var(--ws));
 }
 
 blockquote {
-  color: $dark-gray;
+  color: var(--dark-gray);
   font-style: italic;
   margin-inline-start: 0;
-  padding: 0 2 * $ws;
-  font-family: $monospace;
-  margin-inline-start: 2 * $ws;
+  padding: 0 calc(2 * var(--ws));
+  font-family: var(--monospace);
+  margin-inline-start: calc(2 * var(--ws));
 
   *:first-child {
     margin-top: 0;
@@ -246,7 +249,7 @@ blockquote {
 details.expandable-code {
   // Color of the syntax highlighted code, controlled by Zola
   background-color: rgba(15, 20, 25, 1);
-  margin: $ws 0;
+  margin: var(--ws) 0;
   border-radius: 4px;
 
   pre {
@@ -262,11 +265,11 @@ details.expandable-code {
   }
 
   summary {
-    color: $gray;
-    padding: $ws;
+    color: var(--gray);
+    padding: var(--ws);
     position: relative;
-    font-family: $monospace;
-    font-size: $small_font_font_size;
+    font-family: var(--monospace);
+    font-size: var(--small-font-font-size);
 
     list-style-type: none;
 
@@ -284,12 +287,12 @@ details.expandable-code {
 }
 
 pre {
-  padding: $ws;
-  padding: 2 * $ws;
+  padding: var(--ws);
+  padding: calc(2 * var(--ws));
   overflow: auto;
   border-radius: 4px;
   line-height: 1.5;
-  font-size: $small_font_font_size;
+  font-size: var(--small-font-font-size);
 }
 
 @keyframes wave-animation {
@@ -326,13 +329,13 @@ pre {
 }
 
 .meta {
-  color: $dark-gray;
+  color: var(--dark-gray);
 }
 
 article {
   > .meta {
-    margin-top: -2 * $ws;
-    margin-bottom: 4 * $ws;
+    margin-top: calc(-2 * var(--ws));
+    margin-bottom: calc(4 * var(--ws));
   }
 }
 
@@ -340,11 +343,11 @@ article,
 .page {
   hr {
     width: 50%;
-    color: $light;
-    background-color: $light;
+    color: var(--light);
+    background-color: var(--light);
     text-align: center;
-    margin-top: 4 * $ws;
-    margin-bottom: 4 * $ws;
+    margin-top: calc(4 * var(--ws));
+    margin-bottom: calc(4 * var(--ws));
     height: 3px;
     border: none;
   }
@@ -365,12 +368,12 @@ iframe {
 }
 
 aside {
-  margin-top: 3 * $ws;
-  margin-bottom: 3 * $ws;
-  padding: 1 * $ws 2 * $ws;
-  font-size: $small_font_font_size;
-  border: 3px solid $light;
-  color: $dark-gray;
+  margin-top: calc(3 * var(--ws));
+  margin-bottom: calc(3 * var(--ws));
+  padding: var(--ws) calc(2 * var(--ws));
+  font-size: var(--small-font-font-size);
+  border: 3px solid var(--light);
+  color: var(--dark-gray);
 
   *:first-child {
     margin-top: 0;
@@ -382,8 +385,8 @@ aside {
 }
 
 figure.image {
-  margin-top: 4 * $ws;
-  margin-bottom: 4 * $ws;
+  margin-top: calc(4 * var(--ws));
+  margin-bottom: calc(4 * var(--ws));
 
   > a {
     &:hover {
@@ -394,8 +397,8 @@ figure.image {
 
 .footnote-reference {
   font-weight: bold;
-  color: $dark-gray;
-  font-family: $monospace;
+  color: var(--dark-gray);
+  font-family: var(--monospace);
 
   > a {
     text-decoration: none;
@@ -403,12 +406,12 @@ figure.image {
 }
 
 .footnote-definition {
-  margin-top: 4 * $ws;
-  margin-bottom: 4 * $ws;
+  margin-top: calc(4 * var(--ws));
+  margin-bottom: calc(4 * var(--ws));
   position: relative;
 
   > p::first-letter {
-    margin-left: $body_line_height * 0.5em;
+    margin-left: calc(var(--body-line-height) * 0.5em);
   }
 }
 
@@ -418,9 +421,9 @@ figure.image {
   font-weight: 700;
   display: inline-block;
   vertical-align: baseline;
-  font-size: $small_font_font_size;
-  color: $dark-gray;
-  font-family: $monospace;
+  font-size: var(--small-font-font-size);
+  color: var(--dark-gray);
+  font-family: var(--monospace);
   font-size: 0.8em;
   text-align: center;
 }
@@ -432,7 +435,7 @@ ul.post-list {
 
   a {
     display: block;
-    margin-bottom: 2 * $ws;
+    margin-bottom: calc(2 * var(--ws));
 
     text-decoration: none;
 
@@ -443,7 +446,7 @@ ul.post-list {
 
     @media only screen and (min-width: 420px) {
       display: flex;
-      margin-bottom: $ws;
+      margin-bottom: var(--ws);
 
       div:last-of-type {
         flex: 1;
