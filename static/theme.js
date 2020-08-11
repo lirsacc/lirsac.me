@@ -31,7 +31,6 @@ function registerThemeSwitcher() {
   for (var el of document.querySelectorAll(".theme-switcher button")) {
     el.addEventListener("click", (evt) => {
       var nextTheme = evt.currentTarget.dataset.theme;
-      console.log("SETTING THEME", nextTheme);
       document.body.dataset.theme = nextTheme || "auto";
       try {
         localStorage.setItem("theme", nextTheme);
