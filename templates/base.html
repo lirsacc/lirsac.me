@@ -1,62 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if page.description %}
+    <meta name="description" content="{{ page.description }}" />
+    {% elif config.extra.description %}
+    <meta
+      name="description"
+      content="{% if page.title %}{{ page.title }}; {% endif %}{{ config.extra.description }}"
+    />
+    {% else %} {% endif %}
 
-  {% if page.description %}
-  <meta name="description" content="{{ page.description }}">
-  {% elif config.extra.description %}
-  <meta name="description" content="{% if page.title %}{{ page.title }}; {% endif %}{{ config.extra.description }}">
-  {% else %}
-  {% endif %}
+    <title>
+      {% block title %}{{ config.title }}{% endblock title %}
+    </title>
 
-  <title>
-    {% block title %}{{ config.title }}{% endblock title %}
-  </title>
+    <link
+      rel="preload"
+      href="/fonts/basiersquare/basiersquare-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/fonts/basiersquare/basiersquare-bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
 
-  <link rel="preload" href="/fonts/basiersquare/basiersquare-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-  <link rel="preload" href="/fonts/basiersquare/basiersquare-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    {% block stylesheets %}
+    <link rel="stylesheet" href="/style.css" />
+    {% endblock stylesheets %} {% block css %} {% endblock css %} {% block
+    html_headers %} {% endblock html_headers %}
 
-  {% block stylesheets %}
-  <link rel="stylesheet" href="/style.css">
-  {% endblock stylesheets %}
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      title="{{ config.title }} | Feed"
+      href="/atom.xml"
+    />
+  </head>
 
-  {% block css %}
-  {% endblock css %}
+  <body id="body" data-theme="auto">
+    <script src="/theme.js"></script>
 
-  {% block html_headers %} {% endblock html_headers %}
+    {% block header %}
+    <header>
+      <nav>
+        <a class="small no-underline" href="/">← Home</a>
+        <a class="small no-underline" href="/blog">Blog</a>
+      </nav>
+    </header>
+    {% endblock header %}
 
-  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-  <link rel="alternate" type="application/atom+xml" title="{{ config.title }} | Feed" href="/atom.xml">
-</head>
+    <main>
+      {% block content %} {% endblock content %}
+    </main>
 
-<body id="body">
+    {% block footer %}
+    <footer class="small">
+      <div class="theme-switcher js-theme-switcher">
+        <button
+          class="icon-button"
+          arial-label="Activate light theme"
+          type="button"
+          data-theme="light"
+        >
+          <svg>
+            <use xlink:href="/feather-sprite.svg#sun" />
+          </svg>
+        </button>
+        <button
+          class="icon-button"
+          arial-label="Activate dark theme"
+          type="button"
+          data-theme="dark"
+        >
+          <svg>
+            <use xlink:href="/feather-sprite.svg#moon" />
+          </svg>
+        </button>
+      </div>
+      <a class="atom-link icon-button" href="/atom.xml">
+        <svg>
+          <use xlink:href="/feather-sprite.svg#rss" />
+        </svg>
+      </a>
+    </footer>
+    {% endblock footer %} {% block scripts %} {% endblock scripts %}
 
-  {% block header %}
-  <header>
-    <nav>
-      <a class="small no-underline" href="/">← Home</a>
-      <a class="small no-underline" href="/blog">Blog</a>
-    </nav>
-  </header>
-  {% endblock header %}
-
-  <main>
-    {% block content %} {% endblock content %}
-  </main>
-
-  {% block footer %}
-  <footer class="small"></footer>
-  {% endblock footer %}
-
-  {% block scripts %}
-  {% endblock scripts %}
-
-  <script data-goatcounter="https://lirsac_me.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-</body>
-
+    <script
+      data-goatcounter="https://lirsac_me.goatcounter.com/count"
+      async
+      src="//gc.zgo.at/count.js"
+    ></script>
+  </body>
 </html>

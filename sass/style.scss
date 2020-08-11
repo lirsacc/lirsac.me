@@ -1,20 +1,27 @@
 @charset "UTF-8";
 
+@import "./fonts";
+
 // ----------------------------------------------------------------------------
 
-:root {
+:root,
+body[data-theme="light"] {
   --bg: rgba(254, 254, 254, 1);
   --fg: rgba(46, 52, 64, 1);
-  --accent: rgba(18, 107, 251, 1);
-  --accent-2: rgba(251, 119, 223, 1);
+  --accent: rgba(132, 108, 197, 1.0);
   --light: rgba(231, 236, 240, 1);
   --gray-rgb: 173, 178, 190;
   --gray: rgba(var(--gray-rgb), 1);
   --dark-gray: rgba(129, 136, 155, 1);
 
-  --base-font: "Basier Square", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-    "Droid Sans", "Helvetica Neue", sans-serif;
+  --rss-color: rgba(236, 128, 59, 1);
+
+  --aside-border-color: var(--light);
+  --aside-color: var(--dark-gray);
+
+  --base-font: "Basier Square", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
 
   --monospace: "Basier Square Mono", menlo, monospace;
 
@@ -30,9 +37,21 @@
   --ws: calc(1rem * 8 / var(--base-font-size));
 }
 
-// ----------------------------------------------------------------------------
+@mixin dark_theme_custom_properties() {
+  --bg: rgba(21, 24, 26, 1);
+  --fg: rgba(255, 255, 255, 1);
+  --aside-border-color: var(--dark-gray);
+}
 
-@import "./fonts";
+@media (prefers-color-scheme: dark) {
+  body[data-theme="auto"] {
+    @include dark_theme_custom_properties();
+  }
+}
+
+body[data-theme="dark"] {
+  @include dark_theme_custom_properties();
+}
 
 // ----------------------------------------------------------------------------
 
@@ -93,11 +112,8 @@ footer,
 
 footer {
   color: var(--dark-gray);
-}
-
-::selection {
-  background-color: var(--accent);
-  color: var(--bg);
+  display: inline-flex;
+  align-items: baseline;
 }
 
 header nav a {
@@ -111,15 +127,6 @@ header nav a {
 
   &:last-of-type {
     margin-right: 0;
-  }
-}
-
-code,
-a,
-pre {
-  &::selection,
-  ::selection {
-    background-color: var(--accent-2);
   }
 }
 
@@ -142,7 +149,6 @@ pre {
 }
 
 a {
-  transition: color 0.15s, background-color 0.15s, outline 0.15s;
   color: inherit;
   text-decoration: underline;
 
@@ -167,8 +173,15 @@ a {
   }
 }
 
+button {
+  color: inherit;
+  &:focus {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
 summary {
-  transition: color 0.15s, background-color 0.15s, outline 0.15s;
   cursor: pointer;
 
   &:focus {
@@ -372,8 +385,8 @@ aside {
   margin-bottom: calc(3 * var(--ws));
   padding: var(--ws) calc(2 * var(--ws));
   font-size: var(--small-font-font-size);
-  border: 3px solid var(--light);
-  color: var(--dark-gray);
+  border: 3px solid var(--aside-border-color);
+  color: var(--aside-color);
 
   *:first-child {
     margin-top: 0;
@@ -443,20 +456,91 @@ ul.post-list {
       padding-left: initial;
       display: block;
     }
-
-    @media only screen and (min-width: 420px) {
-      display: flex;
-      margin-bottom: var(--ws);
-
-      div:last-of-type {
-        flex: 1;
-        padding-left: 1em;
-      }
-    }
   }
 }
 
 // Zola specific styling
 #zola-continue-reading {
   display: none;
+}
+
+.icon-button {
+  display: inline-block;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  color: currentColor;
+
+  cursor: pointer;
+
+  width: 32px;
+  height: 32px;
+
+  padding: 3px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+.theme-switcher {
+  --theme-switch-color: rgba(250, 190, 47, 1);
+
+  // The switcher uses JS, it is shown only if JS is active.
+  display: none;
+
+  button {
+    &:focus {
+      outline: 3px solid var(--theme-switch-color);
+    }
+
+    &:hover,
+    &:focus {
+      color: var(--theme-switch-color);
+      svg {
+        fill: var(--theme-switch-color);
+      }
+    }
+  }
+}
+
+.theme-switcher button[data-theme="light"] {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  body[data-theme="auto"] {
+    .theme-switcher button[data-theme="light"] {
+      display: inline-block;
+    }
+    .theme-switcher button[data-theme="dark"] {
+      display: none;
+    }
+  }
+}
+
+body[data-theme="dark"] {
+  .theme-switcher button[data-theme="light"] {
+    display: inline-block;
+  }
+  .theme-switcher button[data-theme="dark"] {
+    display: none;
+  }
+}
+
+.atom-link {
+  &:hover,
+  &:focus {
+    color: var(--rss-color);
+  }
+
+  &:focus {
+    outline: 3px solid currentColor;
+  }
 }
