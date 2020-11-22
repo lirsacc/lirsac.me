@@ -8,16 +8,28 @@
 
     {% if page.description %}
     <meta name="description" content="{{ page.description }}" />
+    <meta name="og:description" content="{{ page.description }}" />
+    {% elif page.title %}
+    <meta name="description" content="{{ page.title }}"/>
+    <meta name="og:description" content="{{ page.title }}"/>
     {% elif config.extra.description %}
-    <meta
-      name="description"
-      content="{% if page.title %}{{ page.title }}; {% endif %}{{ config.extra.description }}"
-    />
-    {% else %} {% endif %}
+    <meta name="description" content="{{ config.extra.description }}"/>
+    <meta name="og:description" content="{{ config.extra.description }}"/>
+    {% endif %}
 
-    <title>
-      {% block title %}{{ config.title }}{% endblock title %}
-    </title>
+    {% if config.extra.author %}
+    <meta name="author" content="{{ config.extra.author }}">
+    {% endif %}
+
+    {% block opengraph %}
+    {% if config.extra.opengraph %}
+    {% for property, content in config.extra.opengraph %}
+    <meta name="og:{{ property }}" content="{{ content }}" />
+    {% endfor %}
+    {% endif %}
+    {% endblock opengraph %}
+
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
 
     <link
       rel="preload"
@@ -36,8 +48,11 @@
 
     {% block stylesheets %}
     <link rel="stylesheet" href="/style.css" />
-    {% endblock stylesheets %} {% block css %} {% endblock css %} {% block
-    html_headers %} {% endblock html_headers %}
+    {% endblock stylesheets %}
+
+    {% block css %} {% endblock css %}
+
+    {% block html_headers %} {% endblock html_headers %}
 
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <link
@@ -49,14 +64,45 @@
   </head>
 
   <body id="body" data-theme="auto">
-    <script src="/theme.js"></script>
+    {# This is light enough that it can be here and not at the end to avoid
+    splitting the script file #}
+    <script src="/script.js"></script>
 
     {% block header %}
     <header>
       <nav>
-        <a class="small no-underline" href="/">← Home</a>
-        <a class="small no-underline" href="/blog">Blog</a>
+        <a class="small no-underline name" href="/">Charles Lirsac</a>
+        <a class="small no-underline {% if current_path and current_path is starting_with('/blog/') %}parent{% endif %}" href="/blog">Writing</a>
       </nav>
+      <div class="actions">
+        <div class="theme-switcher js-theme-switcher">
+          <button
+            class="icon-button"
+            arial-label="Activate light theme"
+            type="button"
+            data-theme="light"
+          >
+            <svg>
+              <use xlink:href="/feather-sprite.svg#sun" />
+            </svg>
+          </button>
+          <button
+            class="icon-button"
+            arial-label="Activate dark theme"
+            type="button"
+            data-theme="dark"
+          >
+            <svg>
+              <use xlink:href="/feather-sprite.svg#moon" />
+            </svg>
+          </button>
+        </div>
+        <a class="atom-link icon-button" href="/atom.xml">
+          <svg>
+            <use xlink:href="/feather-sprite.svg#rss" />
+          </svg>
+        </a>
+      </div>
     </header>
     {% endblock header %}
 
@@ -64,37 +110,19 @@
       {% block content %} {% endblock content %}
     </main>
 
-    {% block footer %}
-    <footer class="small">
-      <div class="theme-switcher js-theme-switcher">
-        <button
-          class="icon-button"
-          arial-label="Activate light theme"
-          type="button"
-          data-theme="light"
-        >
+    <footer>
+      {% block footer %}
+      <div>
+         <a class="scroll-to-top icon-button large" href="#" aria-label="Scroll to the top of the page">
           <svg>
-            <use xlink:href="/feather-sprite.svg#sun" />
+            <use xlink:href="/feather-sprite.svg#arrow-up-circle" />
           </svg>
-        </button>
-        <button
-          class="icon-button"
-          arial-label="Activate dark theme"
-          type="button"
-          data-theme="dark"
-        >
-          <svg>
-            <use xlink:href="/feather-sprite.svg#moon" />
-          </svg>
-        </button>
+        </a>
       </div>
-      <a class="atom-link icon-button" href="/atom.xml">
-        <svg>
-          <use xlink:href="/feather-sprite.svg#rss" />
-        </svg>
-      </a>
+      {% endblock footer %}
     </footer>
-    {% endblock footer %} {% block scripts %} {% endblock scripts %}
+
+    {% block scripts %} {% endblock scripts %}
 
     <script
       data-goatcounter="https://lirsac_me.goatcounter.com/count"

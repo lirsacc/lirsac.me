@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}{{ section.title | safe | title }}{% endblock title %}
+{% block opengraph %}
+{{ super() }}
+<meta name="og:url" content="{{ section.permalink }}">
+{% endblock opengraph %}
+
+{% block title %}{{ section.title | safe | title }}{%
+endblock title %}
 
 {% block content %}
 <div class="page">
@@ -10,8 +16,10 @@
     {% for page in section.pages %}
     <li>
       <a href="{{ page.permalink }}">
-        <time class="meta" datetime="{{ page.date }}">{{ page.date | date(format="%b %Y") }}</time>
         <div>{{ page.title }}</div>
+        <time class="meta" datetime="{{ page.date }}">
+          {{ page.date | date }}
+        </time>
       </a>
     </li>
     {% endfor %}

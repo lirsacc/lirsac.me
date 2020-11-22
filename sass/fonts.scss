@@ -3,8 +3,7 @@ $fonts_path_prefix: "/fonts/" !default;
 @mixin font-face($family, $file, $weight: null, $style: null) {
   @font-face {
     font-family: $family;
-    src:
-      url("#{$fonts_path_prefix}#{$file}.woff2") format("woff2"),
+    src: url("#{$fonts_path_prefix}#{$file}.woff2") format("woff2"),
       url("#{$fonts_path_prefix}#{$file}.woff") format("woff");
     font-weight: $weight;
     font-style: $style;
@@ -21,3 +20,17 @@ $fonts_path_prefix: "/fonts/" !default;
 @include font-face("Basier Square Mono", "basiersquaremono/basiersquaremono-regularitalic", 400, $style: italic);
 @include font-face("Basier Square Mono", "basiersquaremono/basiersquaremono-bold", 700);
 @include font-face("Basier Square Mono", "basiersquaremono/basiersquaremono-bolditalic", 700, $style: italic);
+
+$default_features: '"kern", "mark"';
+$code_features: '"mark", "frac"';
+
+html {
+  font-feature-settings: #{$default_features} 1;
+}
+
+pre,
+code,
+.expandable-code,
+.monospace {
+  font-feature-settings: #{$code_features};
+}

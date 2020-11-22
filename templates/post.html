@@ -4,13 +4,12 @@
 
 {% block content %}
 <article>
-  <h1>{{ page.title | safe | title }}</h1>
+  <h1>{{ page.title | safe }}</h1>
 
   <div class="meta">
     <time datetime="{{ page.date }}">{{ page.date | date(format="%B, %e %Y") }}</time>
   </div>
 
   {{ page.content | safe }}
-
 </article>
 {% endblock content %}

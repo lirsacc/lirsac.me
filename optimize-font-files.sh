@@ -5,8 +5,8 @@
 # stage JS part.
 
 # For the fonts currently in the repo:
-# $ LAYOUT_FEATURES=sups,kern,frac ./optimize-font-files.sh fonts/basiersquare static/fonts/basiersquare
-# $ LAYOUT_FEATURES=sups,frac ./optimize-font-files.sh fonts/basiersquaremono static/fonts/basiersquaremono
+# $ LAYOUT_FEATURES=kern,frac,mark ./optimize-font-files.sh fonts/basiersquare static/fonts/basiersquare
+# $ LAYOUT_FEATURES=frac,mark ./optimize-font-files.sh fonts/basiersquaremono static/fonts/basiersquaremono
 
 # This can take a while.
 
@@ -17,14 +17,15 @@ UNICODE_RANGE='U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U
 
 # Adapt based on what's available in each font and what you want.
 # You can use https://wakamaifondue.com/ to inspect the source files.
-LAYOUT_FEATURES=${LAYOUT_FEATURES:-'ccmp,mark'}
+LAYOUT_FEATURES=${LAYOUT_FEATURES:-''}
+SOURCE_EXT=${SOURCE_EXT:-"woff2"}
 
 pip install fonttools brotli
 
 mkdir -p "${2}"
 rm -rf "${2}/*.woff*"
 
-for source_file in "${1}"/*.woff2; do
+for source_file in "${1}"/*."${SOURCE_EXT}"; do
 
   name=$(basename "${source_file%.*}")
   echo "Optimizing ${name}"

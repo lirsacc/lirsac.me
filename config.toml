@@ -3,6 +3,9 @@ title = "lirsacc"
 # The URL the site will be built for
 base_url = "https://lirsac.me"
 
+# The default language; used in feeds.
+default_language = "en"
+
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 
@@ -25,3 +28,7 @@ generate_categories_pages = false
 [extra]
 description = "Online home of Charles Lirsac"
 author = "Charles Lirsac"
+
+[extra.opengraph]
+site_name = "lirsac.me"
+email = "contact@lirsac.me"

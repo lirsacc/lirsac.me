@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
+
+{% block opengraph %}
+{{ super() }}
+<meta name="og:url" content="{{ page.permalink }}">
+{% endblock opengraph %}
+
 {% block content %}
 {{ page.content | safe }}
 {% endblock content %}
