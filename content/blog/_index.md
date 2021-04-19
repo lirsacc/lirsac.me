@@ -1,6 +1,6 @@
 +++
 render = true
 sort_by = "date"
-title = "Archive"
-aliases = ["writing"]
+title = "Blog"
+aliases = ["writing", "blog"]
 +++

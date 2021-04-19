@@ -9,11 +9,6 @@ default_language = "en"
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
-highlight_code = true
-highlight_theme = "ayu-dark"
-
 # Whether to generate a RSS feed automatically
 generate_feed = true
 
@@ -32,3 +27,8 @@ author = "Charles Lirsac"
 [extra.opengraph]
 site_name = "lirsac.me"
 email = "contact@lirsac.me"
+
+
+[markdown]
+highlight_code = true
+highlight_theme = "ayu-dark"

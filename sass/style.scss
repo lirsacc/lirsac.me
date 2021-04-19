@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-@import "./fonts";
-
 // ----------------------------------------------------------------------------
 
 :root,
@@ -23,20 +21,21 @@ body[data-theme="light"] {
 
   --hr-color: var(--light);
 
-  --base-font: "Basier Square", system-ui, -apple-system, BlinkMacSystemFont,
+  --base-font: ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
+  --accent-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif;
+  --mono-font: ui-monospace, menlo, consolas, monospace;
+  --blockquote-font: var(--base-font);
 
-  --monospace: "Basier Square Mono", menlo, consolas, monospace;
-
-  --base-font-size: 16;
+  --base-font-size: 17;
   --body-line-height: 1.6;
   --body-font-weight: 400;
-  --heading-line-height: 1.5;
+  --heading-line-height: 1.4;
 
-  --small-font-font-size: 0.85em;
+  --small-font-font-size: 0.9em;
 
-  --content-width: 660;
+  --content-width: 680;
 
   --ws: calc(1rem * 8 / var(--base-font-size));
 }
@@ -44,7 +43,6 @@ body[data-theme="light"] {
 @mixin dark_theme_custom_properties() {
   --bg: rgba(21, 24, 26, 1);
   --fg: rgba(255, 255, 255, 1);
-  --aside-border-color: var(--dark-gray);
   --hr-color: var(--dark-gray);
   --accent: rgba(88, 204, 253, 1);
 }
@@ -121,7 +119,7 @@ footer {
   color: var(--dark-gray);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 header {
@@ -132,6 +130,10 @@ header {
   color: var(--dark-gray);
 
   nav {
+    font-family: var(--accent-font);
+    font-weight: 500;
+    font-size: var(--small-font-font-size);
+
     a {
       color: var(--dark-gray);
       margin-right: 1em;
@@ -147,7 +149,12 @@ header {
 .monospace,
 code,
 pre {
-  font-family: var(--monospace);
+  font-family: var(--mono-font);
+  word-wrap: initial;
+}
+
+.accent-font {
+  font-family: var(--accent-font);
 }
 
 .small {
@@ -209,8 +216,8 @@ summary {
 }
 
 :not(pre) > code {
-  padding: 0.1rem 0.15rem;
-  margin: -0.1rem -0.15rem;
+  padding: 0.15rem 0.15rem;
+  margin: -0.15rem -0.15rem;
   background-color: rgba(var(--gray-rgb), 0.25);
   font-size: var(--small-font-font-size);
   border-radius: 2px;
@@ -222,7 +229,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 400;
+  font-weight: 700;
+  font-family: var(--accent-font);
 }
 
 h1,
@@ -275,7 +283,7 @@ blockquote {
   font-style: italic;
   margin-inline-start: 0;
   padding: 0 calc(2 * var(--ws));
-  font-family: var(--monospace);
+  font-family: var(--blockquote-font);
   margin-inline-start: calc(2 * var(--ws));
 
   *:first-child {
@@ -309,7 +317,7 @@ details.expandable-code {
     color: var(--gray);
     padding: var(--ws);
     position: relative;
-    font-family: var(--monospace);
+    font-family: var(--mono-font);
     font-size: var(--small-font-font-size);
 
     list-style-type: none;
@@ -371,6 +379,7 @@ pre {
 
 .meta {
   color: var(--dark-gray);
+  font-family: var(--accent-font);
 }
 
 article {
@@ -413,7 +422,8 @@ aside {
   margin-bottom: calc(3 * var(--ws));
   padding: var(--ws) calc(2 * var(--ws));
   font-size: var(--small-font-font-size);
-  border: 2px dashed var(--aside-border-color);
+  font-family: var(--accent-font);
+  border: 1px dotted var(--aside-border-color);
   color: var(--aside-color);
 
   *:first-child {
@@ -438,7 +448,7 @@ figure.image {
 
 .footnote-reference {
   color: var(--dark-gray);
-  font-family: var(--monospace);
+  font-family: var(--mono-font);
   font-size: var(--small-font-font-size);
 
   > a {
@@ -467,7 +477,7 @@ figure.image {
   font-size: var(--small-font-font-size);
   color: var(--dark-gray);
   text-align: center;
-  font-family: var(--monospace);
+  font-family: var(--mono-font);
 
   text-decoration: none;
 
@@ -484,6 +494,7 @@ ul.post-list {
   margin: 0;
   padding: 0;
   list-style-type: none;
+  font-family: var(--accent-font);
 
   a {
     display: block;
@@ -543,15 +554,6 @@ ul.post-list {
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
-  }
-
-  &.large {
-    width: 32px;
-    height: 32px;
-    svg {
-      width: 24px;
-      height: 24px;
-    }
   }
 }
 
