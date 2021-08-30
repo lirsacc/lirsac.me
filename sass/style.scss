@@ -483,6 +483,10 @@ iframe {
   border: 0;
 }
 
+.hidden {
+  display: none;
+}
+
 aside {
   margin-top: calc(3 * var(--ws));
   margin-bottom: calc(3 * var(--ws));
@@ -692,6 +696,10 @@ body[data-theme="dark"] {
 
 .atom-link {
   transition: color 0.2s ease-in-out;
+
+  > span {
+    display: none;
+  }
 
   &:hover,
   &:focus {
