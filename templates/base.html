@@ -39,6 +39,12 @@
 
     {% block html_headers %} {% endblock html_headers %}
 
+    <link rel="preload" href="/fonts/Inter/Inter-Regular.woff2" as="font" type="font/woff2"/>
+    <link rel="preload" href="fonts/Inter/Inter-Medium.woff2" as="font" type="font/woff2"/>
+    <link rel="preload" href="/fonts/Inter/Inter-Bold.woff2" as="font" type="font/woff2"/>
+    <link rel="prefetch" href="/fonts/JetBrainsMono/JetBrainsMono-Regular.woff2" as="font" type="font/woff2"/>
+    <link rel="preload" href="/feather-sprite.svg" as="image" type="image/svg+xml"/>
+
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <link
       rel="alternate"
@@ -59,6 +65,27 @@
         <a class="small no-underline name" href="/">Charles Lirsac</a>
         <a class="small no-underline {% if current_path and current_path is starting_with('/blog/') %}parent{% endif %}" href="/blog">Blog</a>
       </nav>
+      <div class="theme-switcher js-theme-switcher">
+        <button
+          class="icon-button"
+          arial-label="Activate light theme"
+          type="button"
+          data-theme="light"
+        >
+          <svg>
+            <use xlink:href="/feather-sprite.svg#sun" />
+          </svg>
+        </button>
+        <button
+          class="icon-button"
+          arial-label="Activate dark theme"
+          type="button"
+          data-theme="dark"
+        >
+          <svg>
+            <use xlink:href="/feather-sprite.svg#moon" />
+          </svg>
+        </button>
       </div>
     </header>
     {% endblock header %}
@@ -75,28 +102,6 @@
             <use xlink:href="/feather-sprite.svg#rss" />
           </svg>
         </a>
-        <div class="theme-switcher js-theme-switcher">
-          <button
-            class="icon-button"
-            arial-label="Activate light theme"
-            type="button"
-            data-theme="light"
-          >
-            <svg>
-              <use xlink:href="/feather-sprite.svg#sun" />
-            </svg>
-          </button>
-          <button
-            class="icon-button"
-            arial-label="Activate dark theme"
-            type="button"
-            data-theme="dark"
-          >
-            <svg>
-              <use xlink:href="/feather-sprite.svg#moon" />
-            </svg>
-          </button>
-        </div>
       </div>
       <div>
          <a class="scroll-to-top icon-button" href="#" aria-label="Scroll to the top of the page">

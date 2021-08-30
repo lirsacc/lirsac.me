@@ -5,8 +5,8 @@
 # stage JS part.
 
 # For the fonts currently in the repo:
-# $ LAYOUT_FEATURES=kern,frac,mark ./optimize-font-files.sh fonts/basiersquare static/fonts/basiersquare
-# $ LAYOUT_FEATURES=frac,mark ./optimize-font-files.sh fonts/basiersquaremono static/fonts/basiersquaremono
+# SOURCE_EXT=woff2 LAYOUT_FEATURES=ccmp,locl,mark,mkmk,frac,ordn,zero,case,subs,sups ./optimize-font-files.sh fonts/JetBrainsMono/ static/fonts/JetBrainsMono
+# SOURCE_EXT=woff2 LAYOUT_FEATURES=ccmp,locl,mark,frac,ordn,pnum,tnum,zero,numr,case,dnom,subs,sups,kern ./optimize-font-files.sh fonts/Inter static/fonts/Inter
 
 # This can take a while.
 
@@ -19,8 +19,6 @@ UNICODE_RANGE='U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U
 # You can use https://wakamaifondue.com/ to inspect the source files.
 LAYOUT_FEATURES=${LAYOUT_FEATURES:-''}
 SOURCE_EXT=${SOURCE_EXT:-"woff2"}
-
-pip install fonttools brotli
 
 mkdir -p "${2}"
 rm -rf "${2}/*.woff*"
