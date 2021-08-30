@@ -11,7 +11,7 @@ $fonts_path_prefix: "/fonts/" !default;
       url("#{$fonts_path_prefix}#{$file}.woff") format("woff");
     font-weight: $weight;
     font-style: $style;
-    font-display: swap;
+    font-display: optional;
   }
 }
 
